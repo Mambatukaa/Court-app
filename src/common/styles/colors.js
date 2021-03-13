@@ -3,6 +3,11 @@
 
 import { lighten, rgba } from './color';
 
+// first
+
+const primary = '#5629B6';
+const accent = '#FFC107';
+
 // Core colors
 const colorPrimary = '#673FBD';
 const colorPrimaryDark = '#5629B6';
@@ -119,5 +124,8 @@ export default {
   socialViber,
   socialLine,
   socialTwilio,
-  socialWhatsApp
+  socialWhatsApp,
+
+  primary,
+  accent
 };

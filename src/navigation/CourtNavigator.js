@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 import { AntDesign, FontAwesome5, Feather } from '@expo/vector-icons';
-import Colors from '../constants/Colors';
+import Colors from '../common/styles/colors';
 
 import CourtsOverviewScreen, {
   screenOptions as CourtsOverviewScreenOptions

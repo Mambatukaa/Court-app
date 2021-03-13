@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 
 import { TabView, TabBar } from 'react-native-tab-view';
 
-import Colors from '../../constants/Colors';
+import Colors from '../../common/styles/colors';
 import CourtBookingScreen from './CourtBookingScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 import LocationPicker from '../../common/components/location/LocationPicker';
