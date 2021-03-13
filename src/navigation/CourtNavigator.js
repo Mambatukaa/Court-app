@@ -8,10 +8,16 @@ import Colors from '../constants/Colors';
 import CourtsOverviewScreen, {
   screenOptions as CourtsOverviewScreenOptions
 } from '../screens/court/CourtsOverviewScreen';
+
 import CourtDetailScreen, {
   screenOptions as CourtDetailScreenOptions
 } from '../screens/court/CourtDetailScreen';
+
 import ProfileScreen from '../screens/profile/ProfileScreen';
+
+import MapScreen from '../screens/map/MapScreen';
+
+import BookingScreen from '../screens/booking/BookingScreen';
 
 const defaultNavOptions = {
   headerStyle: {
@@ -21,6 +27,7 @@ const defaultNavOptions = {
 };
 
 const CourtsStackNavigator = createStackNavigator();
+const Root = createStackNavigator();
 
 const CourtsNavigator = () => {
   return (
@@ -51,7 +58,7 @@ const ProfileNavigator = () => {
 };
 const Tab = createMaterialBottomTabNavigator();
 
-export const MyTabs = () => {
+const MyTabs = () => {
   return (
     <Tab.Navigator
       activeColor={Colors.primary}
@@ -60,14 +67,14 @@ export const MyTabs = () => {
     >
       <Tab.Screen
         name='Booking'
-        component={CourtsNavigator}
+        component={BookingScreen}
         options={{
           tabBarIcon: props => {
             return <AntDesign name='calendar' size={24} color={props.color} />;
           }
         }}
       />
-      <Tab.Screen
+      {/*  <Tab.Screen
         name='Venus'
         component={CourtsNavigator}
         options={{
@@ -75,7 +82,7 @@ export const MyTabs = () => {
             return <AntDesign name='star' size={24} color={props.color} />;
           }
         }}
-      />
+      /> */}
       <Tab.Screen
         name='Courts'
         component={CourtsNavigator}
@@ -104,67 +111,26 @@ export const MyTabs = () => {
   );
 };
 
-/* const CourtsNavigator = createStackNavigator(
-  {
-    CourtsOverview: CourtsOverviewScreen,
-    CourtDetail: CourtDetailScreen,
-    CourtBooking: CourtBookingScreen
-  },
-  {
-    defaultNavigationOptions: defaultNavOptions
-  }
-); */
+const rootNavigator = () => (
+  <Root.Navigator>
+    <Root.Screen
+      name='MyTabs'
+      component={MyTabs}
+      options={{ headerShown: false }}
+      //options={CourtsOverviewScreenOptions}
+    />
 
-/* const CourtTabNavigator = createBottomTabNavigator(
-  {
-    Bookings: {
-      screen: BookingScreen,
-      navigationOptions: {
-        tabBarIcon: tabInfo => {
-          return (
-            <AntDesign name='calendar' size={24} color={tabInfo.tintColor} />
-          );
-        }
-      }
-    },
-    Venus: {
-      screen: BookingScreen,
-      navigationOptions: {
-        tabBarIcon: tabInfo => {
-          return <AntDesign name='star' size={24} color={tabInfo.tintColor} />;
-        }
-      }
-    },
-    Courts: {
-      screen: CourtsNavigator,
-      navigationOptions: {
-        tabBarIcon: tabInfo => {
-          return (
-            <FontAwesome5
-              name='basketball-ball'
-              size={24}
-              color={tabInfo.tintColor}
-            />
-          );
-        }
-      }
-    },
-    Profile: {
-      screen: BookingScreen,
-      navigationOptions: {
-        tabBarIcon: tabInfo => {
-          return <Feather name='user' size={24} color={tabInfo.tintColor} />;
-        }
-      }
-    }
-  },
-  {
-    initialRouteName: 'Courts',
-    swipeEnabled: true,
-    tabBarOptions: {
-      activeTintColor: Colors.primary
-    }
-  }
-); */
-
-/* export default CourtTabNavigator */
+    <Root.Screen
+      name='Map'
+      component={MapScreen}
+      options={{
+        headerBackTitle: ' ',
+        headerStyle: {
+          backgroundColor: Colors.primary
+        },
+        headerTintColor: 'white'
+      }}
+    />
+  </Root.Navigator>
+);
+export default rootNavigator;

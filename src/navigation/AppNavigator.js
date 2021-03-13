@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { MyTabs } from './CourtNavigator';
+import Root from './CourtNavigator';
 
 const AppNavigator = props => {
   return (
     <NavigationContainer>
-      <MyTabs />
+      <Root />
     </NavigationContainer>
   );
 };

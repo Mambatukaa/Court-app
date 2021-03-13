@@ -64,3 +64,26 @@ const COURTS = [
 ];
 
 export default COURTS;
+
+/**
+ * Courts
+ * Ner
+ * shortName!!!!
+ * Bairshil latitude and longitude
+ * Hayg
+ * tsagiin huvariud
+ * tailbar
+ * anhaarah zuil
+ * zogsool
+ * une per 1 hour
+ *
+ * zaalnii zurag
+ *
+ */
+
+/**
+ * User
+ * userId
+ * Full name
+ * phone number unique
+ */

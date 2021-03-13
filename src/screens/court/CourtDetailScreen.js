@@ -16,6 +16,7 @@ import { TabView, TabBar } from 'react-native-tab-view';
 import Colors from '../../constants/Colors';
 import CourtBookingScreen from './CourtBookingScreen';
 import { LinearGradient } from 'expo-linear-gradient';
+import LocationPicker from '../../common/components/location/LocationPicker';
 
 const CourtDetailScreen = props => {
   const { courtId } = props.route.params;
@@ -57,6 +58,7 @@ const CourtDetailScreen = props => {
             <Text>Анхааруулга:</Text>
             <Text>{selectedCourt.warning}</Text>
           </View>
+          <LocationPicker navigation={props.navigation} />
         </View>
       </ScrollView>
     </View>
@@ -110,7 +112,8 @@ export default function TabViewExample({ route }) {
 
 export const screenOptions = navData => {
   return {
-    headerTitle: navData.route.params.courtTitle
+    headerTitle: navData.route.params.courtTitle,
+    headerBackTitle: ' '
   };
 };
 

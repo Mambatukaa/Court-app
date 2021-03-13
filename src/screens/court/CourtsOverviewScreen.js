@@ -36,7 +36,7 @@ const CourtsOverviewScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              console.log('map button');
+              navigation.navigate('Map');
             }}
           >
             <Feather
