@@ -7,8 +7,8 @@ const MapScreen = () => {
   const mapRegion = {
     latitude: 47.8864,
     longitude: 106.9057,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421
+    latitudeDelta: 0.0122,
+    longitudeDelta: 0.0121
   };
   return <MapView provider='google' style={styles.map} region={mapRegion} />;
 };

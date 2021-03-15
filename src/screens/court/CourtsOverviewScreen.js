@@ -30,7 +30,7 @@ const CourtsOverviewScreen = () => {
           >
             <AntDesign
               name='search1'
-              size={22}
+              size={20}
               style={{ color: 'white', marginRight: 15 }}
             />
           </TouchableOpacity>
@@ -41,7 +41,7 @@ const CourtsOverviewScreen = () => {
           >
             <Feather
               name='map'
-              size={21}
+              size={19}
               style={{ color: 'white', marginRight: 20 }}
             />
           </TouchableOpacity>
@@ -56,7 +56,7 @@ const CourtsOverviewScreen = () => {
           >
             <AntDesign
               name='filter'
-              size={23}
+              size={20}
               style={{ color: 'white', marginLeft: 15 }}
             />
           </TouchableOpacity>

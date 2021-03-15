@@ -17,7 +17,8 @@ import ProfileScreen from '../screens/profile/ProfileScreen';
 
 import MapScreen from '../screens/map/MapScreen';
 
-import BookingScreen from '../screens/booking/BookingScreen';
+import BookedScreen from '../screens/booking/BookedScreen';
+import colors from '../common/styles/colors';
 
 const defaultNavOptions = {
   headerStyle: {
@@ -35,7 +36,6 @@ const CourtsNavigator = () => {
       <CourtsStackNavigator.Screen
         name='CourtsOverview'
         component={CourtsOverviewScreen}
-        //options={CourtsOverviewScreenOptions}
       />
       <CourtsStackNavigator.Screen
         name='CourtDetail'
@@ -48,26 +48,31 @@ const CourtsNavigator = () => {
 const ProfileNavigator = () => {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <CourtsStackNavigator.Screen
-        name='CourtsOverview'
-        component={ProfileScreen}
-        //options={CourtsOverviewScreenOptions}
-      />
+      <CourtsStackNavigator.Screen name='Profile' component={ProfileScreen} />
     </CourtsStackNavigator.Navigator>
   );
 };
+
+const BookingNavigator = () => {
+  return (
+    <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <CourtsStackNavigator.Screen name='Booking' component={BookedScreen} />
+    </CourtsStackNavigator.Navigator>
+  );
+};
+
 const Tab = createMaterialBottomTabNavigator();
 
 const MyTabs = () => {
   return (
     <Tab.Navigator
-      activeColor={Colors.primary}
-      barStyle={{ backgroundColor: 'white' }}
+      activeColor={'white'}
+      barStyle={{ backgroundColor: colors.primary }}
       initialRouteName='Courts'
     >
       <Tab.Screen
         name='Booking'
-        component={BookingScreen}
+        component={BookingNavigator}
         options={{
           tabBarIcon: props => {
             return <AntDesign name='calendar' size={24} color={props.color} />;

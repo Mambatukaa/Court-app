@@ -16,7 +16,7 @@ import { TabView, TabBar } from 'react-native-tab-view';
 import Colors from '../../common/styles/colors';
 import CourtBookingScreen from './CourtBookingScreen';
 import { LinearGradient } from 'expo-linear-gradient';
-import LocationPicker from '../../common/components/location/LocationPicker';
+import CourtDetail from '../../common/components/court/CourtDetail';
 
 const CourtDetailScreen = props => {
   const { courtId } = props.route.params;
@@ -43,7 +43,8 @@ const CourtDetailScreen = props => {
               <Text style={styles.bookNow}>Book now</Text>
             </LinearGradient>
           </TouchableOpacity>
-          <Text style={styles.title}>{selectedCourt.title}</Text>
+          <CourtDetail />
+          {/* <Text style={styles.title}>{selectedCourt.title}</Text>
 
           <View style={styles.priceContainer}>
             <Text>Үнэ:</Text>
@@ -58,7 +59,7 @@ const CourtDetailScreen = props => {
             <Text>Анхааруулга:</Text>
             <Text>{selectedCourt.warning}</Text>
           </View>
-          <LocationPicker navigation={props.navigation} />
+          <LocationPicker navigation={props.navigation} /> */}
         </View>
       </ScrollView>
     </View>
@@ -72,8 +73,7 @@ export default function TabViewExample({ route }) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Information' },
-    { key: 'second', title: 'Booking' },
-    { key: 'third', title: 'Location' }
+    { key: 'second', title: 'Booking' }
   ]);
 
   const renderScene = ({ route, jumpTo }) => {
@@ -149,7 +149,8 @@ const styles = StyleSheet.create({
   },
   label: {
     color: Colors.primary,
-    fontSize: 14
+    fontSize: 14,
+    fontWeight: 'bold'
   },
   booknowContainer: {
     marginTop: -30,
