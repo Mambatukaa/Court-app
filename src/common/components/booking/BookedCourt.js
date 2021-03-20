@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   court: {
     shadowColor: 'black',
     shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 2, height: 2 },
     shadowRadius: 10,
     elevation: 5,
     borderRadius: 10,

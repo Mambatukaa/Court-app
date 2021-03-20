@@ -4,7 +4,7 @@ import BookedCourt from '../../common/components/booking/BookedCourt';
 
 const BookedScreen = props => {
   return (
-    <ScrollView style={{ paddingTop: 20 }}>
+    <ScrollView style={{ paddingTop: 20, backgroundColor: 'white' }}>
       <BookedCourt />
       <BookedCourt />
     </ScrollView>
