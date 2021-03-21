@@ -43,7 +43,14 @@ const CourtDetailScreen = props => {
               <Text style={styles.bookNow}>Book now</Text>
             </LinearGradient>
           </TouchableOpacity>
-          <CourtDetail />
+          <CourtDetail
+            title={selectedCourt.title}
+            shortName={selectedCourt.shortName}
+            price={selectedCourt.price}
+            warning={selectedCourt.warning}
+            description={selectedCourt.description}
+            location={selectedCourt.location}
+          />
           {/* <Text style={styles.title}>{selectedCourt.title}</Text>
 
           <View style={styles.priceContainer}>

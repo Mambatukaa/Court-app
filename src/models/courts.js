@@ -2,6 +2,7 @@ class Courts {
   constructor(
     id,
     title,
+    shortName,
     imageUrl,
     description,
     price,
@@ -12,6 +13,7 @@ class Courts {
     this.id = id;
     this.imageUrl = imageUrl;
     this.title = title;
+    this.shortName = shortName;
     this.description = description;
     this.price = price;
     this.parking = parking;

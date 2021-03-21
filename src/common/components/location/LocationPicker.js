@@ -6,13 +6,9 @@ import * as Permissions from 'expo-permissions';
 import { Alert } from 'react-native';
 import { ActivityIndicator } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
-
 import MapPreview from './MapPreview';
 
 const LocationPicker = () => {
-  const navigation = useNavigation();
-
   const [pickedLocation, setPickedLocation] = useState();
   const [isFetching, setIsFetching] = useState(false);
 
@@ -41,6 +37,7 @@ const LocationPicker = () => {
       const location = await Location.getCurrentPositionAsync({
         timeout: 5000
       });
+
       setPickedLocation({
         lat: location.coords.latitude,
         lng: location.coords.longitude
