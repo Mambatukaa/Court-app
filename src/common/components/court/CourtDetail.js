@@ -45,17 +45,15 @@ const CourtDetail = props => {
               setShowMark(v => !v);
             }}
           >
-            {showMark && (
-              <Callout tooltip>
-                <View>
-                  <View style={styles.bubble}>
-                    <Text style={styles.name}>{props.shortName}</Text>
-                  </View>
-                  <View style={styles.arrowBorder} />
-                  <View style={styles.arrow} />
+            <Callout tooltip>
+              <View>
+                <View style={styles.bubble}>
+                  <Text style={styles.name}>{props.shortName}</Text>
                 </View>
-              </Callout>
-            )}
+                <View style={styles.arrowBorder} />
+                <View style={styles.arrow} />
+              </View>
+            </Callout>
           </Marker>
         </MapView>
       </View>

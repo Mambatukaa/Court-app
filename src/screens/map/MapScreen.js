@@ -22,9 +22,10 @@ const MapScreen = props => {
   };
   return (
     <MapView provider='google' style={styles.map} region={mapRegion}>
-      {courts.map(el => {
+      {courts.map((el, index) => {
         return (
           <Marker
+            key={index}
             coordinate={{
               latitude: el.location[0],
               longitude: el.location[1]
@@ -33,30 +34,28 @@ const MapScreen = props => {
               setShowMark(v => !v);
             }}
           >
-            {showMark && (
-              <Callout
-                tooltip
-                onPress={() => {
-                  navigation.navigate('CourtDetail', {
-                    courtId: el.id
-                  });
-                }}
-              >
-                <View>
-                  <View style={styles.bubble}>
-                    <Text style={styles.name}>{el.title}</Text>
-                    <AntDesign
-                      name='right'
-                      size={20}
-                      color={Colors.primary}
-                      fontWeight='bold'
-                    />
-                  </View>
-                  <View style={styles.arrowBorder} />
-                  <View style={styles.arrow} />
+            <Callout
+              tooltip
+              onPress={() => {
+                navigation.navigate('CourtDetail', {
+                  courtId: el.id
+                });
+              }}
+            >
+              <View>
+                <View style={styles.bubble}>
+                  <Text style={styles.name}>{el.title}</Text>
+                  <AntDesign
+                    name='right'
+                    size={20}
+                    color={Colors.primary}
+                    fontWeight='bold'
+                  />
                 </View>
-              </Callout>
-            )}
+                <View style={styles.arrowBorder} />
+                <View style={styles.arrow} />
+              </View>
+            </Callout>
           </Marker>
         );
       })}
