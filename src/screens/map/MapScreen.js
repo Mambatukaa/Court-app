@@ -5,14 +5,22 @@ import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { AntDesign } from '@expo/vector-icons';
-
+import { gql, useQuery } from '@apollo/client';
 import Colors from '../../common/styles/colors';
+import queries from '../../screens/court/graphql/queries';
 
 const MapScreen = props => {
   const [showMark, setShowMark] = useState(false);
 
   const navigation = useNavigation();
-  const courts = useSelector(state => state.courts.availableCourts);
+
+  const { data, loading, error } = useQuery(gql(queries.allCourts));
+
+  if (loading) {
+    return null;
+  }
+
+  const { allCourts } = data;
 
   const mapRegion = {
     latitude: 47.92123,
@@ -22,13 +30,13 @@ const MapScreen = props => {
   };
   return (
     <MapView provider='google' style={styles.map} region={mapRegion}>
-      {courts.map((el, index) => {
+      {allCourts.map((court, index) => {
         return (
           <Marker
             key={index}
             coordinate={{
-              latitude: el.location[0],
-              longitude: el.location[1]
+              latitude: court.location.lat,
+              longitude: court.location.lng
             }}
             onPress={() => {
               setShowMark(v => !v);
@@ -38,13 +46,13 @@ const MapScreen = props => {
               tooltip
               onPress={() => {
                 navigation.navigate('CourtDetail', {
-                  courtId: el.id
+                  courtId: court._id
                 });
               }}
             >
               <View>
                 <View style={styles.bubble}>
-                  <Text style={styles.name}>{el.title}</Text>
+                  <Text style={styles.name}>{court.name}</Text>
                   <AntDesign
                     name='right'
                     size={20}
