@@ -10,14 +10,14 @@ import {
   HttpLink,
   InMemoryCache,
   split,
-  from,
+  from
 } from '@apollo/client';
 
 import courtsReducer from './src/store/reducers/courts';
 import AppNavigator from './src/navigation/AppNavigator';
 
 const rootReducer = combineReducers({
-  courts: courtsReducer,
+  courts: courtsReducer
 });
 
 const store = createStore(rootReducer);
@@ -25,19 +25,19 @@ const store = createStore(rootReducer);
 const fetchFonts = () => {
   return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
   });
 };
 
 const httpLink = new HttpLink({
   uri: 'http://192.168.55.79:3100/graphql',
-  credentials: 'include',
+  credentials: 'include'
 });
 
 const client = () =>
   new ApolloClient({
     link: httpLink,
-    cache: new InMemoryCache(), //cache,
+    cache: new InMemoryCache() //cache,
   });
 
 export default function App() {

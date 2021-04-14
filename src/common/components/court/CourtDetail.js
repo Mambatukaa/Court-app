@@ -6,8 +6,8 @@ const CourtDetail = props => {
   const [showMark, setShowMark] = useState(false);
 
   const mapRegion = {
-    latitude: props.location[0],
-    longitude: props.location[1],
+    latitude: props.location.lat,
+    longitude: props.location.lng,
     latitudeDelta: 0.0135,
     longitudeDelta: 0.0133
   };
@@ -38,8 +38,8 @@ const CourtDetail = props => {
         <MapView provider='google' style={styles.map} region={mapRegion}>
           <Marker
             coordinate={{
-              latitude: props.location[0],
-              longitude: props.location[1]
+              latitude: props.location.lat,
+              longitude: props.location.lng
             }}
             onPress={() => {
               setShowMark(v => !v);

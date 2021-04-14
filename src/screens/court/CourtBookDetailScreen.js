@@ -3,8 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import queries from './graphql/queries';
 
-const CourtBookDetail = (props) => {
-  console.log(props, 'wjakajskdalsd');
+const CourtBookDetail = props => {
   /*     const { courtId } = props.route.params;
 
   

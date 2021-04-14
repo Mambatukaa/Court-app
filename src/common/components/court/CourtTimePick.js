@@ -5,7 +5,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
+  ScrollView
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -16,102 +16,104 @@ const data = [
     list: [
       {
         time: '10:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '12:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '14:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '16:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '17:00',
-        leftPeople: 10,
-      },
-    ],
+        leftPeople: 10
+      }
+    ]
   },
   {
     name: 'Tuesday',
     list: [
       {
         time: '10:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '12:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '14:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '18:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '20:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       ,
       {
         time: '21:00',
-        leftPeople: 10,
-      },
-    ],
+        leftPeople: 10
+      }
+    ]
   },
   {
     name: 'Wednesday',
     list: [
       {
         time: '10:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '12:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '14:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '18:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       {
         time: '20:00',
-        leftPeople: 10,
+        leftPeople: 10
       },
       ,
       {
         time: '21:00',
-        leftPeople: 10,
-      },
-    ],
-  },
+        leftPeople: 10
+      }
+    ]
+  }
 ];
 
-const CourtTimePick = (props) => {
+const CourtTimePick = props => {
   const navigation = useNavigation();
 
-  const onViewBookDetail = () => {
-    navigation.navigate('CourtBookDetail'),
-      {
-        courtId: 'hahhaahahha',
-      };
+  const { params } = props;
+
+  const onViewBookDetail = item => {
+    navigation.navigate('CourtBookDetail', {
+      courtId: params,
+      item: item
+    });
   };
 
   const renderRowItem = (item, index) => {
     return (
       <TouchableOpacity
-        onPress={onViewBookDetail}
+        onPress={() => onViewBookDetail(item)}
         activeOpacity={0.7}
         style={styles.block}
         key={index.toString()}
@@ -128,7 +130,7 @@ const CourtTimePick = (props) => {
         style={{
           flexDirection: 'row',
           marginBottom: 30,
-          borderWidth: 0.5,
+          borderWidth: 0.5
         }}
       >
         <Text style={styles.date}>{'Mon\n12'}</Text>
@@ -148,12 +150,12 @@ const CourtTimePick = (props) => {
           justifyContent: 'center',
           marginBottom: 20,
           backgroundColor: 'gray',
-          marginTop: 10,
+          marginTop: 10
         }}
       >
-        <Button title="prev" />
+        <Button title='prev' />
         <Text>April 4-10</Text>
-        <Button title="next" />
+        <Button title='next' />
       </View>
       <ScrollView>{data.map((e, i) => renderRow(e, i))}</ScrollView>
     </View>
@@ -171,7 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     textAlign: 'center',
     fontWeight: 'bold',
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   date: {
     fontSize: 18,
@@ -179,7 +181,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     textAlign: 'center',
     marginRight: 10,
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
   block: {
     borderWidth: 1,
@@ -189,16 +191,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 60,
     backgroundColor: '#3CCC38',
-    height: 45,
+    height: 45
   },
   time: {
     textAlign: 'center',
     paddingBottom: 2,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   people: {
-    textAlign: 'center',
-  },
+    textAlign: 'center'
+  }
 });
 
 export default CourtTimePick;

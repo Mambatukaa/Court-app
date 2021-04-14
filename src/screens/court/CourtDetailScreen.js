@@ -7,7 +7,7 @@ import {
   View,
   Dimensions,
   StatusBar,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
 
 import { TabView, TabBar } from 'react-native-tab-view';
@@ -21,13 +21,13 @@ import { gql, useQuery } from '@apollo/client';
 
 import queries from './graphql/queries';
 
-const CourtDetailScreen = (props) => {
+const CourtDetailScreen = props => {
   const { courtId } = props.route.params;
 
   const { data, loading, error } = useQuery(gql(queries.courtDetail), {
     variables: {
-      _id: courtId,
-    },
+      _id: courtId
+    }
   });
 
   if (loading) {
@@ -60,7 +60,7 @@ const CourtDetailScreen = (props) => {
             price={courtDetail.price}
             warning={courtDetail.warning}
             description={courtDetail.description}
-            location={courtDetail.locations}
+            location={courtDetail.location}
           />
           {/* <Text style={styles.title}>{selectedCourt.title}</Text>
 
@@ -91,7 +91,7 @@ export default function TabViewExample({ route }) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Мэдээлэл' },
-    { key: 'second', title: 'Захиалах' },
+    { key: 'second', title: 'Захиалах' }
   ]);
 
   const renderScene = ({ route, jumpTo }) => {
@@ -99,13 +99,13 @@ export default function TabViewExample({ route }) {
       case 'first':
         return <CourtDetailScreen route={params} jumpTo={jumpTo} />;
       case 'second':
-        return <CourtBookingScreen />;
+        return <CourtBookingScreen route={params} />;
       default:
         return null;
     }
   };
 
-  const renderTabBar = (props) => (
+  const renderTabBar = props => (
     <TabBar
       {...props}
       indicatorStyle={{ backgroundColor: Colors.primary }}
@@ -128,63 +128,63 @@ export default function TabViewExample({ route }) {
   );
 }
 
-export const screenOptions = (navData) => {
+export const screenOptions = navData => {
   return {
     headerTitle: navData.route.params.courtTitle,
-    headerBackTitle: ' ',
+    headerBackTitle: ' '
   };
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight,
+    marginTop: StatusBar.currentHeight
   },
   scene: {
-    flex: 1,
+    flex: 1
   },
   image: {
     height: 250,
-    width: '100%',
+    width: '100%'
   },
   main: {
-    padding: 10,
+    padding: 10
   },
   titleContainer: {
     flexDirection: 'row',
     borderWidth: 1,
     backgroundColor: 'red',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 15
   },
   priceContainer: {
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   tabBar: {
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
   label: {
     color: Colors.primary,
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   booknowContainer: {
     marginTop: -30,
     width: 90,
     alignSelf: 'flex-end',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   bookNow: {
     padding: 10,
     backgroundColor: 'transparent',
     overflow: 'hidden',
     color: 'white',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   gradient: {
-    borderRadius: 10,
-  },
+    borderRadius: 10
+  }
 });

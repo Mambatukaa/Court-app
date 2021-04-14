@@ -1,5 +1,11 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Text
+} from 'react-native';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import { Searchbar } from 'react-native-paper';
 
@@ -28,11 +34,11 @@ const CourtsOverviewScreen = () => {
         <View style={{ flexDirection: 'row' }}>
           <TouchableOpacity
             onPress={() => {
-              setShowSearch((v) => !v);
+              setShowSearch(v => !v);
             }}
           >
             <AntDesign
-              name="search1"
+              name='search1'
               size={20}
               style={{ color: 'white', marginRight: 15 }}
             />
@@ -43,7 +49,7 @@ const CourtsOverviewScreen = () => {
             }}
           >
             <Feather
-              name="map"
+              name='map'
               size={19}
               style={{ color: 'white', marginRight: 20 }}
             />
@@ -54,22 +60,22 @@ const CourtsOverviewScreen = () => {
         <View>
           <TouchableOpacity
             onPress={() => {
-              setSetFilterVisible((v) => !v);
+              setSetFilterVisible(v => !v);
             }}
           >
             <AntDesign
-              name="filter"
+              name='filter'
               size={20}
               style={{ color: 'white', marginLeft: 15 }}
             />
           </TouchableOpacity>
         </View>
       ),
-      title: 'Courts',
+      title: 'Courts'
     });
   }, [navigation]);
 
-  const onChangeSearch = (query) => setSearchQuery(query);
+  const onChangeSearch = query => setSearchQuery(query);
 
   const done = () => {
     setShowSearch(false);
@@ -79,12 +85,30 @@ const CourtsOverviewScreen = () => {
     return null;
   }
 
+  if (!data) {
+    return <Text>what</Text>;
+  }
+
+  if (data.allCourts.length < 1) {
+    return (
+      <View
+        style={{
+          alignItems: 'center',
+          flex: 1,
+          justifyContent: 'center'
+        }}
+      >
+        <Text>Sorry court not found</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       {showSearch && (
         <Searchbar
           style={{ borderWidth: 0.15 }}
-          placeholder="Search"
+          placeholder='Search'
           onChangeText={onChangeSearch}
           value={searchQuery}
           onSubmitEditing={done}
@@ -99,8 +123,8 @@ const CourtsOverviewScreen = () => {
       <FlatList
         style={{ backgroundColor: 'white' }}
         data={data.allCourts}
-        keyExtractor={(item) => item.id}
-        renderItem={(itemData) => (
+        keyExtractor={item => item.id}
+        renderItem={itemData => (
           <CourtItem
             key={itemData.item._id}
             image={itemData.item.image}
@@ -111,7 +135,7 @@ const CourtsOverviewScreen = () => {
             onViewDetail={() => {
               navigation.navigate('CourtDetail', {
                 courtId: itemData.item._id,
-                courtTitle: itemData.item.name,
+                courtTitle: itemData.item.name
               });
             }}
           />
@@ -124,8 +148,8 @@ const CourtsOverviewScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
-  },
+    backgroundColor: '#FFF'
+  }
 });
 
 /* export const screenOptions = () => {
