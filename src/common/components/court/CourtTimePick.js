@@ -32,14 +32,6 @@ const data = [
         time: '17:00',
         leftPeople: 10,
       },
-      {
-        time: '17:00',
-        leftPeople: 10,
-      },
-      {
-        time: '17:00',
-        leftPeople: 10,
-      },
     ],
   },
   {
@@ -65,12 +57,39 @@ const data = [
         time: '20:00',
         leftPeople: 10,
       },
+      ,
       {
-        time: '17:00',
+        time: '21:00',
+        leftPeople: 10,
+      },
+    ],
+  },
+  {
+    name: 'Wednesday',
+    list: [
+      {
+        time: '10:00',
         leftPeople: 10,
       },
       {
-        time: '17:00',
+        time: '12:00',
+        leftPeople: 10,
+      },
+      {
+        time: '14:00',
+        leftPeople: 10,
+      },
+      {
+        time: '18:00',
+        leftPeople: 10,
+      },
+      {
+        time: '20:00',
+        leftPeople: 10,
+      },
+      ,
+      {
+        time: '21:00',
         leftPeople: 10,
       },
     ],
@@ -88,7 +107,14 @@ const CourtTimePick = (props) => {
   };
   const renderRow = (data, index) => {
     return (
-      <View key={index.toString()} style={{ flexDirection: 'row' }}>
+      <View
+        key={index.toString()}
+        style={{
+          flexDirection: 'row',
+          marginBottom: 30,
+          borderWidth: 0.5,
+        }}
+      >
         <Text style={styles.date}>{'Mon\n12'}</Text>
         <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
           {data.list.map((e, i) => renderRowItem(e, i))}
@@ -98,13 +124,15 @@ const CourtTimePick = (props) => {
   };
 
   return (
-    // props.time, props.active, props.booked, props.huniiToo
     <View>
       <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
+          marginBottom: 20,
+          backgroundColor: 'gray',
+          marginTop: 10,
         }}
       >
         <Button title="prev" />
@@ -130,22 +158,27 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   date: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 10,
-    margin: 5,
+    marginLeft: 12,
+    textAlign: 'center',
+    marginRight: 10,
+    alignSelf: 'center',
   },
   block: {
     borderWidth: 1,
+    borderColor: '#3CCC38',
     margin: 5,
     padding: 5,
-    borderRadius: 8,
+    borderRadius: 5,
     width: 60,
-    backgroundColor: 'white',
+    backgroundColor: '#3CCC38',
+    height: 45,
   },
   time: {
     textAlign: 'center',
     paddingBottom: 2,
+    fontWeight: 'bold',
   },
   people: {
     textAlign: 'center',
