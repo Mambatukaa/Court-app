@@ -8,6 +8,8 @@ import {
   ScrollView,
 } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+
 const data = [
   {
     name: 'Monday',
@@ -97,12 +99,26 @@ const data = [
 ];
 
 const CourtTimePick = (props) => {
+  const navigation = useNavigation();
+
+  const onViewBookDetail = () => {
+    navigation.navigate('CourtBookDetail'),
+      {
+        courtId: 'hahhaahahha',
+      };
+  };
+
   const renderRowItem = (item, index) => {
     return (
-      <View style={styles.block} key={index.toString()}>
+      <TouchableOpacity
+        onPress={onViewBookDetail}
+        activeOpacity={0.7}
+        style={styles.block}
+        key={index.toString()}
+      >
         <Text style={styles.time}>{item.time}</Text>
         <Text style={styles.people}>{item.leftPeople}</Text>
-      </View>
+      </TouchableOpacity>
     );
   };
   const renderRow = (data, index) => {

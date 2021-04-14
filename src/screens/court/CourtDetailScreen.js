@@ -42,7 +42,7 @@ const CourtDetailScreen = (props) => {
         <Image style={styles.image} source={{ uri: courtDetail.image }} />
         <View style={styles.main}>
           <TouchableOpacity
-            activeOpacity={0.7}
+            activeOpacity={0.8}
             style={styles.booknowContainer}
             onPress={() => props.jumpTo('second')}
           >
@@ -51,7 +51,7 @@ const CourtDetailScreen = (props) => {
               colors={['#cc2b5e', '#753a88']}
               style={styles.gradient}
             >
-              <Text style={styles.bookNow}>Book now</Text>
+              <Text style={styles.bookNow}>Захиалах</Text>
             </LinearGradient>
           </TouchableOpacity>
           <CourtDetail
@@ -90,8 +90,8 @@ export default function TabViewExample({ route }) {
   const params = route;
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Information' },
-    { key: 'second', title: 'Booking' },
+    { key: 'first', title: 'Мэдээлэл' },
+    { key: 'second', title: 'Захиалах' },
   ]);
 
   const renderScene = ({ route, jumpTo }) => {
