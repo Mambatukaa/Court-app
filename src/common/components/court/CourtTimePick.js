@@ -20,11 +20,11 @@ const data = [
       },
       {
         time: '12:00',
-        leftPeople: 10
+        leftPeople: 2
       },
       {
         time: '14:00',
-        leftPeople: 10
+        leftPeople: 1
       },
       {
         time: '16:00',
@@ -32,7 +32,7 @@ const data = [
       },
       {
         time: '17:00',
-        leftPeople: 10
+        leftPeople: 1
       }
     ]
   },
@@ -79,7 +79,37 @@ const data = [
       },
       {
         time: '14:00',
-        leftPeople: 3
+        leftPeople: 10
+      },
+      {
+        time: '18:00',
+        leftPeople: 1
+      },
+      {
+        time: '20:00',
+        leftPeople: 10
+      },
+      ,
+      {
+        time: '21:00',
+        leftPeople: 8
+      }
+    ]
+  },
+  {
+    name: 'Wednesday',
+    list: [
+      {
+        time: '10:00',
+        leftPeople: 5
+      },
+      {
+        time: '12:00',
+        leftPeople: 4
+      },
+      {
+        time: '14:00',
+        leftPeople: 10
       },
       {
         time: '18:00',
@@ -92,7 +122,7 @@ const data = [
       ,
       {
         time: '21:00',
-        leftPeople: 8
+        leftPeople: 10
       }
     ]
   }
@@ -105,7 +135,7 @@ const CourtTimePick = props => {
 
   const onViewBookDetail = item => {
     navigation.navigate('CourtBookDetail', {
-      courtId: params,
+      courtId: params.courtId,
       item: item
     });
   };
@@ -117,33 +147,26 @@ const CourtTimePick = props => {
         onPress={() => onViewBookDetail(item)}
         activeOpacity={0.7}
         disabled={item.leftPeople === 10}
-        style={[styles.block, { backgroundColor: bg, borderColor: bg }]}
+        style={[styles.block, { backgroundColor: bg }]}
         key={index.toString()}
       >
         {item.leftPeople === 10 ? (
-          <>
-            <Text style={[styles.time, {}]}>{item.time}</Text>
-
-            <Text style={styles.booked}>{'Booked'}</Text>
-          </>
-        ) : (
-          <>
+          <View style={styles.timeContainer}>
             <Text style={[styles.time]}>{item.time}</Text>
-
+            <Text style={[styles.booked]}>{'Дүүрсэн'}</Text>
+          </View>
+        ) : (
+          <View style={styles.timeContainer}>
+            <Text style={[styles.time]}>{item.time}</Text>
             <Text style={styles.people}>{item.leftPeople}</Text>
-          </>
+          </View>
         )}
       </TouchableOpacity>
     );
   };
   const renderRow = (data, index) => {
     return (
-      <View
-        key={index.toString()}
-        style={{
-          flexDirection: 'column'
-        }}
-      >
+      <View key={index.toString()} style={{}}>
         <View
           style={{
             flexDirection: 'row',
@@ -151,9 +174,9 @@ const CourtTimePick = props => {
             paddingTop: 20
           }}
         >
-          <Text style={styles.date}>{'Mon\n12'}</Text>
+          <Text style={styles.date}>{'Дав\n12'}</Text>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
-            {data.list.map((e, i) => renderRowItem(e, i))}
+            {data.list.map((el, index) => renderRowItem(el, index))}
           </ScrollView>
         </View>
         <View style={{ backgroundColor: 'gray', height: 1 }} />
@@ -167,17 +190,28 @@ const CourtTimePick = props => {
         style={{
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: 20,
-          backgroundColor: 'gray',
-          marginTop: 10
+          marginTop: 20,
+          marginBottom: 10,
+          borderWidth: 2,
+          width: '80%',
+          height: 35,
+          alignSelf: 'center',
+          borderRadius: 5
         }}
       >
-        <Button title='prev' />
-        <Text>April 4-10</Text>
-        <Button title='next' />
+        <Text
+          style={{
+            fontSize: 14,
+            fontWeight: 'bold',
+            flex: 1,
+            alignItems: 'center',
+            textAlign: 'center'
+          }}
+        >
+          Дөрөвдүгээр сар 4-10
+        </Text>
       </View>
-      <ScrollView>{data.map((e, i) => renderRow(e, i))}</ScrollView>
+      <ScrollView>{data.map((el, index) => renderRow(el, index))}</ScrollView>
     </View>
   );
 };
@@ -197,7 +231,7 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '600',
     marginLeft: 12,
     textAlign: 'center',
     marginRight: 10,
@@ -205,25 +239,30 @@ const styles = StyleSheet.create({
   },
   block: {
     borderWidth: 1,
-    borderColor: '#3CCC38',
+    borderColor: '#c0c0c0',
     margin: 5,
     padding: 5,
     borderRadius: 5,
-    width: 60,
-    height: 45
+    width: 62,
+    height: 46
+  },
+  timeContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
   },
   time: {
-    textAlign: 'center',
     paddingBottom: 3,
     fontSize: 13
   },
   people: {
-    textAlign: 'center',
     fontSize: 13
   },
   booked: {
-    fontSize: 13,
-    textAlign: 'center'
+    fontSize: 12,
+    fontWeight: '400',
+    color: 'gray'
   }
 });
 

@@ -123,10 +123,9 @@ const CourtsOverviewScreen = () => {
       <FlatList
         style={{ backgroundColor: 'white' }}
         data={data.allCourts}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
         renderItem={itemData => (
           <CourtItem
-            key={itemData.item._id}
             image={itemData.item.image}
             title={itemData.item.name}
             price={itemData.item.price}

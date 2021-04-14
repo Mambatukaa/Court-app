@@ -30,4 +30,11 @@ const CourtBookDetail = props => {
   );
 };
 
+export const screenOptions = () => {
+  return {
+    headerTitle: 'Захиалга',
+    headerBackTitle: ' '
+  };
+};
+
 export default CourtBookDetail;
