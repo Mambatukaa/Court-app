@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
-const CourtItem = props => {
+const CourtItem = (props) => {
   return (
     <TouchableOpacity onPress={props.onViewDetail}>
       <View style={styles.court}>
@@ -20,7 +20,7 @@ const CourtItem = props => {
             <Image
               style={styles.image}
               source={{ uri: props.image }}
-              resizeMode='cover'
+              resizeMode="cover"
             />
           </View>
         </View>
@@ -40,44 +40,44 @@ const styles = StyleSheet.create({
     backgroundColor: '#f6f6f6',
     marginLeft: 25,
     marginRight: 25,
-    marginTop: 14
+    marginTop: 14,
   },
 
   main: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderRadius: 10
+    borderRadius: 10,
   },
   imageContainer: {
     flex: 1,
     marginRight: 18,
-    marginTop: 9
+    marginTop: 9,
   },
   image: {
     width: 100,
     height: 100,
     backgroundColor: 'red',
-    borderRadius: 10
+    borderRadius: 10,
   },
   title: {
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   textContainer: {
     margin: 20,
-    flex: 2
+    flex: 2,
   },
   price: {
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   description: {
-    color: 'gray'
+    color: 'gray',
   },
   parking: {
     fontSize: 14,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 export default CourtItem;

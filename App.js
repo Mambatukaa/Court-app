@@ -4,11 +4,20 @@ import { Provider } from 'react-redux';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 
+import {
+  ApolloProvider,
+  ApolloClient,
+  HttpLink,
+  InMemoryCache,
+  split,
+  from,
+} from '@apollo/client';
+
 import courtsReducer from './src/store/reducers/courts';
 import AppNavigator from './src/navigation/AppNavigator';
 
 const rootReducer = combineReducers({
-  courts: courtsReducer
+  courts: courtsReducer,
 });
 
 const store = createStore(rootReducer);
@@ -16,14 +25,27 @@ const store = createStore(rootReducer);
 const fetchFonts = () => {
   return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
   });
 };
 
+const httpLink = new HttpLink({
+  uri: 'http://192.168.1.8:3100/graphql',
+  credentials: 'include',
+});
+
+const client = () =>
+  new ApolloClient({
+    link: httpLink,
+    cache: new InMemoryCache(), //cache,
+  });
+
 export default function App() {
   return (
-    <Provider store={store}>
-      <AppNavigator />
-    </Provider>
+    <ApolloProvider client={client()}>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    </ApolloProvider>
   );
 }

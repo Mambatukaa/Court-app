@@ -7,9 +7,8 @@ import {
   View,
   Dimensions,
   StatusBar,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
-import { useSelector } from 'react-redux';
 
 import { TabView, TabBar } from 'react-native-tab-view';
 
@@ -18,17 +17,29 @@ import CourtBookingScreen from './CourtBookingScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 import CourtDetail from '../../common/components/court/CourtDetail';
 
-const CourtDetailScreen = props => {
+import { gql, useQuery } from '@apollo/client';
+
+import queries from './graphql/queries';
+
+const CourtDetailScreen = (props) => {
   const { courtId } = props.route.params;
 
-  const selectedCourt = useSelector(state =>
-    state.courts.availableCourts.find(court => court.id === courtId)
-  );
+  const { data, loading, error } = useQuery(gql(queries.courtDetail), {
+    variables: {
+      _id: courtId,
+    },
+  });
+
+  if (loading) {
+    return null;
+  }
+
+  const { courtDetail } = data;
 
   return (
     <View>
       <ScrollView>
-        <Image style={styles.image} source={{ uri: selectedCourt.imageUrl }} />
+        <Image style={styles.image} source={{ uri: courtDetail.image }} />
         <View style={styles.main}>
           <TouchableOpacity
             activeOpacity={0.7}
@@ -44,12 +55,12 @@ const CourtDetailScreen = props => {
             </LinearGradient>
           </TouchableOpacity>
           <CourtDetail
-            title={selectedCourt.title}
-            shortName={selectedCourt.shortName}
-            price={selectedCourt.price}
-            warning={selectedCourt.warning}
-            description={selectedCourt.description}
-            location={selectedCourt.location}
+            title={courtDetail.name}
+            shortName={courtDetail.shortName}
+            price={courtDetail.price}
+            warning={courtDetail.warning}
+            description={courtDetail.description}
+            location={courtDetail.locations}
           />
           {/* <Text style={styles.title}>{selectedCourt.title}</Text>
 
@@ -80,7 +91,7 @@ export default function TabViewExample({ route }) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Information' },
-    { key: 'second', title: 'Booking' }
+    { key: 'second', title: 'Booking' },
   ]);
 
   const renderScene = ({ route, jumpTo }) => {
@@ -94,7 +105,7 @@ export default function TabViewExample({ route }) {
     }
   };
 
-  const renderTabBar = props => (
+  const renderTabBar = (props) => (
     <TabBar
       {...props}
       indicatorStyle={{ backgroundColor: Colors.primary }}
@@ -117,63 +128,63 @@ export default function TabViewExample({ route }) {
   );
 }
 
-export const screenOptions = navData => {
+export const screenOptions = (navData) => {
   return {
     headerTitle: navData.route.params.courtTitle,
-    headerBackTitle: ' '
+    headerBackTitle: ' ',
   };
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight
+    marginTop: StatusBar.currentHeight,
   },
   scene: {
-    flex: 1
+    flex: 1,
   },
   image: {
     height: 250,
-    width: '100%'
+    width: '100%',
   },
   main: {
-    padding: 10
+    padding: 10,
   },
   titleContainer: {
     flexDirection: 'row',
     borderWidth: 1,
     backgroundColor: 'red',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 15,
   },
   priceContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   tabBar: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   label: {
     color: Colors.primary,
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   booknowContainer: {
     marginTop: -30,
     width: 90,
     alignSelf: 'flex-end',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   bookNow: {
     padding: 10,
     backgroundColor: 'transparent',
     overflow: 'hidden',
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   gradient: {
-    borderRadius: 10
-  }
+    borderRadius: 10,
+  },
 });

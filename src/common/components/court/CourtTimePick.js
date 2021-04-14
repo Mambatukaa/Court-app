@@ -5,7 +5,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 
 const data = [
@@ -14,70 +14,70 @@ const data = [
     list: [
       {
         time: '10:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '12:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '14:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '16:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '17:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '17:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '17:00',
-        leftPeople: 10
-      }
-    ]
+        leftPeople: 10,
+      },
+    ],
   },
   {
     name: 'Tuesday',
     list: [
       {
         time: '10:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '12:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '14:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '18:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '20:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '17:00',
-        leftPeople: 10
+        leftPeople: 10,
       },
       {
         time: '17:00',
-        leftPeople: 10
-      }
-    ]
-  }
+        leftPeople: 10,
+      },
+    ],
+  },
 ];
 
-const CourtTimePick = props => {
+const CourtTimePick = (props) => {
   const renderRowItem = (item, index) => {
     return (
       <View style={styles.block} key={index.toString()}>
@@ -88,13 +88,9 @@ const CourtTimePick = props => {
   };
   const renderRow = (data, index) => {
     return (
-      <View style={{ flexDirection: 'row' }}>
+      <View key={index.toString()} style={{ flexDirection: 'row' }}>
         <Text style={styles.date}>{'Mon\n12'}</Text>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          key={index.toString()}
-        >
+        <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
           {data.list.map((e, i) => renderRowItem(e, i))}
         </ScrollView>
       </View>
@@ -108,12 +104,12 @@ const CourtTimePick = props => {
         style={{
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
         }}
       >
-        <Button title='prev' />
+        <Button title="prev" />
         <Text>April 4-10</Text>
-        <Button title='next' />
+        <Button title="next" />
       </View>
       <ScrollView>{data.map((e, i) => renderRow(e, i))}</ScrollView>
     </View>
@@ -131,13 +127,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     textAlign: 'center',
     fontWeight: 'bold',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   date: {
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: 10,
-    margin: 5
+    margin: 5,
   },
   block: {
     borderWidth: 1,
@@ -145,15 +141,15 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 8,
     width: 60,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   time: {
     textAlign: 'center',
-    paddingBottom: 2
+    paddingBottom: 2,
   },
   people: {
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 export default CourtTimePick;
