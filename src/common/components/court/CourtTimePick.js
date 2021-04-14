@@ -49,20 +49,20 @@ const data = [
       },
       {
         time: '14:00',
-        leftPeople: 10
+        leftPeople: 2
       },
       {
         time: '18:00',
-        leftPeople: 10
+        leftPeople: 3
       },
       {
         time: '20:00',
-        leftPeople: 10
+        leftPeople: 7
       },
       ,
       {
         time: '21:00',
-        leftPeople: 10
+        leftPeople: 6
       }
     ]
   },
@@ -71,28 +71,28 @@ const data = [
     list: [
       {
         time: '10:00',
-        leftPeople: 10
+        leftPeople: 5
       },
       {
         time: '12:00',
-        leftPeople: 10
+        leftPeople: 4
       },
       {
         time: '14:00',
-        leftPeople: 10
+        leftPeople: 3
       },
       {
         time: '18:00',
-        leftPeople: 10
+        leftPeople: 1
       },
       {
         time: '20:00',
-        leftPeople: 10
+        leftPeople: 2
       },
       ,
       {
         time: '21:00',
-        leftPeople: 10
+        leftPeople: 8
       }
     ]
   }
@@ -111,15 +111,28 @@ const CourtTimePick = props => {
   };
 
   const renderRowItem = (item, index) => {
+    const bg = item.leftPeople == 10 ? '#d3d3d3' : '#24e100';
     return (
       <TouchableOpacity
         onPress={() => onViewBookDetail(item)}
         activeOpacity={0.7}
-        style={styles.block}
+        disabled={item.leftPeople === 10}
+        style={[styles.block, { backgroundColor: bg, borderColor: bg }]}
         key={index.toString()}
       >
-        <Text style={styles.time}>{item.time}</Text>
-        <Text style={styles.people}>{item.leftPeople}</Text>
+        {item.leftPeople === 10 ? (
+          <>
+            <Text style={[styles.time, {}]}>{item.time}</Text>
+
+            <Text style={styles.booked}>{'Booked'}</Text>
+          </>
+        ) : (
+          <>
+            <Text style={[styles.time]}>{item.time}</Text>
+
+            <Text style={styles.people}>{item.leftPeople}</Text>
+          </>
+        )}
       </TouchableOpacity>
     );
   };
@@ -128,21 +141,28 @@ const CourtTimePick = props => {
       <View
         key={index.toString()}
         style={{
-          flexDirection: 'row',
-          marginBottom: 30,
-          borderWidth: 0.5
+          flexDirection: 'column'
         }}
       >
-        <Text style={styles.date}>{'Mon\n12'}</Text>
-        <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
-          {data.list.map((e, i) => renderRowItem(e, i))}
-        </ScrollView>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginBottom: 20,
+            paddingTop: 20
+          }}
+        >
+          <Text style={styles.date}>{'Mon\n12'}</Text>
+          <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+            {data.list.map((e, i) => renderRowItem(e, i))}
+          </ScrollView>
+        </View>
+        <View style={{ backgroundColor: 'gray', height: 1 }} />
       </View>
     );
   };
 
   return (
-    <View>
+    <View style={{ backgroundColor: '#DCDCDC' }}>
       <View
         style={{
           flexDirection: 'row',
@@ -190,15 +210,19 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 5,
     width: 60,
-    backgroundColor: '#3CCC38',
     height: 45
   },
   time: {
     textAlign: 'center',
-    paddingBottom: 2,
-    fontWeight: 'bold'
+    paddingBottom: 3,
+    fontSize: 13
   },
   people: {
+    textAlign: 'center',
+    fontSize: 13
+  },
+  booked: {
+    fontSize: 13,
     textAlign: 'center'
   }
 });
