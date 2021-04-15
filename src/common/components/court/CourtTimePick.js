@@ -12,27 +12,27 @@ import { useNavigation } from '@react-navigation/native';
 
 const data = [
   {
-    name: 'Monday',
+    /* 
+    date: 
+    zaalID,
+    time 24,
+    status,
+    count */ name: 'Monday',
     list: [
       {
-        time: '10:00',
-        leftPeople: 10
+        time: '10:00'
       },
       {
-        time: '12:00',
-        leftPeople: 2
+        time: '12:00'
       },
       {
-        time: '14:00',
-        leftPeople: 1
+        time: '14:00'
       },
       {
-        time: '16:00',
-        leftPeople: 10
+        time: '16:00'
       },
       {
-        time: '17:00',
-        leftPeople: 1
+        time: '17:00'
       }
     ]
   },
@@ -40,16 +40,13 @@ const data = [
     name: 'Tuesday',
     list: [
       {
-        time: '10:00',
-        leftPeople: 10
+        time: '10:00'
       },
       {
-        time: '12:00',
-        leftPeople: 10
+        time: '12:00'
       },
       {
-        time: '14:00',
-        leftPeople: 2
+        time: '14:00'
       },
       {
         time: '18:00',
