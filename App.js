@@ -14,7 +14,7 @@ import {
 } from '@apollo/client';
 
 import courtsReducer from './src/store/reducers/courts';
-import AppNavigator from './src/navigation/AppNavigator';
+import Root from './src/navigation/CourtNavigator';
 
 const rootReducer = combineReducers({
   courts: courtsReducer
@@ -43,9 +43,7 @@ const client = () =>
 export default function App() {
   return (
     <ApolloProvider client={client()}>
-      <Provider store={store}>
-        <AppNavigator />
-      </Provider>
+      <Root />
     </ApolloProvider>
   );
 }
