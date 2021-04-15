@@ -18,8 +18,6 @@ import queries from './graphql/queries';
 import FilterWrapper from './filter/FilterWrapper';
 
 const CourtsOverviewScreen = () => {
-  const { data, loading, error } = useQuery(gql(queries.allCourts));
-
   const navigation = useNavigation();
 
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -27,6 +25,12 @@ const CourtsOverviewScreen = () => {
 
   const [isFilterVisible, setSetFilterVisible] = useState(false);
   const [filters, setFilters] = React.useState(null);
+
+  const { data, loading, error } = useQuery(gql(queries.allCourts), {
+    variables: {
+      searchValue: searchQuery
+    }
+  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -81,28 +85,6 @@ const CourtsOverviewScreen = () => {
     setShowSearch(false);
   };
 
-  if (loading) {
-    return null;
-  }
-
-  if (!data) {
-    return <Text>what</Text>;
-  }
-
-  if (data.allCourts.length < 1) {
-    return (
-      <View
-        style={{
-          alignItems: 'center',
-          flex: 1,
-          justifyContent: 'center'
-        }}
-      >
-        <Text>Sorry court not found</Text>
-      </View>
-    );
-  }
-
   return (
     <View style={styles.container}>
       {showSearch && (
@@ -112,6 +94,7 @@ const CourtsOverviewScreen = () => {
           onChangeText={onChangeSearch}
           value={searchQuery}
           onSubmitEditing={done}
+          inputStyle={{ fontSize: 15 }}
         />
       )}
       <FilterWrapper
@@ -120,26 +103,38 @@ const CourtsOverviewScreen = () => {
         setFilters={setFilters}
         type={'company'}
       />
-      <FlatList
-        style={{ backgroundColor: 'white' }}
-        data={data.allCourts}
-        keyExtractor={item => item._id}
-        renderItem={itemData => (
-          <CourtItem
-            image={itemData.item.image}
-            title={itemData.item.name}
-            price={itemData.item.price}
-            parking={itemData.item.parking}
-            description={itemData.item.description}
-            onViewDetail={() => {
-              navigation.navigate('CourtDetail', {
-                courtId: itemData.item._id,
-                courtTitle: itemData.item.name
-              });
-            }}
-          />
-        )}
-      />
+      {data && data?.allCourts?.length > 0 ? (
+        <FlatList
+          style={{ backgroundColor: 'white' }}
+          data={data?.allCourts}
+          keyExtractor={item => item._id}
+          renderItem={itemData => (
+            <CourtItem
+              image={itemData.item.image}
+              title={itemData.item.name}
+              price={itemData.item.price}
+              parking={itemData.item.parking}
+              description={itemData.item.description}
+              onViewDetail={() => {
+                navigation.navigate('CourtDetail', {
+                  courtId: itemData.item._id,
+                  courtTitle: itemData.item.name
+                });
+              }}
+            />
+          )}
+        />
+      ) : (
+        <View
+          style={{
+            alignItems: 'center',
+            flex: 1,
+            justifyContent: 'center'
+          }}
+        >
+          <Text>Sorry court not found</Text>
+        </View>
+      )}
     </View>
   );
 };

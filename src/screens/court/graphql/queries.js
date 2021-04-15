@@ -15,9 +15,17 @@ const courtFields = `
       }
 `;
 
+const queryParamsDef = `
+    $searchValue: String
+`;
+
+const queryParamsVal = `
+    searchValue: $searchValue
+`;
+
 const allCourts = `
-    query allCourts{
-        allCourts{
+    query allCourts(${queryParamsDef}){
+        allCourts(${queryParamsVal}){
             ${courtFields}
             
         }
