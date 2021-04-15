@@ -6,7 +6,7 @@ import CourtTimePick from '../../common/components/court/CourtTimePick';
 const CourtBookingScreen = props => {
   const { params } = props.route;
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <CourtTimePick params={params} />
     </View>
   );

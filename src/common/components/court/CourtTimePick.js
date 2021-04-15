@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, FlatList } from 'react-native';
 import {
   View,
   Text,
@@ -88,16 +88,11 @@ const data = [
       {
         time: '20:00',
         leftPeople: 10
-      },
-      ,
-      {
-        time: '21:00',
-        leftPeople: 8
       }
     ]
   },
   {
-    name: 'Wednesday',
+    name: 'Thursday',
     list: [
       {
         time: '10:00',
@@ -118,11 +113,31 @@ const data = [
       {
         time: '20:00',
         leftPeople: 2
-      },
-      ,
+      }
+    ]
+  },
+  {
+    name: 'Friday',
+    list: [
       {
-        time: '21:00',
+        time: '10:00',
+        leftPeople: 5
+      },
+      {
+        time: '12:00',
+        leftPeople: 4
+      },
+      {
+        time: '14:00',
         leftPeople: 10
+      },
+      {
+        time: '18:00',
+        leftPeople: 1
+      },
+      {
+        time: '20:00',
+        leftPeople: 2
       }
     ]
   }
@@ -164,6 +179,7 @@ const CourtTimePick = props => {
       </TouchableOpacity>
     );
   };
+
   const renderRow = (data, index) => {
     return (
       <View key={index.toString()} style={{}}>
@@ -183,9 +199,8 @@ const CourtTimePick = props => {
       </View>
     );
   };
-
   return (
-    <View style={{ backgroundColor: '#DCDCDC' }}>
+    <View style={{ backgroundColor: '#fff', flex: 1 }}>
       <View
         style={{
           flexDirection: 'row',
@@ -211,7 +226,13 @@ const CourtTimePick = props => {
           Дөрөвдүгээр сар 4-10
         </Text>
       </View>
-      <ScrollView>{data.map((el, index) => renderRow(el, index))}</ScrollView>
+
+      <FlatList
+        style={{ flex: 1 }}
+        data={data}
+        keyExtractor={item => item.name}
+        renderItem={({ item, index }) => renderRow(item, index)}
+      />
     </View>
   );
 };
