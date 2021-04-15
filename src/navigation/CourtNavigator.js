@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
+import { NavigationContainer } from '@react-navigation/native';
 
 import { AntDesign, FontAwesome5, Feather } from '@expo/vector-icons';
 import Colors from '../common/styles/colors';
@@ -24,6 +26,12 @@ import CourtBookDetail, {
   screenOptions as CourtBookDetailOption
 } from '../screens/court/CourtBookDetailScreen';
 
+import { SignIn, SignUp, Intro } from '../screens/auth';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { AuthContext } from '../common/utils/AuthContext';
+
 const defaultNavOptions = {
   headerStyle: {
     backgroundColor: Colors.primary
@@ -31,8 +39,24 @@ const defaultNavOptions = {
   headerTintColor: 'white'
 };
 
+const LoginStackNavigator = createStackNavigator();
 const CourtsStackNavigator = createStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 const Root = createStackNavigator();
+
+const LoginNavigator = () => {
+  return (
+    <LoginStackNavigator.Navigator>
+      <LoginStackNavigator.Screen
+        name='Intro'
+        component={Intro}
+        options={{ headerShown: false }}
+      />
+      <LoginStackNavigator.Screen name='SignIn' component={SignIn} />
+      <LoginStackNavigator.Screen name='SignUp' component={SignUp} />
+    </LoginStackNavigator.Navigator>
+  );
+};
 
 const CourtsNavigator = () => {
   return (
@@ -70,8 +94,6 @@ const BookingNavigator = () => {
   );
 };
 
-const Tab = createMaterialBottomTabNavigator();
-
 const MyTabs = () => {
   return (
     <Tab.Navigator
@@ -88,7 +110,7 @@ const MyTabs = () => {
           }
         }}
       />
-      {/*  <Tab.Screen
+      <Tab.Screen
         name='Venus'
         component={CourtsNavigator}
         options={{
@@ -96,7 +118,7 @@ const MyTabs = () => {
             return <AntDesign name='star' size={24} color={props.color} />;
           }
         }}
-      /> */}
+      />
       <Tab.Screen
         name='Courts'
         component={CourtsNavigator}
@@ -125,26 +147,115 @@ const MyTabs = () => {
   );
 };
 
-const rootNavigator = () => (
-  <Root.Navigator>
-    <Root.Screen
-      name='MyTabs'
-      component={MyTabs}
-      options={{ headerShown: false }}
-      //options={CourtsOverviewScreenOptions}
-    />
+const rootNavigator = () => {
+  const [state, dispatch] = React.useReducer(
+    (prevState, action) => {
+      switch (action.type) {
+        case 'RESTORE_TOKEN':
+          return {
+            ...prevState,
+            userToken: action.token,
+            isLoading: false
+          };
+        case 'SIGN_IN':
+          return {
+            ...prevState,
+            isSignout: false,
+            userToken: action.token
+          };
+        case 'SIGN_OUT':
+          return {
+            ...prevState,
+            isSignout: true,
+            userToken: null
+          };
+      }
+    },
+    {
+      isLoading: true,
+      isSignout: false,
+      userToken: null
+    }
+  );
 
-    <Root.Screen
-      name='Map'
-      component={MapScreen}
-      options={{
-        headerBackTitle: ' ',
-        headerStyle: {
-          backgroundColor: Colors.primary
-        },
-        headerTintColor: 'white'
-      }}
-    />
-  </Root.Navigator>
-);
+  React.useEffect(() => {
+    // Fetch the token from storage then navigate to our appropriate place
+    const bootstrapAsync = async () => {
+      let userToken;
+
+      try {
+        userToken = await AsyncStorage.getItemAsync('userToken');
+      } catch (e) {
+        // Restoring token failed
+      }
+
+      // After restoring token, we may need to validate it in production apps
+
+      // This will switch to the App screen or Auth screen and this loading
+      // screen will be unmounted and thrown away.
+      dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+    };
+
+    bootstrapAsync();
+  }, []);
+
+  const authContext = React.useMemo(
+    () => ({
+      signIn: async data => {
+        // In a production app, we need to send some data (usually username, password) to server and get a token
+        // We will also need to handle errors if sign in failed
+        // After getting token, we need to persist the token using `SecureStore`
+        // In the example, we'll use a dummy token
+
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+      },
+      signOut: () => dispatch({ type: 'SIGN_OUT' }),
+      signUp: async data => {
+        // In a production app, we need to send user data to server and get a token
+        // We will also need to handle errors if sign up failed
+        // After getting token, we need to persist the token using `SecureStore`
+        // In the example, we'll use a dummy token
+
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+      }
+    }),
+    []
+  );
+
+  return (
+    <AuthContext.Provider value={authContext}>
+      <NavigationContainer>
+        {state.userToken == null ? (
+          <Root.Navigator>
+            <Root.Screen
+              name={'Login'}
+              component={LoginNavigator}
+              options={{ headerShown: false }}
+            />
+          </Root.Navigator>
+        ) : (
+          <Root.Navigator>
+            <Root.Screen
+              name='MyTabs'
+              component={MyTabs}
+              options={{ headerShown: false }}
+              //options={CourtsOverviewScreenOptions}
+            />
+            <Root.Screen
+              name='Map'
+              component={MapScreen}
+              options={{
+                headerBackTitle: ' ',
+                headerStyle: {
+                  backgroundColor: Colors.primary
+                },
+                headerTintColor: 'white'
+              }}
+            />
+          </Root.Navigator>
+        )}
+      </NavigationContainer>
+    </AuthContext.Provider>
+  );
+};
 export default rootNavigator;

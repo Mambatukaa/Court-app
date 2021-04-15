@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Avatar } from 'react-native-elements';
 
+import useAuth, { AuthContext } from '../../common/utils/AuthContext';
+
 import TextView from '../../common/components/TextView';
 import GradientBtn from '../../common/components/GradientBtn';
 
@@ -11,6 +13,8 @@ import colors from '../../common/styles/colors';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
+
+  const { signOut } = React.useContext(AuthContext);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -52,8 +56,9 @@ const ProfileScreen = () => {
       </View>
       <View style={styles.bottomContainer}>
         <GradientBtn
+          text='Гарах'
           onPress={() => {
-            console.log('Sign out hiih function');
+            signOut();
           }}
           text='Sign out'
         />
