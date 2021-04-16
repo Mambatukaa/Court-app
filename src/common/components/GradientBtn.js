@@ -4,9 +4,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 
 const GradientBtn = ({ onPress, textStyle, linearGradientStyle, text }) => {
-  //  const defaultGradient = ['#B43CF3', '#a23ff0', '#8741EA', '#7444E8'];
+  const defaultGradient = ['#B43CF3', '#a23ff0', '#8741EA', '#7444E8'];
 
-  const defaultGradient = ['#cc2b5e', '#753a88'];
+  /* const defaultGradient = ['#cc2b5e', '#753a88']; */
   return (
     <View>
       <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
