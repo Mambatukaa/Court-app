@@ -52,8 +52,16 @@ const LoginNavigator = () => {
         component={Intro}
         options={{ headerShown: false }}
       />
-      <LoginStackNavigator.Screen name='SignIn' component={SignIn} />
-      <LoginStackNavigator.Screen name='SignUp' component={SignUp} />
+      <LoginStackNavigator.Screen
+        name='SignIn'
+        component={SignIn}
+        options={{ headerShown: false }}
+      />
+      <LoginStackNavigator.Screen
+        name='SignUp'
+        component={SignUp}
+        options={{ headerShown: false }}
+      />
     </LoginStackNavigator.Navigator>
   );
 };
@@ -207,7 +215,7 @@ const rootNavigator = () => {
         // After getting token, we need to persist the token using `SecureStore`
         // In the example, we'll use a dummy token
 
-        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+        dispatch({ type: 'SIGN_IN', token: data.token });
       },
       signOut: () => dispatch({ type: 'SIGN_OUT' }),
       signUp: async data => {
