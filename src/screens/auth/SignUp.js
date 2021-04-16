@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import { gql, useMutation } from '@apollo/client';
+import { useNavigation } from '@react-navigation/native';
 
 import Editbox from '../../common/components/Editbox';
 import LayoutView from '../../common/components/LayoutView';
@@ -8,10 +10,25 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { colors } from '../../common/styles';
 import { GradientBtn } from '../../common/components';
+import { mutations } from './graphql';
+import { BackButton } from '../../common/components';
 
 const SignUp = props => {
+  const [username, setUsername] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [passVerify, setPassVerify] = useState('');
+
+  const navigation = useNavigation();
+
+  const [signUp] = useMutation(gql(mutations.createUser));
+
   const renderTop = () => {
-    return <View style={{ height: 50 }}></View>;
+    return <BackButton onPress={() => navigation.goBack()} />;
   };
   const renderBottom = () => {
     return (
@@ -31,7 +48,7 @@ const SignUp = props => {
               padding: 10
             }}
           >
-            <Ionicons name='account' size={80} color={colors.colorWhite} />
+            <Ionicons name='basketball' size={80} color={colors.colorWhite} />
           </View>
           <View
             style={{
@@ -43,11 +60,7 @@ const SignUp = props => {
               borderRadius: 20
             }}
           >
-            <Ionicons
-              name='square-edit-outline'
-              size={20}
-              color={colors.colorSecondary}
-            />
+            <Ionicons name='book' size={20} color={colors.colorSecondary} />
           </View>
         </View>
         <View
@@ -65,38 +78,69 @@ const SignUp = props => {
             }}
           >
             <Editbox
+              placeholder='Нэвтрэх нэр'
+              onChangeText={text => setUsername(text)}
+              value={username}
+            />
+            <Editbox
               placeholder='Овог'
-              onChangeText={text => console.log(text)}
+              onChangeText={text => setLastName(text)}
+              value={lastName}
             />
             <Editbox
               placeholder='Нэр'
-              onChangeText={text => console.log(text)}
+              onChangeText={text => setFirstName(text)}
+              value={firstName}
+            />
+            <Editbox
+              placeholder='Мэйл хаяг'
+              onChangeText={text => setEmail(text)}
+              value={email}
             />
             <Editbox
               placeholder='Утасны дугаар'
-              onChangeText={text => console.log(text)}
+              onChangeText={text => setPhone(text)}
+              value={phone}
             />
             <Editbox
               placeholder='Нууц үг'
-              onChangeText={text => console.log(text)}
+              onChangeText={text => setPassword(text)}
+              value={password}
+              security={true}
             />
             <Editbox
               placeholder='Нууц үг давтах'
-              onChangeText={text => console.log(text)}
+              onChangeText={text => setPassVerify(text)}
+              value={passVerify}
+              security={true}
+              style={styles.Editbox}
             />
-            <Text>
+            {/* <Text style={{ paddingTop: 40 }}>
               <Text style={styles.txt}>{'Өмнө бүртгүүлсэн бол'}</Text>
-              <Text style={({ color: '#B43CF3' }, [styles.txt])}>
-                {' энд '}
-              </Text>
+              <Text style={[{ color: '#B43CF3' }, styles.txt]}>{' энд '}</Text>
               <Text style={styles.txt}>{'дарна уу.'}</Text>
-            </Text>
+            </Text> */}
           </View>
 
           <GradientBtn
             linearGradientStyle={styles.btnStyle}
             onPress={() => {
-              console.log('hello world');
+              signUp({
+                variables: {
+                  username,
+                  firstName,
+                  lastName,
+                  email,
+                  phone,
+                  password
+                }
+              })
+                .then(el => {
+                  navigation.navigate('SignIn');
+                })
+                .catch(e => {
+                  console.log(e);
+                });
             }}
             text='Бүртгүүлэх'
           />
@@ -120,7 +164,6 @@ const styles = StyleSheet.create({
     padding: 30
   },
   txt: {
-    paddingTop: 10,
     textAlign: 'center',
     fontSize: 14,
     fontWeight: 'bold'

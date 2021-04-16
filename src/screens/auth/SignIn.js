@@ -1,43 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   Image,
   StyleSheet,
   SafeAreaView,
-  TextInput
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import GradientBtn from '../../common/components/GradientBtn';
 import { AuthContext } from '../../common/utils/AuthContext';
+import { mutations } from './graphql';
+import { useMutation, gql } from '@apollo/client';
+import { colors } from '../../common/styles';
+import { BackButton } from '../../common/components';
 
 const SignIn = props => {
-  const navigation = useNavigation();
   const { signIn } = React.useContext(AuthContext);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigation = useNavigation();
+
+  const [login] = useMutation(gql(mutations.login));
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <BackButton onPress={() => navigation.goBack()} />
       <View style={styles.container}>
-        <View />
         <View style={{ justifyContent: 'center' }}>
           <Text
             style={{
               fontWeight: 'bold',
               fontSize: 20,
               textAlign: 'center',
-              paddingBottom: 20
+              paddingBottom: 20,
+              marginTop: 30
             }}
           >
             Нэвтрэх
           </Text>
-
           <TextInput
+            onChangeText={mail => setEmail(mail)}
+            value={email}
             placeholder='Email'
             keyboardType='email-address'
             style={[styles.input, styles.email]}
           />
           <TextInput
+            onChangeText={pass => setPassword(pass)}
+            value={password}
             placeholder='Password'
             secureTextEntry={true}
             style={[styles.input, styles.password]}
@@ -59,7 +77,20 @@ const SignIn = props => {
           linearGradientStyle={{ width: 160, borderRadius: 11 }}
           text='Нэвтрэх'
           onPress={() => {
-            signIn();
+            /*   signIn(); */
+            login({
+              variables: {
+                input: email,
+                password
+              }
+            })
+              .then(el => {
+                const { data } = el;
+                signIn(data.login);
+              })
+              .catch(e => {
+                console.log(e.code);
+              });
           }}
         />
       </View>
@@ -75,6 +106,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   input: {
+    color: colors.colorShadowGray,
+    borderRadius: 10,
     height: 50,
     width: 250,
     padding: 10,
@@ -82,11 +115,7 @@ const styles = StyleSheet.create({
   },
 
   email: {
-    borderRadius: 10,
     marginBottom: 15
-  },
-  password: {
-    borderRadius: 10
   },
   text: {
     fontWeight: 'bold',
