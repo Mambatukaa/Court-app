@@ -3,7 +3,13 @@ import React from 'react';
 import { TextInput } from 'react-native';
 import { colors, commonStyles } from '../styles';
 
-const Editbox = ({ onChangeText, value = '', style, placeholder }) => {
+const Editbox = ({
+  onChangeText,
+  value = '',
+  style,
+  placeholder,
+  security
+}) => {
   return (
     <TextInput
       autoCapitalize='none'
@@ -14,6 +20,7 @@ const Editbox = ({ onChangeText, value = '', style, placeholder }) => {
       value={value.toString()}
       onChangeText={onChangeText}
       style={[commonStyles.input, style]}
+      secureTextEntry={security}
     />
   );
 };
