@@ -140,9 +140,16 @@ const SignUp = props => {
             }}
             text='Бүртгүүлэх'
           />
-          <Text style={{ paddingTop: 25 }}>
-            <Text style={styles.txt}>{'Өмнө бүртгүүлсэн бол'}</Text>
-            <Text style={[{ color: '#B43CF3' }, styles.txt]}>{' энд '}</Text>
+          <Text style={{ marginTop: 25 }}>
+            <Text style={styles.txt}>{'Өмнө нь бүртгүүлсэн бол'}</Text>
+            <Text
+              onPress={() => {
+                navigation.navigate('SignIn');
+              }}
+              style={[{ color: '#B43CF3' }, styles.txt]}
+            >
+              {' энд '}
+            </Text>
             <Text style={styles.txt}>{'дарна уу.'}</Text>
           </Text>
         </View>

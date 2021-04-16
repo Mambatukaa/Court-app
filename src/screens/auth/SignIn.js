@@ -50,7 +50,7 @@ const SignIn = props => {
             <TextInput
               onChangeText={mail => setEmail(mail)}
               value={email}
-              placeholder='Нэвтрэх нэр эсвэл Мэйл'
+              placeholder='Нэвтрэх нэр эсвэл имэйл'
               keyboardType='email-address'
               style={[styles.input, styles.email]}
             />
