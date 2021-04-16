@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
+import { colors } from '../../styles';
 
 const CourtDetail = props => {
   const [showMark, setShowMark] = useState(false);
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: 200,
     borderRadius: 10,
-    backgroundColor: 'white',
+    backgroundColor: colors.bgMain,
     padding: 10
   },
   title: {
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 2 },
     shadowRadius: 10,
     borderRadius: 5,
-    backgroundColor: '#f6f6f6',
+    backgroundColor: colors.bgDark,
     padding: 10
   },
 

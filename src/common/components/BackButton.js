@@ -2,6 +2,7 @@ import React from 'react';
 
 import { View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../styles';
 
 const BackButton = props => {
   return (
@@ -10,12 +11,12 @@ const BackButton = props => {
         <Ionicons
           name='chevron-back-sharp'
           size={35}
-          color='white'
+          color={colors.colorWhite}
           style={{
             width: 38,
             borderRadius: 7,
             textAlign: 'center',
-            backgroundColor: '#B43CF3',
+            backgroundColor: colors.grdMain,
             overflow: 'hidden'
           }}
         ></Ionicons>

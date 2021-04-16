@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  KeyboardAvoidingView,
+  ScrollView
+} from 'react-native';
+
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import { gql, useMutation } from '@apollo/client';
 import { useNavigation } from '@react-navigation/native';
 
@@ -48,7 +58,11 @@ const SignUp = props => {
               padding: 10
             }}
           >
-            <Ionicons name='basketball' size={80} color={colors.colorWhite} />
+            <Ionicons
+              name='basketball-sharp'
+              size={80}
+              color={colors.colorPrimary}
+            />
           </View>
           <View
             style={{
@@ -60,14 +74,14 @@ const SignUp = props => {
               borderRadius: 20
             }}
           >
-            <Ionicons name='book' size={20} color={colors.colorSecondary} />
+            <Ionicons name='cloud-upload' size={20} color={colors.accent} />
           </View>
         </View>
         <View
           style={{
             flex: 1,
-            justifyContent: 'space-between',
-            marginBottom: 20
+            justifyContent: 'space-around',
+            marginBottom: 15
           }}
         >
           <View
@@ -116,7 +130,6 @@ const SignUp = props => {
               style={styles.Editbox}
             />
           </View>
-
           <GradientBtn
             linearGradientStyle={styles.btnStyle}
             textStyle={{ fontSize: 15 }}
@@ -146,7 +159,7 @@ const SignUp = props => {
               onPress={() => {
                 navigation.navigate('SignIn');
               }}
-              style={[{ color: '#B43CF3' }, styles.txt]}
+              style={[{ color: colors.grdMain }, styles.txt]}
             >
               {' энд '}
             </Text>

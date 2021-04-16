@@ -41,20 +41,19 @@ const SignIn = props => {
               fontSize: 24,
               textAlign: 'center',
               paddingBottom: 50,
-              marginTop: 30
+              marginTop: 30,
+              color: colors.grdMain
             }}
           >
             Нэвтрэх
           </Text>
-          <View>
-            <TextInput
-              onChangeText={mail => setEmail(mail)}
-              value={email}
-              placeholder='Нэвтрэх нэр эсвэл имэйл'
-              keyboardType='email-address'
-              style={[styles.input, styles.email]}
-            />
-          </View>
+          <TextInput
+            onChangeText={mail => setEmail(mail)}
+            value={email}
+            placeholder='Нэвтрэх нэр эсвэл имэйл'
+            keyboardType='email-address'
+            style={[styles.input, styles.email]}
+          />
           <TextInput
             onChangeText={pass => setPassword(pass)}
             value={password}
@@ -68,7 +67,7 @@ const SignIn = props => {
               onPress={() => {
                 navigation.navigate('SignUp');
               }}
-              style={[{ color: '#B43CF3' }, styles.text]}
+              style={[{ color: colors.grdMain }, styles.text]}
             >
               {'энд '}
             </Text>
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
     width: 250,
     padding: 10,
     borderWidth: 1.5,
-    borderColor: '#B43CF3',
+    borderColor: colors.grdMain,
     paddingHorizontal: 18
   },
 

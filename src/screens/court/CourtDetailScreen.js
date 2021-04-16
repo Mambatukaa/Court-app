@@ -20,6 +20,7 @@ import CourtDetail from '../../common/components/court/CourtDetail';
 import { gql, useQuery } from '@apollo/client';
 
 import queries from './graphql/queries';
+import colors from '../../common/styles/colors';
 
 const CourtDetailScreen = props => {
   const { courtId } = props.route.params;
@@ -62,22 +63,6 @@ const CourtDetailScreen = props => {
             description={courtDetail.description}
             location={courtDetail.location}
           />
-          {/* <Text style={styles.title}>{selectedCourt.title}</Text>
-
-          <View style={styles.priceContainer}>
-            <Text>Үнэ:</Text>
-            <Text>{selectedCourt.price}</Text>
-          </View>
-
-          <View style={styles.descriptionContainer}>
-            <Text>Тайлбар:</Text>
-            <Text>{selectedCourt.description}</Text>
-          </View>
-          <View style={styles.warningContainer}>
-            <Text>Анхааруулга:</Text>
-            <Text>{selectedCourt.warning}</Text>
-          </View>
-          <LocationPicker navigation={props.navigation} /> */}
         </View>
       </ScrollView>
     </View>
@@ -163,7 +148,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   tabBar: {
-    backgroundColor: 'white'
+    backgroundColor: colors.bgMain
   },
   label: {
     color: Colors.primary,

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { GradientBtn } from '../../common/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import images from '../../../assets/images';
+import { colors } from '../../common/styles';
 
 const Intro = props => {
   const navigation = useNavigation();
@@ -27,8 +28,8 @@ const Intro = props => {
             style={{
               textAlign: 'center',
               fontSize: 23,
-              fontWeight: 'bold',
-              color: '#B43CF3',
+              fontWeight: '800',
+              color: colors.grdMain,
               paddingBottom: 12
             }}
           >
