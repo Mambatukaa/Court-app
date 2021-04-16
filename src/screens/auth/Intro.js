@@ -2,8 +2,6 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { AuthContext } from '../../common/utils/AuthContext';
-
 import { GradientBtn } from '../../common/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import images from '../../../assets/images';
@@ -11,7 +9,6 @@ import images from '../../../assets/images';
 const Intro = props => {
   const navigation = useNavigation();
 
-  const { signIn, signOut } = React.useContext(AuthContext);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
