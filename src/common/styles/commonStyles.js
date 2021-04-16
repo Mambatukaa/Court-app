@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   input: {
     paddingHorizontal: 15,
     paddingVertical: Platform.OS === 'ios' ? 10 : 0,
-    borderColor: colors.colorShadowGray,
+    borderColor: '#B43CF3',
     borderWidth: 1,
     borderRadius: 10
   },

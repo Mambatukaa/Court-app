@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { SafeAreaView, StyleSheet, View, StatusBar } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { colors, commonStyles } from '../styles';
 
 const LayoutView = ({
@@ -23,7 +23,7 @@ const LayoutView = ({
             ? backgroundColorContainer
             : isRoundFromTop
             ? colors.colorWhite
-            : colors.colorPrimaryDark
+            : '#7444E8'
         }
       ]}
     >
@@ -32,10 +32,10 @@ const LayoutView = ({
           hasShadow ? (isRoundFromTop ? commonStyles.bottomShadow : {}) : {},
           {
             flex: isFillTop ? 1 : 0,
-            backgroundColor: colors.colorPrimaryDark,
+            backgroundColor: '#7444E8',
             borderBottomLeftRadius: isRoundFromTop ? 20 : 0,
             borderBottomRightRadius: isRoundFromTop ? 20 : 0,
-            minHeight: 65
+            minHeight: 100
           },
           topContainer
         ]}

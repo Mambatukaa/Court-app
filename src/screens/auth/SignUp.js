@@ -38,7 +38,7 @@ const SignUp = props => {
             flexWrap: 'wrap',
             marginTop: -80,
             alignSelf: 'center',
-            marginBottom: 30
+            marginBottom: 20
           }}
         >
           <View
@@ -67,13 +67,13 @@ const SignUp = props => {
           style={{
             flex: 1,
             justifyContent: 'space-between',
-            marginBottom: 40
+            marginBottom: 20
           }}
         >
           <View
             style={{
               flex: 1,
-              justifyContent: 'space-evenly',
+              justifyContent: 'space-around',
               marginBottom: 40
             }}
           >
@@ -115,15 +115,11 @@ const SignUp = props => {
               security={true}
               style={styles.Editbox}
             />
-            {/* <Text style={{ paddingTop: 40 }}>
-              <Text style={styles.txt}>{'Өмнө бүртгүүлсэн бол'}</Text>
-              <Text style={[{ color: '#B43CF3' }, styles.txt]}>{' энд '}</Text>
-              <Text style={styles.txt}>{'дарна уу.'}</Text>
-            </Text> */}
           </View>
 
           <GradientBtn
             linearGradientStyle={styles.btnStyle}
+            textStyle={{ fontSize: 15 }}
             onPress={() => {
               signUp({
                 variables: {
@@ -144,6 +140,11 @@ const SignUp = props => {
             }}
             text='Бүртгүүлэх'
           />
+          <Text style={{ paddingTop: 25 }}>
+            <Text style={styles.txt}>{'Өмнө бүртгүүлсэн бол'}</Text>
+            <Text style={[{ color: '#B43CF3' }, styles.txt]}>{' энд '}</Text>
+            <Text style={styles.txt}>{'дарна уу.'}</Text>
+          </Text>
         </View>
       </View>
     );
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
   txt: {
     textAlign: 'center',
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: '700'
   },
   btnStyle: {
     borderRadius: 11

@@ -37,26 +37,28 @@ const SignIn = props => {
         <View style={{ justifyContent: 'center' }}>
           <Text
             style={{
-              fontWeight: 'bold',
-              fontSize: 20,
+              fontWeight: '700',
+              fontSize: 24,
               textAlign: 'center',
-              paddingBottom: 20,
+              paddingBottom: 50,
               marginTop: 30
             }}
           >
             Нэвтрэх
           </Text>
-          <TextInput
-            onChangeText={mail => setEmail(mail)}
-            value={email}
-            placeholder='Email'
-            keyboardType='email-address'
-            style={[styles.input, styles.email]}
-          />
+          <View>
+            <TextInput
+              onChangeText={mail => setEmail(mail)}
+              value={email}
+              placeholder='Нэвтрэх нэр эсвэл Мэйл'
+              keyboardType='email-address'
+              style={[styles.input, styles.email]}
+            />
+          </View>
           <TextInput
             onChangeText={pass => setPassword(pass)}
             value={password}
-            placeholder='Password'
+            placeholder='Нууц үг'
             secureTextEntry={true}
             style={[styles.input, styles.password]}
           />
@@ -74,10 +76,14 @@ const SignIn = props => {
           </Text>
         </View>
         <GradientBtn
-          linearGradientStyle={{ width: 160, borderRadius: 11 }}
+          linearGradientStyle={{
+            width: 170,
+            borderRadius: 11,
+            marginBottom: 20
+          }}
+          textStyle={{ fontSize: 15 }}
           text='Нэвтрэх'
           onPress={() => {
-            /*   signIn(); */
             login({
               variables: {
                 input: email,
@@ -106,12 +112,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   input: {
-    color: colors.colorShadowGray,
+    fontWeight: '600',
+    fontSize: 14,
+    color: 'black',
     borderRadius: 10,
     height: 50,
     width: 250,
     padding: 10,
-    borderWidth: 1.5
+    borderWidth: 1.5,
+    borderColor: '#B43CF3',
+    paddingHorizontal: 18
   },
 
   email: {

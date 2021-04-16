@@ -12,7 +12,7 @@ const Intro = props => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <View></View>
+        <View />
         <View>
           <Image
             source={images.kobe}
@@ -42,7 +42,14 @@ const Intro = props => {
             <Text style={styles.text}>{'are forever'}</Text>
           </Text>
         </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+        <View />
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            paddingBottom: 40
+          }}
+        >
           <GradientBtn
             text='Нэвтрэх'
             onPress={() => {
@@ -50,6 +57,7 @@ const Intro = props => {
               //   signIn();
             }}
             linearGradientStyle={[{ marginRight: 12 }, styles.button]}
+            textStyle={styles.textBtn}
           />
           <GradientBtn
             text='Бүртгүүлэх'
@@ -57,6 +65,7 @@ const Intro = props => {
               navigation.navigate('SignUp');
             }}
             linearGradientStyle={[{ marginLeft: 13 }, styles.button]}
+            textStyle={styles.textBtn}
           />
         </View>
       </View>
@@ -71,14 +80,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   button: {
-    backgroundColor: 'red',
-    width: 130,
+    width: 150,
     borderRadius: 11
   },
   text: {
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  textBtn: {
+    fontSize: 15
   }
 });
 
