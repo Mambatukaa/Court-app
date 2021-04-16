@@ -8,8 +8,6 @@ import {
   ScrollView
 } from 'react-native';
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
 import { gql, useMutation } from '@apollo/client';
 import { useNavigation } from '@react-navigation/native';
 
