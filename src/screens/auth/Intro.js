@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { AuthContext } from '../../common/utils/AuthContext';
 
-import GradientBtn from '../../common/components/GradientBtn';
+import { GradientBtn } from '../../common/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import images from '../../../assets/images';
 
@@ -49,8 +49,8 @@ const Intro = props => {
           <GradientBtn
             text='Нэвтрэх'
             onPress={() => {
-              /* navigation.navigate('SignIn'); */
-              signIn();
+              navigation.navigate('SignIn');
+              //   signIn();
             }}
             linearGradientStyle={[{ marginRight: 12 }, styles.button]}
           />
