@@ -1,15 +1,17 @@
 import React, { useLayoutEffect } from 'react';
 import { View, StyleSheet, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
 import { Avatar } from 'react-native-elements';
 
-import useAuth, { AuthContext } from '../../common/utils/AuthContext';
+import { gql, useQuery } from '@apollo/client';
+
+import { AuthContext } from '../../common/utils/AuthContext';
 
 import TextView from '../../common/components/TextView';
 import GradientBtn from '../../common/components/GradientBtn';
 
 import colors from '../../common/styles/colors';
+import { queries } from './graphql';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -21,6 +23,10 @@ const ProfileScreen = () => {
       title: 'My Profile'
     });
   }, [navigation]);
+
+  const { data, loading, error } = useQuery(gql(queries.currentUser));
+
+  console.log(data, 'hshssh');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -56,11 +62,13 @@ const ProfileScreen = () => {
       </View>
       <View style={styles.bottomContainer}>
         <GradientBtn
+          linearGradientStyle={styles.gradientBtn}
+          textStyle={{ fontSize: 15 }}
           text='Гарах'
           onPress={() => {
             signOut();
           }}
-          text='Sign out'
+          text='Гарах'
         />
         <TextView text={' '} style={styles.version} />
       </View>
@@ -115,6 +123,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: '100%',
     paddingHorizontal: 20
+  },
+  gradientBtn: {
+    width: 150,
+    borderRadius: 11
   }
 });
 
