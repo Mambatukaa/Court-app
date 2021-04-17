@@ -317,6 +317,9 @@ const SignInScreen = props => {
                   styles.color_textPrivate,
                   { fontWeight: 'bold', color: colors.grdMain }
                 ]}
+                onPress={() => {
+                  navigation.navigate('SignIn');
+                }}
               >
                 {' энд '}
               </Text>
