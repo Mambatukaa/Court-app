@@ -169,8 +169,6 @@ const SignInScreen = props => {
       });
   };
 
-  console.log(data.email.length, ' kkkkkk');
-
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={colors.primary} barStyle='light-content' />

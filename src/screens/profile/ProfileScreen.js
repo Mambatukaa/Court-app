@@ -26,8 +26,6 @@ const ProfileScreen = () => {
 
   const { data, loading, error } = useQuery(gql(queries.currentUser));
 
-  console.log(data, 'hshssh');
-
   return (
     <SafeAreaView style={styles.container}>
       <Avatar
