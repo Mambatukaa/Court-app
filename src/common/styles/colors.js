@@ -8,6 +8,7 @@ import { lighten, rgba } from './color';
 const primary = '#5629B6';
 const accent = '#FFC107';
 const grdMain = '#B43CF3';
+const grdPrimary = '#8741EA';
 
 // Core colors
 const colorPrimary = '#673FBD';
@@ -129,5 +130,6 @@ export default {
 
   primary,
   accent,
-  grdMain
+  grdMain,
+  grdPrimary
 };

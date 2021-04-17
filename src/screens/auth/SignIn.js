@@ -1,135 +1,327 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
-  Image,
-  StyleSheet,
-  SafeAreaView,
+  TouchableOpacity,
   TextInput,
-  KeyboardAvoidingView,
   Platform,
-  TouchableWithoutFeedback,
-  Keyboard
+  StyleSheet,
+  StatusBar,
+  Alert
 } from 'react-native';
-
 import { useNavigation } from '@react-navigation/native';
-import GradientBtn from '../../common/components/GradientBtn';
+import * as Animatable from 'react-native-animatable';
+import { gql, useMutation } from '@apollo/client';
+
+import { FontAwesome, Feather } from '@expo/vector-icons';
 import { AuthContext } from '../../common/utils/AuthContext';
-import { mutations } from './graphql';
-import { useMutation, gql } from '@apollo/client';
 import { colors } from '../../common/styles';
-import { BackButton } from '../../common/components';
+import { BackButton, GradientBtn } from '../../common/components';
 
-const SignIn = props => {
-  const { signIn } = React.useContext(AuthContext);
+import { mutations } from './graphql';
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const SignInScreen = props => {
+  const [data, setData] = React.useState({
+    username: '',
+    password: '',
+    check_textInputChange: false,
+    secureTextEntry: true,
+    isValidUser: true,
+    isValidPassword: true
+  });
 
   const navigation = useNavigation();
 
   const [login] = useMutation(gql(mutations.login));
 
+  const { signIn } = React.useContext(AuthContext);
+
+  const textInputChange = val => {
+    if (val.trim().length >= 4 || val.length === 0) {
+      setData({
+        ...data,
+        username: val,
+        check_textInputChange: true,
+        isValidUser: true
+      });
+    } else {
+      setData({
+        ...data,
+        username: val,
+        check_textInputChange: false,
+        isValidUser: false
+      });
+    }
+  };
+
+  const handlePasswordChange = val => {
+    if (val.trim().length >= 8 || val.length === 0) {
+      setData({
+        ...data,
+        password: val,
+        isValidPassword: true
+      });
+    } else {
+      setData({
+        ...data,
+        password: val,
+        isValidPassword: false
+      });
+    }
+  };
+
+  const updateSecureTextEntry = () => {
+    setData({
+      ...data,
+      secureTextEntry: !data.secureTextEntry
+    });
+  };
+
+  const handleValidUser = val => {
+    if (val.trim().length >= 4) {
+      setData({
+        ...data,
+        isValidUser: true
+      });
+    } else {
+      setData({
+        ...data,
+        isValidUser: false
+      });
+    }
+  };
+
+  const loginHandle = (userName, password) => {
+    if (userName.length == 0 || password.length == 0) {
+      Alert.alert('Буруу утга!', 'Нэвтрэх нэр болон нууц үг хоосон байна.', [
+        { text: 'Ахин нэвтрэх' }
+      ]);
+      return;
+    }
+
+    if (userName.length < 5 || password.length < 8) {
+      Alert.alert(
+        'Буруу утга!',
+        'Нэвтрэх нэр эсвэл нууц үгийн утга дутуу байна.',
+        [{ text: 'Ахин нэвтрэх' }]
+      );
+      return;
+    }
+
+    login({
+      variables: {
+        input: userName,
+        password
+      }
+    })
+      .then(el => {
+        const { data } = el;
+        signIn(data.login);
+      })
+      .catch(e => {
+        Alert.alert(
+          'Хэрэглэгч олдсонгүй!',
+          'Нэвтрэх нэр эсвэл нууц үг буруу байна.',
+          [{ text: 'Okay' }]
+        );
+        return;
+      });
+  };
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <BackButton onPress={() => navigation.goBack()} />
-      <View style={styles.container}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text
-            style={{
-              fontWeight: '700',
-              fontSize: 24,
-              textAlign: 'center',
-              paddingBottom: 50,
-              marginTop: 30,
-              color: colors.grdMain
-            }}
-          >
-            Нэвтрэх
-          </Text>
-          <TextInput
-            onChangeText={mail => setEmail(mail)}
-            value={email}
-            placeholder='Нэвтрэх нэр эсвэл имэйл'
-            keyboardType='email-address'
-            style={[styles.input, styles.email]}
-          />
-          <TextInput
-            onChangeText={pass => setPassword(pass)}
-            value={password}
-            placeholder='Нууц үг'
-            secureTextEntry={true}
-            style={[styles.input, styles.password]}
-          />
-          <Text style={{ marginTop: 15 }}>
-            <Text style={[styles.text]}>{'Хэрэв та бүртгүүлээгүй бол '}</Text>
-            <Text
-              onPress={() => {
-                navigation.navigate('SignUp');
-              }}
-              style={[{ color: colors.grdMain }, styles.text]}
-            >
-              {'энд '}
-            </Text>
-            <Text style={[styles.text]}>{'дарна уу.'}</Text>
-          </Text>
-        </View>
-        <GradientBtn
-          linearGradientStyle={{
-            width: 170,
-            borderRadius: 11,
-            marginBottom: 20
-          }}
-          textStyle={{ fontSize: 15 }}
-          text='Нэвтрэх'
-          onPress={() => {
-            login({
-              variables: {
-                input: email,
-                password
-              }
-            })
-              .then(el => {
-                const { data } = el;
-                signIn(data.login);
-              })
-              .catch(e => {
-                console.log(e.code);
-              });
-          }}
-        />
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <BackButton onPress={() => navigation.goBack()} />
+        <Text style={styles.text_header}>Нэвтрэх</Text>
       </View>
-    </SafeAreaView>
+      <Animatable.View
+        animation='fadeInUpBig'
+        style={[
+          styles.footer,
+          {
+            backgroundColor: colors.bgGray
+          }
+        ]}
+      >
+        <Text
+          style={[
+            styles.text_footer,
+            {
+              color: colors.colorCoreDarkGray
+            }
+          ]}
+        >
+          Нэвтрэх нэр
+        </Text>
+        <View style={styles.action}>
+          <FontAwesome name='user-o' color={colors.text} size={20} />
+          <TextInput
+            placeholder='Нэвтрэх нэр'
+            placeholderTextColor={colors.colorCoreMediumGray}
+            style={[
+              styles.textInput,
+              {
+                color: colors.colorCoreDarkGray
+              }
+            ]}
+            autoCapitalize='none'
+            onChangeText={val => textInputChange(val)}
+            onEndEditing={e => handleValidUser(e.nativeEvent.text)}
+          />
+          {data.check_textInputChange ? (
+            <Animatable.View animation='bounceIn'>
+              <Feather name='check-circle' color='green' size={20} />
+            </Animatable.View>
+          ) : null}
+        </View>
+        {data.isValidUser ? null : (
+          <Animatable.View animation='fadeInLeft' duration={500}>
+            <Text style={styles.errorMsg}>
+              Нэвтрэх нэр 4-с дээш үсэг байна.
+            </Text>
+          </Animatable.View>
+        )}
+
+        <Text
+          style={[
+            styles.text_footer,
+            {
+              color: colors.colorCoreDarkGray,
+              marginTop: 35
+            }
+          ]}
+        >
+          Нууц үг
+        </Text>
+        <View style={styles.action}>
+          <Feather name='lock' color={colors.text} size={20} />
+          <TextInput
+            placeholder='Нууц үг'
+            placeholderTextColor={colors.colorCoreMediumGray}
+            secureTextEntry={data.secureTextEntry ? true : false}
+            style={[
+              styles.textInput,
+              {
+                color: colors.text
+              }
+            ]}
+            autoCapitalize='none'
+            onChangeText={val => handlePasswordChange(val)}
+          />
+          <TouchableOpacity onPress={updateSecureTextEntry}>
+            {data.secureTextEntry ? (
+              <Feather name='eye-off' color='grey' size={20} />
+            ) : (
+              <Feather name='eye' color='grey' size={20} />
+            )}
+          </TouchableOpacity>
+        </View>
+        {data.isValidPassword ? null : (
+          <Animatable.View animation='fadeInLeft' duration={500}>
+            <Text style={styles.errorMsg}>
+              Нууц үг 8 аас илүү тэмдэгт байна.
+            </Text>
+          </Animatable.View>
+        )}
+
+        <TouchableOpacity>
+          <Text style={{ color: colors.primary, marginTop: 15 }}>
+            Нууц үг мартсан?
+          </Text>
+        </TouchableOpacity>
+        <View style={styles.button}>
+          <GradientBtn
+            text='Нэвтрэх'
+            linearGradientStyle={styles.signIn}
+            textStyle={styles.textSign}
+            onPress={() => {
+              loginHandle(data.username, data.password);
+            }}
+          />
+          <GradientBtn
+            text='Бүртгүүлэх'
+            linearGradientStyle={[styles.signIn, styles.signUp]}
+            textStyle={styles.textSign}
+            onPress={() => {
+              navigation.navigate('SignUp');
+            }}
+          />
+        </View>
+      </Animatable.View>
+    </View>
   );
 };
 
+export default SignInScreen;
+
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-around'
+    flex: 1,
+    backgroundColor: colors.grdPrimary
   },
-  input: {
-    fontWeight: '600',
-    fontSize: 14,
-    color: 'black',
-    borderRadius: 10,
-    height: 50,
-    width: 250,
-    padding: 10,
-    borderWidth: 1.5,
-    borderColor: colors.grdMain,
-    paddingHorizontal: 18
+  header: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingHorizontal: 20,
+    paddingBottom: 50
   },
-
-  email: {
-    marginBottom: 15
+  footer: {
+    flex: 3,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingHorizontal: 20,
+    paddingVertical: 30
   },
-  text: {
+  text_header: {
+    color: '#fff',
     fontWeight: 'bold',
-    fontSize: 13
+    fontSize: 30
+  },
+  text_footer: {
+    color: '#05375a',
+    fontSize: 18
+  },
+  action: {
+    flexDirection: 'row',
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f2f2f2',
+    paddingBottom: 5
+  },
+  actionError: {
+    flexDirection: 'row',
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#FF0000',
+    paddingBottom: 5
+  },
+  textInput: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 0 : -12,
+    paddingLeft: 10,
+    color: '#05375a'
+  },
+  errorMsg: {
+    color: '#FF0000',
+    fontSize: 14,
+    paddingTop: 8
+  },
+  button: {
+    alignItems: 'center',
+    marginTop: 50
+  },
+  signIn: {
+    borderRadius: 11,
+    width: 335,
+    overflow: 'hidden',
+    height: 45
+  },
+  signUp: {
+    marginTop: 20
+  },
+  textSign: {
+    fontSize: 17,
+    fontWeight: 'bold'
   }
 });
-
-export default SignIn;

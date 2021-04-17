@@ -7,7 +7,11 @@ import { colors } from '../styles';
 const BackButton = props => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={props.onPress}>
-      <View style={{ paddingTop: 40, paddingLeft: 25 }}>
+      <View
+        style={{
+          paddingBottom: 20
+        }}
+      >
         <Ionicons
           name='chevron-back-sharp'
           size={35}
