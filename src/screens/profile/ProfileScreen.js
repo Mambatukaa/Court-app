@@ -53,8 +53,13 @@ const ProfileScreen = () => {
 
       <TextView text={nameCapitalized} xlarge style={styles.title} />
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'User name:'} />
+        <TextView style={styles.itemLabel} text={'Username:'} />
         <TextView style={styles.itemValue} text={currentUser.username} />
+      </View>
+
+      <View style={styles.itemContainer}>
+        <TextView style={styles.itemLabel} text={'Email:'} />
+        <TextView style={styles.itemValue} text={currentUser.email} />
       </View>
 
       <View style={styles.itemContainer}>
@@ -62,23 +67,21 @@ const ProfileScreen = () => {
         <TextView style={styles.itemValue} text={currentUser.role} />
       </View>
 
-      <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Email:'} />
-        <TextView style={styles.itemValue} text={currentUser.email} />
-      </View>
-      <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Location:'} />
-        <TextView style={styles.itemValue} text={'Ulaanbaatar Mongolia'} />
-      </View>
-      <View style={styles.itemContainer}>
+      {/*      <View style={styles.itemContainer}>
         <TextView style={styles.itemLabel} text={'Position:'} />
         <TextView style={styles.itemValue} text={'Software engineering'} />
-      </View>
+      </View> */}
 
       <View style={styles.itemContainer}>
         <TextView style={styles.itemLabel} text={'Sport:'} />
         <TextView style={styles.itemValue} text={`Basketball`} />
       </View>
+
+      <View style={styles.itemContainer}>
+        <TextView style={styles.itemLabel} text={'Location:'} />
+        <TextView style={styles.itemValue} text={'Ulaanbaatar Mongolia'} />
+      </View>
+
       <View style={styles.bottomContainer}>
         <GradientBtn
           linearGradientStyle={styles.gradientBtn}

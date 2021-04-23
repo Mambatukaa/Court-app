@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 20,
     borderWidth: 1,
-    borderRadius: 10
+    borderRadius: 8
   },
   itemLabel: {
     width: '30%',
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     maxWidth: '70%',
     textAlign: 'justify'
   },
-
   bubble: {
     backgroundColor: '#fff',
     borderColor: '#ccc',

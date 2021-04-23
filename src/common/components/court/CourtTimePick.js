@@ -161,7 +161,7 @@ const CourtTimePick = props => {
             {data.list.map((el, index) => renderRowItem(el, index))}
           </ScrollView>
         </View>
-        <View style={{ backgroundColor: colors.grdMain, height: 1 }} />
+        <View style={{ backgroundColor: colors.primary, height: 1 }} />
       </View>
     );
   };
