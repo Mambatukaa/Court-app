@@ -2,8 +2,6 @@ const courtFields = `
     _id
     createdAt
     name
-    shortName
-    price
     description
     warning
     parking
@@ -16,8 +14,10 @@ const courtFields = `
 
     courtSchedule{
         _id
+        day
         startTime
         endTime
+        bookedPeople
     }
 `;
 

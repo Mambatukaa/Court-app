@@ -13,8 +13,8 @@ const CourtItem = props => {
             <Text style={styles.description}>{props.description}</Text>
 
             <View style={styles.itemContainer}>
-              <TextView style={styles.itemLabel} text={'Үнэ:'} />
-              <TextView style={styles.itemValue} text={`${props.price}₮`} />
+              {/* <TextView style={styles.itemLabel} text={'Үнэ:'} />
+              <TextView style={styles.itemValue} text={`${props.price}₮`} /> */}
             </View>
             <View style={styles.itemContainer}>
               <TextView style={styles.itemLabel} text={'Зогсоол:'} />

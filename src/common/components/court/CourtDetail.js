@@ -49,7 +49,7 @@ const CourtDetail = props => {
             <Callout tooltip>
               <View>
                 <View style={styles.bubble}>
-                  <Text style={styles.name}>{props.shortName}</Text>
+                  <Text style={styles.name}>{props.title}</Text>
                 </View>
                 <View style={styles.arrowBorder} />
                 <View style={styles.arrow} />
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: '#ccc',
     padding: 15,
-    width: 150,
+    width: 200,
     height: 50,
     borderRadius: 10
   },

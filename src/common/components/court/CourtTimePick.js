@@ -12,103 +12,53 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../styles';
 
-const data = [
-  {
-    /*
-    date:
-    zaalID,
-    time 24,
-    status,
-    count */
-    name: 'Monday',
-    list: [
-      {
-        time: '10:00'
-      },
-      {
-        time: '12:00'
-      },
-      {
-        time: '14:00'
-      },
-      {
-        time: '16:00'
-      },
-      {
-        time: '17:00'
-      }
-    ]
-  },
-  {
-    name: 'Tuesday',
-    list: [
-      {
-        time: '10:00'
-      },
-      {
-        time: '12:00'
-      },
-      {
-        time: '14:00'
-      },
-      {
-        time: '18:00',
-        leftPeople: 3
-      },
-      {
-        time: '20:00',
-        leftPeople: 7
-      },
-      ,
-      {
-        time: '21:00',
-        leftPeople: 6
-      }
-    ]
-  },
-  {
-    name: 'Wednesday',
-    list: [
-      {
-        time: '10:00',
-        leftPeople: 5
-      },
-      {
-        time: '12:00',
-        leftPeople: 4
-      },
-      {
-        time: '14:00',
-        leftPeople: 10
-      },
-      {
-        time: '18:00',
-        leftPeople: 1
-      },
-      {
-        time: '20:00',
-        leftPeople: 10
-      }
-    ]
-  }
-];
+// const data = [
+//   {
+//     /*
+//     date:
+//     zaalID,
+//     time 24,
+//     status,
+//     count */
+//     name: 'Monday',
+//     list: [
+//       {
+//         time: '10:00'
+//       },
+//       {
+//         time: '12:00'
+//       },
+//       {
+//         time: '14:00'
+//       },
+//       {
+//         time: '16:00'
+//       },
+//       {
+//         time: '17:00'
+//       }
+//     ]
+//   }
+// ];
 
 const CourtTimePick = props => {
   const navigation = useNavigation();
 
   const { params } = props;
 
-  const { courtSchedule } = props.courtDetail;
+  const { courtSchedule = [] } = props.courtDetail;
 
-  const times = [];
+  const days = [];
 
   courtSchedule.map(el => {
-    const startHour = dayjs(el.startTime).format('HH');
+    days.push(el.day);
+  });
 
-    const endHour = dayjs(el.endTime).format('HH');
+  const uniqueDay = [];
 
-    for (let i = startHour; i <= endHour; i++) {
-      times.push(i);
+  days.filter((item, index) => {
+    if (days.indexOf(item) === index) {
+      uniqueDay.push(item);
     }
   });
 
@@ -119,49 +69,72 @@ const CourtTimePick = props => {
     });
   };
 
-  const renderRowItem = (item, index) => {
-    const bg = item.leftPeople === 10 ? colors.colorShadowGray : '#09e371';
-    const bc = item.leftPeople === 10 ? colors.colorCoreGray : colors.timeBlock;
+  const renderRowItem = item => {
+    const bg = item?.bookedPeople === 10 ? colors.colorShadowGray : '#09e371';
+    const bc =
+      item?.bookedPeople === 10 ? colors.colorCoreGray : colors.timeBlock;
 
     return (
       <TouchableOpacity
         onPress={() => onViewBookDetail(item)}
         activeOpacity={0.7}
-        disabled={item.leftPeople === 10}
+        disabled={item?.bookedPeople === 10}
         style={[styles.block, { backgroundColor: bg, borderColor: bc }]}
-        key={index.toString()}
       >
-        {item.leftPeople === 10 ? (
-          <View style={styles.timeContainer}>
-            <Text style={[styles.time]}>{item.time}</Text>
-            <Text style={[styles.booked]}>{'Дүүрсэн'}</Text>
-          </View>
+        {item?.bookedPeople === 10 ? (
+          <>
+            <View style={styles.timeContainer}>
+              <Text style={[styles.time]}>
+                {dayjs(item.startTime).format('hh:mm')}
+              </Text>
+              <Text style={[styles.booked]}>{'Дүүрсэн'}</Text>
+            </View>
+          </>
         ) : (
           <View style={styles.timeContainer}>
-            <Text style={[styles.time]}>{item.time}</Text>
-            <Text style={styles.people}>{item.leftPeople || 0}</Text>
+            <Text style={[styles.time]}>
+              {dayjs(item.startTime).format('hh:mm')}
+            </Text>
+            <Text style={styles.people}>{item?.bookedPeople || 0}</Text>
           </View>
         )}
       </TouchableOpacity>
     );
   };
 
-  const renderRow = (data, index) => {
+  const renderRow = (item, courtSchedule) => {
     return (
-      <View key={index.toString()} style={{}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            marginBottom: 20,
-            paddingTop: 20
-          }}
-        >
-          <Text style={styles.date}>{'Дав\n12'}</Text>
-          <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
-            {data.list.map((el, index) => renderRowItem(el, index))}
-          </ScrollView>
-        </View>
-        <View style={{ backgroundColor: colors.primary, height: 1 }} />
+      <View>
+        {item.map((el, index) => {
+          return (
+            <View key={index}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginBottom: 20,
+                  paddingTop: 20
+                }}
+              >
+                <Text style={styles.date}>{dayjs(el).format('ddd\n D')}</Text>
+                <ScrollView
+                  showsHorizontalScrollIndicator={false}
+                  horizontal={true}
+                >
+                  <>
+                    {courtSchedule.map((schedule, index) => {
+                      return (
+                        <View key={index}>
+                          {schedule.day === el ? renderRowItem(schedule) : null}
+                        </View>
+                      );
+                    })}
+                  </>
+                </ScrollView>
+              </View>
+              <View style={{ backgroundColor: colors.primary, height: 1 }} />
+            </View>
+          );
+        })}
       </View>
     );
   };
@@ -193,12 +166,15 @@ const CourtTimePick = props => {
         </Text>
       </View>
 
-      <FlatList
+      <ScrollView style={{ flex: 1 }}>
+        {renderRow(uniqueDay, courtSchedule)}
+      </ScrollView>
+      {/*    <FlatList
         style={{ flex: 1 }}
-        data={data}
-        keyExtractor={item => item.name}
-        renderItem={({ item, index }) => renderRow(item, index)}
-      />
+        data={uniqueDay}
+        keyExtractor={item => item}
+        renderItem={({ item, index }) => renderRow(item, index, courtSchedule)}
+      /> */}
     </View>
   );
 };

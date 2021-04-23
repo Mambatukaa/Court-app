@@ -1,46 +1,57 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import dayjs from 'dayjs';
 
 const BookedCourt = props => {
+  const { allSchedules = [] } = props;
+
   return (
     <View>
-      <View style={styles.court}>
-        <View style={styles.main}>
-          <View style={styles.textContainer}>
-            <Text style={styles.title}>City Basketball</Text>
-            <Text style={styles.dateContainer}>Date</Text>
-            <Text style={styles.date}>Friday, 21 January 2020</Text>
-            <Text style={styles.timeContainer}>Time</Text>
-            <Text style={styles.time}>14:00 - 16:00</Text>
-            <Text style={styles.orderContainer}>Захиалсан хүний тоо</Text>
-            <Text style={styles.order}>6</Text>
+      {allSchedules.map((schedule, index) => {
+        return (
+          <View key={index} style={styles.court}>
+            <View style={styles.main}>
+              <View style={styles.textContainer}>
+                <Text style={styles.title}>{schedule.scheduledCourt.name}</Text>
+                <Text style={styles.dateContainer}>Өдөр</Text>
+                <Text style={styles.date}>
+                  {`${dayjs(schedule.day).format('YYYY-MM-DD')}нд`}
+                </Text>
+                <Text style={styles.timeContainer}>Цаг</Text>
+                <Text style={styles.time}>{`${dayjs(schedule.starTime).format(
+                  'HH:MM'
+                )} - ${dayjs(schedule.endTime).format('HH:MM')}`}</Text>
+                <Text style={styles.orderContainer}>Захиалсан хүний тоо</Text>
+                <Text style={styles.order}>{schedule.bookedPeople}</Text>
 
-            <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            ></View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between'
+                  }}
+                ></View>
+              </View>
+              <View style={styles.imageContainer}>
+                <Image
+                  style={styles.image}
+                  source={{ uri: schedule?.scheduledCourt.image }}
+                  resizeMode='cover'
+                />
+                <Text
+                  style={{
+                    color: '#3ace3a',
+                    fontWeight: 'bold',
+                    paddingTop: 35,
+                    paddingLeft: 30
+                  }}
+                >
+                  Confirmed
+                </Text>
+              </View>
+            </View>
           </View>
-          <View style={styles.imageContainer}>
-            <Image
-              style={styles.image}
-              source={{
-                uri:
-                  'https://www.nba.com/resources/static/team/v2/heat/custom-projects/2018-19_Uniforms/imgs/vice-nights-court-1.jpg'
-              }}
-              resizeMode='cover'
-            />
-            <Text
-              style={{
-                color: '#3ace3a',
-                fontWeight: 'bold',
-                paddingTop: 30,
-                paddingLeft: 30
-              }}
-            >
-              Confirmed
-            </Text>
-          </View>
-        </View>
-      </View>
+        );
+      })}
     </View>
   );
 };
@@ -57,7 +68,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25,
     marginTop: 14,
-    height: 180
+    height: 200
   },
 
   main: {
@@ -77,8 +88,9 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   title: {
-    fontSize: 16,
-    fontWeight: 'bold'
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 10
   },
   textContainer: {
     margin: 20,
@@ -86,7 +98,7 @@ const styles = StyleSheet.create({
   },
   dateContainer: {
     paddingTop: 7,
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: 'bold'
   },
   date: {
@@ -95,7 +107,7 @@ const styles = StyleSheet.create({
   },
   timeContainer: {
     paddingTop: 5,
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: 'bold'
   },
   time: {
@@ -104,7 +116,7 @@ const styles = StyleSheet.create({
   },
   orderContainer: {
     paddingTop: 5,
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: 'bold'
   },
   order: {

@@ -57,7 +57,7 @@ const CourtDetailScreen = props => {
           </TouchableOpacity>
           <CourtDetail
             title={courtDetail.name}
-            shortName={courtDetail.shortName}
+            // shortName={courtDetail.shortName}
             price={courtDetail.price}
             warning={courtDetail.warning}
             description={courtDetail.description}
