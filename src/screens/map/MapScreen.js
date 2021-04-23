@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 
-import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { AntDesign } from '@expo/vector-icons';
@@ -17,7 +16,7 @@ const MapScreen = props => {
   const { data, loading, error } = useQuery(gql(queries.allCourts));
 
   if (loading) {
-    return null;
+    return <ActivityIndicator size='small' color='#B43CF3' />;
   }
 
   const { allCourts } = data;

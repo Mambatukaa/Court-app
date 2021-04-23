@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, ActivityIndicator } from 'react-native';
 
 import { gql, useQuery } from '@apollo/client';
 import queries from './graphql/queries';
@@ -14,7 +14,7 @@ const CourtBookDetail = props => {
   });
 
   if (loading) {
-    return null;
+    return <ActivityIndicator size='small' color='#B43CF3' />;
   }
 
   const { courtDetail } = data;

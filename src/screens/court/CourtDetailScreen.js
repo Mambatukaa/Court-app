@@ -7,7 +7,8 @@ import {
   View,
   Dimensions,
   StatusBar,
-  TouchableOpacity
+  TouchableOpacity,
+  ActivityIndicator
 } from 'react-native';
 
 import { TabView, TabBar } from 'react-native-tab-view';
@@ -32,7 +33,7 @@ const CourtDetailScreen = props => {
   });
 
   if (loading) {
-    return null;
+    return <ActivityIndicator size='small' color='#B43CF3' />;
   }
 
   const { courtDetail = {} } = data;

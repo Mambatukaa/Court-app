@@ -1,5 +1,10 @@
 import React, { useLayoutEffect } from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+  ActivityIndicator
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Avatar } from 'react-native-elements';
 
@@ -30,7 +35,7 @@ const ProfileScreen = () => {
   });
 
   if (loading) {
-    return null;
+    return <ActivityIndicator size='small' color='#B43CF3' />;
   }
 
   const currentUser = data.currentUser || {};
