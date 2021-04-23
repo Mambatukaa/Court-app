@@ -35,8 +35,8 @@ const MapScreen = props => {
           <Marker
             key={index}
             coordinate={{
-              latitude: court.location.lat,
-              longitude: court.location.lng
+              latitude: Number(court.location.lat),
+              longitude: Number(court.location.lng)
             }}
             onPress={() => {
               setShowMark(v => !v);
