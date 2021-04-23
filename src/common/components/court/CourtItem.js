@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { colors } from '../../styles';
+import { TextView } from '../../components';
 
-const CourtItem = (props) => {
+const CourtItem = props => {
   return (
     <TouchableOpacity onPress={props.onViewDetail}>
       <View style={styles.court}>
@@ -9,18 +11,21 @@ const CourtItem = (props) => {
           <View style={styles.textContainer}>
             <Text style={styles.title}>{props.title}</Text>
             <Text style={styles.description}>{props.description}</Text>
-            <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <Text style={styles.parking}>{props.parking}</Text>
-              <Text style={styles.price}>{props.price}₮</Text>
+
+            <View style={styles.itemContainer}>
+              <TextView style={styles.itemLabel} text={'Үнэ:'} />
+              <TextView style={styles.itemValue} text={`${props.price}₮`} />
+            </View>
+            <View style={styles.itemContainer}>
+              <TextView style={styles.itemLabel} text={'Зогсоол:'} />
+              <TextView style={styles.itemValue} text={props.parking} />
             </View>
           </View>
           <View style={styles.imageContainer}>
             <Image
               style={styles.image}
               source={{ uri: props.image }}
-              resizeMode="cover"
+              resizeMode='cover'
             />
           </View>
         </View>
@@ -37,47 +42,69 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 5,
     borderRadius: 10,
-    backgroundColor: '#f6f6f6',
+    backgroundColor: colors.bgLight,
     marginLeft: 25,
     marginRight: 25,
     marginTop: 14,
+    height: 130,
+    justifyContent: 'center'
   },
-
   main: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderRadius: 10,
+    borderRadius: 10
+  },
+  textContainer: {
+    marginHorizontal: 20,
+    flex: 2
+  },
+  itemContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 10
+  },
+  itemLabel: {
+    fontSize: 12,
+    width: '30%',
+    color: colors.textPrimary,
+    fontWeight: '700'
+  },
+  itemValue: {
+    fontSize: 12,
+    color: colors.colorCoreGray,
+    maxWidth: '70%',
+    textAlign: 'justify'
+  },
+  title: {
+    fontSize: 13.2,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  description: {
+    paddingTop: 10,
+    color: colors.colorCoreDarkGray,
+    fontSize: 12
+  },
+  price: {
+    fontSize: 14,
+    fontWeight: 'bold'
+  },
+  parking: {
+    fontSize: 14,
+    fontWeight: 'bold'
   },
   imageContainer: {
     flex: 1,
     marginRight: 18,
-    marginTop: 9,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   image: {
     width: 100,
     height: 100,
-    backgroundColor: 'red',
-    borderRadius: 10,
-  },
-  title: {
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  textContainer: {
-    margin: 20,
-    flex: 2,
-  },
-  price: {
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  description: {
-    color: 'gray',
-  },
-  parking: {
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
+    borderRadius: 10
+  }
 });
 
 export default CourtItem;
