@@ -10,6 +10,8 @@ const accent = '#FFC107';
 const grdMain = '#B43CF3';
 const grdPrimary = '#8741EA';
 
+const timeBlock = '#24e100';
+
 // Core colors
 const colorPrimary = '#673FBD';
 const colorPrimaryDark = '#5629B6';
@@ -131,5 +133,6 @@ export default {
   primary,
   accent,
   grdMain,
-  grdPrimary
+  grdPrimary,
+  timeBlock
 };

@@ -25,7 +25,9 @@ const ProfileScreen = () => {
   }, [navigation]);
 
   const [logout] = useMutation(gql(mutations.logout));
-  const { data, loading, error } = useQuery(gql(queries.currentUser));
+  const { data, loading, error } = useQuery(gql(queries.currentUser), {
+    fetchPolicy: 'network-only'
+  });
 
   if (loading) {
     return null;

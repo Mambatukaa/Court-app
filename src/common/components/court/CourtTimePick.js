@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, FlatList } from 'react-native';
+import dayjs from 'dayjs';
 import {
   View,
   Text,
@@ -9,15 +10,17 @@ import {
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
+import { colors } from '../../styles';
 
 const data = [
   {
-    /* 
-    date: 
+    /*
+    date:
     zaalID,
     time 24,
     status,
-    count */ name: 'Monday',
+    count */
+    name: 'Monday',
     list: [
       {
         time: '10:00'
@@ -87,56 +90,6 @@ const data = [
         leftPeople: 10
       }
     ]
-  },
-  {
-    name: 'Thursday',
-    list: [
-      {
-        time: '10:00',
-        leftPeople: 5
-      },
-      {
-        time: '12:00',
-        leftPeople: 4
-      },
-      {
-        time: '14:00',
-        leftPeople: 10
-      },
-      {
-        time: '18:00',
-        leftPeople: 1
-      },
-      {
-        time: '20:00',
-        leftPeople: 2
-      }
-    ]
-  },
-  {
-    name: 'Friday',
-    list: [
-      {
-        time: '10:00',
-        leftPeople: 5
-      },
-      {
-        time: '12:00',
-        leftPeople: 4
-      },
-      {
-        time: '14:00',
-        leftPeople: 10
-      },
-      {
-        time: '18:00',
-        leftPeople: 1
-      },
-      {
-        time: '20:00',
-        leftPeople: 2
-      }
-    ]
   }
 ];
 
@@ -144,6 +97,20 @@ const CourtTimePick = props => {
   const navigation = useNavigation();
 
   const { params } = props;
+
+  const { courtSchedule } = props.courtDetail;
+
+  const times = [];
+
+  courtSchedule.map(el => {
+    const startHour = dayjs(el.startTime).format('HH');
+
+    const endHour = dayjs(el.endTime).format('HH');
+
+    for (let i = startHour; i <= endHour; i++) {
+      times.push(i);
+    }
+  });
 
   const onViewBookDetail = item => {
     navigation.navigate('CourtBookDetail', {
@@ -153,13 +120,15 @@ const CourtTimePick = props => {
   };
 
   const renderRowItem = (item, index) => {
-    const bg = item.leftPeople == 10 ? '#d3d3d3' : '#24e100';
+    const bg = item.leftPeople === 10 ? colors.colorShadowGray : '#09e371';
+    const bc = item.leftPeople === 10 ? colors.colorCoreGray : colors.timeBlock;
+
     return (
       <TouchableOpacity
         onPress={() => onViewBookDetail(item)}
         activeOpacity={0.7}
         disabled={item.leftPeople === 10}
-        style={[styles.block, { backgroundColor: bg }]}
+        style={[styles.block, { backgroundColor: bg, borderColor: bc }]}
         key={index.toString()}
       >
         {item.leftPeople === 10 ? (
@@ -170,7 +139,7 @@ const CourtTimePick = props => {
         ) : (
           <View style={styles.timeContainer}>
             <Text style={[styles.time]}>{item.time}</Text>
-            <Text style={styles.people}>{item.leftPeople}</Text>
+            <Text style={styles.people}>{item.leftPeople || 0}</Text>
           </View>
         )}
       </TouchableOpacity>
@@ -192,12 +161,12 @@ const CourtTimePick = props => {
             {data.list.map((el, index) => renderRowItem(el, index))}
           </ScrollView>
         </View>
-        <View style={{ backgroundColor: 'gray', height: 1 }} />
+        <View style={{ backgroundColor: colors.grdMain, height: 1 }} />
       </View>
     );
   };
   return (
-    <View style={{ backgroundColor: '#fff', flex: 1 }}>
+    <View style={{ backgroundColor: colors.bgMain, flex: 1 }}>
       <View
         style={{
           flexDirection: 'row',
@@ -236,7 +205,7 @@ const CourtTimePick = props => {
 
 const styles = StyleSheet.create({
   weekChange: {
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderRadius: 5,
     marginTop: 5,
     width: 300,
@@ -257,12 +226,11 @@ const styles = StyleSheet.create({
   },
   block: {
     borderWidth: 1,
-    borderColor: '#c0c0c0',
     margin: 5,
     padding: 5,
-    borderRadius: 5,
-    width: 62,
-    height: 46
+    borderRadius: 4,
+    width: 65,
+    height: 48
   },
   timeContainer: {
     flex: 1,

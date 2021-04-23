@@ -13,6 +13,12 @@ const courtFields = `
         lat
         lng
       }
+
+    courtSchedule{
+        _id
+        startTime
+        endTime
+    }
 `;
 
 const queryParamsDef = `
