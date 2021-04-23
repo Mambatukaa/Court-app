@@ -18,9 +18,9 @@ const BookedCourt = props => {
                   {`${dayjs(schedule.day).format('YYYY-MM-DD')}нд`}
                 </Text>
                 <Text style={styles.timeContainer}>Цаг</Text>
-                <Text style={styles.time}>{`${dayjs(schedule.starTime).format(
-                  'HH:MM'
-                )} - ${dayjs(schedule.endTime).format('HH:MM')}`}</Text>
+                <Text style={styles.time}>{`${dayjs(schedule.startTime).format(
+                  'hh:mm'
+                )} - ${dayjs(schedule.endTime).format('hh:mm')}`}</Text>
                 <Text style={styles.orderContainer}>Захиалсан хүний тоо</Text>
                 <Text style={styles.order}>{schedule.bookedPeople}</Text>
 
