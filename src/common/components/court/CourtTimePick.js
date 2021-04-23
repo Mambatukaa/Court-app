@@ -43,10 +43,9 @@ import { colors } from '../../styles';
 
 const CourtTimePick = props => {
   const navigation = useNavigation();
-
   const { params } = props;
 
-  const { courtSchedule = [] } = props.courtDetail;
+  const { courtSchedule = [] } = props?.courtDetail;
 
   const days = [];
 
@@ -95,6 +94,7 @@ const CourtTimePick = props => {
             <Text style={[styles.time]}>
               {dayjs(item.startTime).format('hh:mm')}
             </Text>
+            <Text style={[styles.price]}>{`${item?.price}₮`}</Text>
             <Text style={styles.people}>{item?.bookedPeople || 0}</Text>
           </View>
         )}
@@ -205,8 +205,8 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
     borderRadius: 4,
-    width: 65,
-    height: 48
+    width: 68,
+    height: 53
   },
   timeContainer: {
     flex: 1,
@@ -219,7 +219,11 @@ const styles = StyleSheet.create({
     fontSize: 13
   },
   people: {
-    fontSize: 13
+    fontSize: 12
+  },
+  price: {
+    paddingBottom: 3,
+    fontSize: 12
   },
   booked: {
     fontSize: 12,

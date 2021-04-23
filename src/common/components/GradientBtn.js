@@ -16,7 +16,7 @@ const GradientBtn = ({ onPress, textStyle, linearGradientStyle, text }) => {
           colors={defaultGradient}
           style={[styles.linearGradient, linearGradientStyle]}
         >
-          <View>
+          <View style={{ alignSelf: 'center' }}>
             <Text style={[styles.defaultText, textStyle]}>{text}</Text>
           </View>
         </LinearGradient>
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
   linearGradient: {
     paddingVertical: 12,
     paddingHorizontal: 24,
-    borderRadius: 21
+    borderRadius: 21,
+    justifyContent: 'center'
   }
 });
 

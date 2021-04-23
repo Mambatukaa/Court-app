@@ -19,7 +19,7 @@ const CourtBookingScreen = props => {
     return <ActivityIndicator size='small' color='#B43CF3' />;
   }
 
-  const courtDetail = data.courtDetail || {};
+  const courtDetail = data?.courtDetail || {};
 
   return (
     <View style={{ flex: 1 }}>

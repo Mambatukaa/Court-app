@@ -19,6 +19,7 @@ const courtFields = `
         startTime
         endTime
         bookedPeople
+        price
     }
 `;
 
