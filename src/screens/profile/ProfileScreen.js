@@ -3,7 +3,7 @@ import { View, StyleSheet, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Avatar } from 'react-native-elements';
 
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery, useMutation } from '@apollo/client';
 
 import { AuthContext } from '../../common/utils/AuthContext';
 
@@ -11,7 +11,7 @@ import TextView from '../../common/components/TextView';
 import GradientBtn from '../../common/components/GradientBtn';
 
 import colors from '../../common/styles/colors';
-import { queries } from './graphql';
+import { queries, mutations } from './graphql';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -24,7 +24,18 @@ const ProfileScreen = () => {
     });
   }, [navigation]);
 
+  const [logout] = useMutation(gql(mutations.logout));
   const { data, loading, error } = useQuery(gql(queries.currentUser));
+
+  if (loading) {
+    return null;
+  }
+
+  const currentUser = data.currentUser || {};
+
+  const nameCapitalized =
+    currentUser.username.charAt(0).toUpperCase() +
+    currentUser.username.slice(1);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -38,10 +49,20 @@ const ProfileScreen = () => {
         }}
       />
 
-      <TextView text={'Bat-Amgalan Nasan-Ochir'} xlarge style={styles.title} />
+      <TextView text={nameCapitalized} xlarge style={styles.title} />
       <View style={styles.itemContainer}>
         <TextView style={styles.itemLabel} text={'User name:'} />
-        <TextView style={styles.itemValue} text={'Mambatukaa'} />
+        <TextView style={styles.itemValue} text={currentUser.username} />
+      </View>
+
+      <View style={styles.itemContainer}>
+        <TextView style={styles.itemLabel} text={'Role:'} />
+        <TextView style={styles.itemValue} text={currentUser.role} />
+      </View>
+
+      <View style={styles.itemContainer}>
+        <TextView style={styles.itemLabel} text={'Email:'} />
+        <TextView style={styles.itemValue} text={currentUser.email} />
       </View>
       <View style={styles.itemContainer}>
         <TextView style={styles.itemLabel} text={'Location:'} />
@@ -51,12 +72,10 @@ const ProfileScreen = () => {
         <TextView style={styles.itemLabel} text={'Position:'} />
         <TextView style={styles.itemValue} text={'Software engineering'} />
       </View>
+
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Description:'} />
-        <TextView
-          style={styles.itemValue}
-          text={`Software engineering at NUM`}
-        />
+        <TextView style={styles.itemLabel} text={'Sport:'} />
+        <TextView style={styles.itemValue} text={`Basketball`} />
       </View>
       <View style={styles.bottomContainer}>
         <GradientBtn
@@ -64,6 +83,11 @@ const ProfileScreen = () => {
           textStyle={{ fontSize: 15 }}
           text='Гарах'
           onPress={() => {
+            logout()
+              .then(data => console.log(data))
+              .catch(e => {
+                console.log(e);
+              });
             signOut();
           }}
           text='Гарах'

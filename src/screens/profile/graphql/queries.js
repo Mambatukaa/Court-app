@@ -1,6 +1,11 @@
 const currentUser = `
     query currentUser{
-        currentUser
+        currentUser{
+            _id
+            username
+            email
+            role
+        }
     }
 `;
 
