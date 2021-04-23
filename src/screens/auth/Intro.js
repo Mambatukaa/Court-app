@@ -48,7 +48,7 @@ const Intro = props => {
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
-            paddingBottom: 40
+            paddingBottom: 25
           }}
         >
           <GradientBtn

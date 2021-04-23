@@ -35,7 +35,7 @@ const CourtDetailScreen = props => {
     return null;
   }
 
-  const { courtDetail } = data;
+  const { courtDetail = {} } = data;
 
   return (
     <View>
