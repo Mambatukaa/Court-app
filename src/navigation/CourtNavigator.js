@@ -236,6 +236,7 @@ const rootNavigator = () => {
               name='Map'
               component={MapScreen}
               options={{
+                headerTitle: 'Газрын зураг',
                 headerBackTitle: ' ',
                 headerStyle: {
                   backgroundColor: Colors.primary

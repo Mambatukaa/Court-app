@@ -132,7 +132,7 @@ const CourtsOverviewScreen = () => {
             justifyContent: 'center'
           }}
         >
-          <Text>Sorry court not found</Text>
+          <Text>Уучлаарай заал олдсонгүй.</Text>
         </View>
       )}
     </View>
