@@ -17,11 +17,11 @@ const CourtDetail = props => {
     <View>
       <View style={styles.itemContainer}>
         <Text style={styles.itemLabel}>Шал</Text>
-        <Text style={styles.itemValue}>Олон улсын стандарт мод</Text>
+        <Text style={styles.itemValue}>{props.courtDetail}</Text>
       </View>
       <View style={styles.itemContainer}>
-        <Text style={styles.itemLabel}>Үнэ</Text>
-        <Text style={styles.itemValue}>{props.price}₮</Text>
+        <Text style={styles.itemLabel}>Багтаамж</Text>
+        <Text style={styles.itemValue}>{props.slotSize}</Text>
       </View>
       <View style={styles.itemContainer}>
         <Text style={styles.itemLabel}>Тайлбар</Text>

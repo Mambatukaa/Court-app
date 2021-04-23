@@ -58,10 +58,11 @@ const CourtDetailScreen = props => {
           <CourtDetail
             title={courtDetail.name}
             // shortName={courtDetail.shortName}
-            price={courtDetail.price}
+            slotSize={courtDetail.slotSize}
             warning={courtDetail.warning}
             description={courtDetail.description}
             location={courtDetail.location}
+            courtDetail={courtDetail.courtDetail}
           />
         </View>
       </ScrollView>

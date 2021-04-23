@@ -5,6 +5,7 @@ const courtFields = `
     description
     warning
     parking
+    slotSize
     courtDetail
     image 
     location {
