@@ -5,6 +5,8 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { NavigationContainer } from '@react-navigation/native';
 
 import { AntDesign, FontAwesome5, Feather } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Colors from '../common/styles/colors';
 
 import CourtsOverviewScreen, {
@@ -28,7 +30,7 @@ import CourtBookDetail, {
 
 import { SignIn, SignUp, Intro } from '../screens/auth';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import PaymentScreen from '../screens/payment/PaymentScreen';
 
 import { AuthContext } from '../common/utils/AuthContext';
 
@@ -82,6 +84,11 @@ const CourtsNavigator = () => {
         name='CourtBookDetail'
         component={CourtBookDetail}
         options={CourtBookDetailOption}
+      />
+      <CourtsStackNavigator.Screen
+        name='Payment'
+        component={PaymentScreen}
+        options={{ headerBackTitle: ' ', headerTitle: 'Төлбөр төлөх' }}
       />
     </CourtsStackNavigator.Navigator>
   );

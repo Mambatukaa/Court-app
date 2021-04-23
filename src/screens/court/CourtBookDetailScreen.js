@@ -7,11 +7,12 @@ import {
   ActivityIndicator,
   TextInput,
   KeyboardAvoidingView,
-  Platform,
-  SafeAreaView
+  Platform
 } from 'react-native';
 
 import dayjs from 'dayjs';
+
+import { useNavigation } from '@react-navigation/native';
 
 import { gql, useQuery } from '@apollo/client';
 import queries from './graphql/queries';
@@ -24,6 +25,7 @@ const CourtBookDetail = props => {
 
   const [discount, setDiscount] = useState(item?.price);
   const [change, onChange] = useState(null);
+  const navigation = useNavigation();
 
   const { data, loading, error } = useQuery(gql(queries.courtDetail), {
     variables: {
@@ -192,6 +194,12 @@ const CourtBookDetail = props => {
       <Text></Text>
       <View style={{ alignItems: 'center', marginVertical: 20 }}>
         <GradientBtn
+          onPress={() =>
+            navigation.navigate('Payment', {
+              scheduleId: item._id,
+              courtId
+            })
+          }
           text='Төлбөр төлөх'
           linearGradientStyle={{ borderRadius: 5, width: 250 }}
           textStyle={{ fontSize: 15 }}
