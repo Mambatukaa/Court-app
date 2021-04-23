@@ -20,7 +20,7 @@ const ProfileScreen = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'My Profile'
+      title: 'Профайл'
     });
   }, [navigation]);
 
@@ -53,17 +53,17 @@ const ProfileScreen = () => {
 
       <TextView text={nameCapitalized} xlarge style={styles.title} />
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Username:'} />
+        <TextView style={styles.itemLabel} text={'Нэвтрэх нэр:'} />
         <TextView style={styles.itemValue} text={currentUser.username} />
       </View>
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Email:'} />
+        <TextView style={styles.itemLabel} text={'Имэйл:'} />
         <TextView style={styles.itemValue} text={currentUser.email} />
       </View>
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Role:'} />
+        <TextView style={styles.itemLabel} text={'Үүрэг:'} />
         <TextView style={styles.itemValue} text={currentUser.role} />
       </View>
 
@@ -73,13 +73,16 @@ const ProfileScreen = () => {
       </View> */}
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Sport:'} />
-        <TextView style={styles.itemValue} text={`Basketball`} />
+        <TextView style={styles.itemLabel} text={'Спорт:'} />
+        <TextView style={styles.itemValue} text={`Сагсан бөмбөг`} />
       </View>
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Location:'} />
-        <TextView style={styles.itemValue} text={'Ulaanbaatar Mongolia'} />
+        <TextView style={styles.itemLabel} text={'Байршил:'} />
+        <TextView
+          style={styles.itemValue}
+          text={'Улаанбаатар хот, Монгол улс'}
+        />
       </View>
 
       <View style={styles.bottomContainer}>

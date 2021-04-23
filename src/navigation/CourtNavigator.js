@@ -97,7 +97,7 @@ const ProfileNavigator = () => {
 const BookingNavigator = () => {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <CourtsStackNavigator.Screen name='Booking' component={BookedScreen} />
+      <CourtsStackNavigator.Screen name='Захиалгууд' component={BookedScreen} />
     </CourtsStackNavigator.Navigator>
   );
 };
@@ -107,10 +107,10 @@ const MyTabs = () => {
     <Tab.Navigator
       activeColor={'white'}
       barStyle={{ backgroundColor: colors.primary }}
-      initialRouteName='Courts'
+      initialRouteName='Заалууд'
     >
       <Tab.Screen
-        name='Booking'
+        name='Захиалгууд'
         component={BookingNavigator}
         options={{
           tabBarIcon: props => {
@@ -128,7 +128,7 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen
-        name='Courts'
+        name='Заалууд'
         component={CourtsNavigator}
         options={{
           tabBarIcon: props => {
@@ -143,7 +143,7 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen
-        name='Profile'
+        name='Профайл'
         component={ProfileNavigator}
         options={{
           tabBarIcon: props => {

@@ -75,7 +75,7 @@ const CourtsOverviewScreen = () => {
           </TouchableOpacity>
         </View>
       ),
-      title: 'Courts'
+      title: 'Заалууд'
     });
   }, [navigation]);
 
@@ -90,7 +90,7 @@ const CourtsOverviewScreen = () => {
       {showSearch && (
         <Searchbar
           style={{ borderWidth: 0.15 }}
-          placeholder='Search'
+          placeholder='Хайх'
           onChangeText={onChangeSearch}
           value={searchQuery}
           onSubmitEditing={done}
