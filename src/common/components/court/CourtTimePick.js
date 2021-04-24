@@ -147,7 +147,8 @@ const CourtTimePick = props => {
                   style={{
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    width: 58
                   }}
                 >
                   <Text style={styles.date}>
