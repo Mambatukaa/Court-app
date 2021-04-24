@@ -104,7 +104,7 @@ const ProfileNavigator = () => {
 const BookingNavigator = () => {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <CourtsStackNavigator.Screen name='Захиалгууд' component={BookedScreen} />
+      <CourtsStackNavigator.Screen name='Booked' component={BookedScreen} />
     </CourtsStackNavigator.Navigator>
   );
 };
@@ -126,7 +126,7 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen
-        name='Venus'
+        name='Дуртай'
         component={CourtsNavigator}
         options={{
           tabBarIcon: props => {

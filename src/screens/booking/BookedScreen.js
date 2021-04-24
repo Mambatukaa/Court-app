@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { View, ScrollView } from 'react-native';
 import { gql, useQuery } from '@apollo/client';
+import { useNavigation } from '@react-navigation/native';
 import BookedCourt from '../../common/components/booking/BookedCourt';
 import { colors } from '../../common/styles';
 import { queries } from './graphql';
 
 const BookedScreen = props => {
+  const navigation = useNavigation();
+
   const { data, loading, error } = useQuery(gql(queries.currentUser), {
     fetchPolicy: 'network-only'
   });
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Захиалгууд'
+    });
+  }, [navigation]);
 
   const id = data?.currentUser._id || '';
 
