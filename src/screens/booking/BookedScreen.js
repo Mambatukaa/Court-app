@@ -52,7 +52,12 @@ const BookedScreen = props => {
   const allSchedules = scheduleData?.allSchedules || [];
 
   return (
-    <ScrollView style={{ paddingTop: 20, backgroundColor: colors.bgMain }}>
+    <ScrollView
+      style={{
+        paddingTop: 20,
+        backgroundColor: colors.bgMain
+      }}
+    >
       <BookedCourt allSchedules={allSchedules} />
     </ScrollView>
   );

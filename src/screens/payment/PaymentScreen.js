@@ -16,13 +16,9 @@ const Payment = props => {
   const navigation = useNavigation();
 
   const { data, loading, error } = useQuery(gql(queries.currentUser));
-
-  if (loading) {
-    return null;
-  }
   const [booking] = useMutation(gql(mutations.bookingAdd));
-
   const { courtId, scheduleId } = props.route.params;
+  const userId = data?.currentUser?._id;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -30,21 +26,25 @@ const Payment = props => {
         <View style={{ flexDirection: 'row' }}>
           <TouchableOpacity
             onPress={() => {
-              booking({
-                variables: {
-                  courtId,
-                  userId: data?.currentUser?._id,
-                  scheduleId
-                },
-                refetchQueries: ['bookingDetails', 'allSchedules']
-              })
-                .then(() => {
-                  console.log('amjilttai');
-                  navigation.navigate('Захиалгууд');
-                })
-                .catch(e => {
-                  console.log(e);
-                });
+              {
+                userId
+                  ? booking({
+                      variables: {
+                        courtId,
+                        userId,
+                        scheduleId
+                      },
+                      refetchQueries: ['bookingDetails', 'allSchedules']
+                    })
+                      .then(() => {
+                        console.log('amjilttai');
+                        navigation.navigate('Захиалгууд');
+                      })
+                      .catch(e => {
+                        console.log(e);
+                      })
+                  : null;
+              }
             }}
           >
             <MaterialIcons
@@ -56,7 +56,11 @@ const Payment = props => {
         </View>
       )
     });
-  }, [navigation]);
+  }, [navigation, userId]);
+
+  if (loading) {
+    return null;
+  }
 
   const onChange = formData => {
     /* eslint no-console: 0 */
