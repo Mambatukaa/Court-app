@@ -143,9 +143,18 @@ const CourtTimePick = props => {
                   paddingTop: 20
                 }}
               >
-                <Text style={styles.date}>
-                  {dayTranslator(dayjs(el).format('ddd\n D'))}
-                </Text>
+                <View
+                  style={{
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <Text style={styles.date}>
+                    {dayTranslator(dayjs(el).format('ddd'))}
+                  </Text>
+                  <Text style={styles.date}>{dayjs(el).format('D')}</Text>
+                </View>
                 <ScrollView
                   showsHorizontalScrollIndicator={false}
                   horizontal={true}
