@@ -5,10 +5,10 @@ import {
   Text,
   Image,
   ActivityIndicator,
-  TextInput,
-  KeyboardAvoidingView,
-  Platform
+  TextInput
 } from 'react-native';
+
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
 import dayjs from 'dayjs';
 
@@ -210,15 +210,12 @@ const CourtBookDetail = props => {
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: colors.bgMain }}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        enabled={true}
-      >
+      <KeyboardAwareScrollView>
         {renderTop()}
         {renderMid()}
         {renderBottom()}
         {renderBottomButton()}
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     </ScrollView>
   );
 };
