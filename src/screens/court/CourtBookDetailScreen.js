@@ -97,9 +97,9 @@ const CourtBookDetail = props => {
         <View style={styles.itemContainer}>
           <Text style={styles.itemLabel}>Цаг:</Text>
           <Text style={styles.itemValue}>
-            {`${dayjs(item.startTime).format('hh:mm')} - ${dayjs(
+            {`${dayjs(item.startTime).format('HH:mm')} - ${dayjs(
               item.endTime
-            ).format('hh:mm')}`}
+            ).format('HH:mm')}`}
           </Text>
         </View>
 

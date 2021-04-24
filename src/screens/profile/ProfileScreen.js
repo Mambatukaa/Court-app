@@ -97,7 +97,7 @@ const ProfileScreen = () => {
           text='Гарах'
           onPress={() => {
             logout()
-              .then(data => console.log(data))
+              .then()
               .catch(e => {
                 console.log(e);
               });

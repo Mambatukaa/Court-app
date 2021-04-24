@@ -10,20 +10,19 @@ import {
 
 import { mutations, queries } from './graphql';
 
+const USE_LITE_CREDIT_CARD_INPUT = false;
+
 const Payment = props => {
   const navigation = useNavigation();
 
   const { data, loading, error } = useQuery(gql(queries.currentUser));
 
-  const currentUser = data?.currentUser;
-
-  const userId = currentUser._id;
-
-  const { courtId, scheduleId } = props.route.params;
-
+  if (loading) {
+    return null;
+  }
   const [booking] = useMutation(gql(mutations.bookingAdd));
 
-  const USE_LITE_CREDIT_CARD_INPUT = false;
+  const { courtId, scheduleId } = props.route.params;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -34,14 +33,14 @@ const Payment = props => {
               booking({
                 variables: {
                   courtId,
-                  userId,
+                  userId: data?.currentUser?._id,
                   scheduleId
                 },
                 refetchQueries: ['bookingDetails', 'allSchedules']
               })
                 .then(() => {
                   console.log('amjilttai');
-                  navigation.navigate('Заалууд');
+                  navigation.navigate('Захиалгууд');
                 })
                 .catch(e => {
                   console.log(e);

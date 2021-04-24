@@ -104,7 +104,10 @@ const ProfileNavigator = () => {
 const BookingNavigator = () => {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <CourtsStackNavigator.Screen name='Booked' component={BookedScreen} />
+      <CourtsStackNavigator.Screen
+        name='BookedScreen'
+        component={BookedScreen}
+      />
     </CourtsStackNavigator.Navigator>
   );
 };

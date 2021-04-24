@@ -69,22 +69,22 @@ const CourtTimePick = props => {
   };
 
   const renderRowItem = item => {
-    const bg = item?.bookedPeople === 10 ? colors.colorShadowGray : '#09e371';
+    const bg = item?.bookedPeople >= 15 ? colors.colorShadowGray : '#09e371';
     const bc =
-      item?.bookedPeople === 10 ? colors.colorCoreGray : colors.timeBlock;
+      item?.bookedPeople >= 15 ? colors.colorCoreGray : colors.timeBlock;
 
     return (
       <TouchableOpacity
         onPress={() => onViewBookDetail(item)}
         activeOpacity={0.7}
-        disabled={item?.bookedPeople === 10}
+        disabled={item?.bookedPeople >= 15}
         style={[styles.block, { backgroundColor: bg, borderColor: bc }]}
       >
-        {item?.bookedPeople === 10 ? (
+        {item?.bookedPeople >= 15 ? (
           <>
             <View style={styles.timeContainer}>
               <Text style={[styles.time]}>
-                {dayjs(item.startTime).format('hh:mm')}
+                {dayjs(item.startTime).format('HH:mm')}
               </Text>
               <Text style={[styles.booked]}>{'Дүүрсэн'}</Text>
             </View>
@@ -92,7 +92,7 @@ const CourtTimePick = props => {
         ) : (
           <View style={styles.timeContainer}>
             <Text style={[styles.time]}>
-              {dayjs(item.startTime).format('hh:mm')}
+              {dayjs(item.startTime).format('HH:mm')}
             </Text>
             <Text style={[styles.price]}>{`${item?.price}₮`}</Text>
             <Text style={styles.people}>{item?.bookedPeople || 0}</Text>
