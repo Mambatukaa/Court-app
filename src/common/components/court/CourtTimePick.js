@@ -102,6 +102,34 @@ const CourtTimePick = props => {
     );
   };
 
+  const dayTranslator = value => {
+    /* switch (value) {
+      case value.includes('Fri'):
+        value.replace('Fri', 'Баа');
+        return;
+
+      case value.includes('Thu'):
+        value.replace('Thu', 'Пү');
+        return;
+    } */
+
+    if (value.includes('Fri')) {
+      return value.replace('Fri', 'Ба');
+    } else if (value.includes('Thu')) {
+      return value.replace('Thu', 'Пү');
+    } else if (value.includes('Wed')) {
+      return value.replace('Wed', 'Лха');
+    } else if (value.includes('Tue')) {
+      return value.replace('Tue', 'Мяг');
+    } else if (value.includes('Mon')) {
+      return value.replace('Mon', 'Дав');
+    } else if (value.includes('Sat')) {
+      return value.replace('Sat', 'Бям');
+    } else {
+      return value.replace('Sun', 'Ням');
+    }
+  };
+
   const renderRow = (item, courtSchedule) => {
     return (
       <View>
@@ -115,7 +143,9 @@ const CourtTimePick = props => {
                   paddingTop: 20
                 }}
               >
-                <Text style={styles.date}>{dayjs(el).format('ddd\n D')}</Text>
+                <Text style={styles.date}>
+                  {dayTranslator(dayjs(el).format('ddd\n D'))}
+                </Text>
                 <ScrollView
                   showsHorizontalScrollIndicator={false}
                   horizontal={true}
