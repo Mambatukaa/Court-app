@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,8 +10,10 @@ import {
   TouchableOpacity,
   ActivityIndicator
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { TabView, TabBar } from 'react-native-tab-view';
+import { Entypo, FontAwesome } from '@expo/vector-icons';
 
 import Colors from '../../common/styles/colors';
 import CourtBookingScreen from './CourtBookingScreen';
@@ -25,12 +27,42 @@ import colors from '../../common/styles/colors';
 
 const CourtDetailScreen = props => {
   const { courtId } = props.route.params;
+  const navigation = useNavigation();
+  const [like, setLike] = useState(true);
 
   const { data, loading, error } = useQuery(gql(queries.courtDetail), {
     variables: {
       _id: courtId
     }
   });
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity
+            onPress={() => {
+              setLike(v => !v);
+            }}
+          >
+            {like ? (
+              <FontAwesome
+                name='star-o'
+                size={23}
+                style={{ color: 'white', marginRight: 15, marginTop: 4 }}
+              />
+            ) : (
+              <FontAwesome
+                name='star'
+                size={23}
+                style={{ color: 'white', marginRight: 15, marginTop: 4 }}
+              />
+            )}
+          </TouchableOpacity>
+        </View>
+      )
+    });
+  }, [navigation, like]);
 
   if (loading) {
     return <ActivityIndicator size='small' color='#B43CF3' />;
