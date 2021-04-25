@@ -35,7 +35,7 @@ const Intro = props => {
           >
             Mamba Court
           </Text>
-          <Text>
+          <Text style={{ textAlign: 'center' }}>
             <Text style={styles.text}>{'Heroes come and go, But \n'}</Text>
             <Text style={[{ color: '#fdba21' }, styles.text]}>
               {'legends '}
