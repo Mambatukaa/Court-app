@@ -202,7 +202,7 @@ const CourtTimePick = props => {
             textAlign: 'center'
           }}
         >
-          Дөрөвдүгээр сар 4-10
+          4-р сар 26 -- 5-р сар 02
         </Text>
       </View>
 
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   date: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '600',
     marginLeft: 12,
     textAlign: 'center',

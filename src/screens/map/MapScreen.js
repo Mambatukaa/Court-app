@@ -28,7 +28,7 @@ const MapScreen = props => {
     longitudeDelta: 0.0121
   };
   return (
-    <MapView provider='google' style={styles.map} region={mapRegion}>
+    <MapView provider='google' style={styles.map} initialRegion={mapRegion}>
       {allCourts.map((court, index) => {
         return (
           <Marker

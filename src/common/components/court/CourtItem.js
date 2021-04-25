@@ -13,12 +13,12 @@ const CourtItem = props => {
             <Text style={styles.description}>{props.description}</Text>
 
             <View style={styles.itemContainer}>
-              <TextView style={styles.itemLabel} text={'Зогсоол:'} />
+              <TextView style={styles.itemLabel} text={'Зогсоол'} />
               <TextView style={styles.itemValue} text={props.parking} />
             </View>
 
             <View style={styles.itemContainer}>
-              <TextView style={styles.itemLabel} text={'Нийт:'} />
+              <TextView style={styles.itemLabel} text={'Нийт'} />
               <TextView
                 style={styles.itemValue}
                 text={`${props.slotSize} хүн`}
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     textAlign: 'justify'
   },
   title: {
-    fontSize: 13.2,
+    fontSize: 12.5,
     fontWeight: 'bold',
     textAlign: 'center'
   },
