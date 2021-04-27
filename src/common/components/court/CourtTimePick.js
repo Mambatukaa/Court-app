@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   date: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: 'bold',
     marginLeft: 12,
     textAlign: 'center',
@@ -238,8 +238,8 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
     borderRadius: 4,
-    width: 68,
-    height: Platform.OS === 'ios' ? 53 : 60
+    width: 70,
+    height: 55
   },
   timeContainer: {
     flex: 1,
@@ -249,10 +249,10 @@ const styles = StyleSheet.create({
   },
   time: {
     paddingBottom: 3,
-    fontSize: 13
+    fontSize: 12
   },
   people: {
-    fontSize: 12
+    fontSize: 11
   },
   price: {
     paddingBottom: 3,
