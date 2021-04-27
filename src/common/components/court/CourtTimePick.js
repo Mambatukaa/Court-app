@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FlatList } from 'react-native';
+import { Button, FlatList, Platform } from 'react-native';
 import dayjs from 'dayjs';
 import {
   View,
@@ -143,14 +143,7 @@ const CourtTimePick = props => {
                   paddingTop: 20
                 }}
               >
-                <View
-                  style={{
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 58
-                  }}
-                >
+                <View style={styles.dayContainer}>
                   <Text style={styles.date}>
                     {dayTranslator(dayjs(el).format('ddd'))}
                   </Text>
@@ -202,7 +195,7 @@ const CourtTimePick = props => {
             textAlign: 'center'
           }}
         >
-          4-р сар 26 -- 5-р сар 02
+          4-р сар 26 - 5-р сар 02
         </Text>
       </View>
 
@@ -234,7 +227,7 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 17,
-    fontWeight: '600',
+    fontWeight: 'bold',
     marginLeft: 12,
     textAlign: 'center',
     marginRight: 10,
@@ -246,7 +239,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 4,
     width: 68,
-    height: 53
+    height: Platform.OS === 'ios' ? 53 : 60
   },
   timeContainer: {
     flex: 1,
@@ -269,6 +262,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '400',
     color: 'gray'
+  },
+  dayContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 58
   }
 });
 

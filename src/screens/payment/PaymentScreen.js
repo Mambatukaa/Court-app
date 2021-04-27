@@ -11,6 +11,7 @@ import {
 import { mutations, queries } from './graphql';
 
 const USE_LITE_CREDIT_CARD_INPUT = false;
+console.disableYellowBox = true;
 
 const Payment = props => {
   const navigation = useNavigation();
@@ -63,12 +64,10 @@ const Payment = props => {
   }
 
   const onChange = formData => {
-    /* eslint no-console: 0 */
     console.log(JSON.stringify(formData, null, ' '));
   };
 
   const onFocus = field => {
-    /* eslint no-console: 0 */
     console.log(field);
   };
 

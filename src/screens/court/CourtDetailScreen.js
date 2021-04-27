@@ -8,7 +8,8 @@ import {
   Dimensions,
   StatusBar,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -156,7 +157,7 @@ export const screenOptions = navData => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight
+    marginTop: Platform.OS === 'ios' ? StatusBar.currentHeight : 0
   },
   scene: {
     flex: 1

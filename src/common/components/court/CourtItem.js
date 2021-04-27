@@ -1,11 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Platform
+} from 'react-native';
 import { colors } from '../../styles';
 import { TextView } from '../../components';
 
 const CourtItem = props => {
   return (
-    <TouchableOpacity onPress={props.onViewDetail}>
+    <TouchableOpacity
+      activeOpacity={Platform.OS === 'ios' ? 0.4 : 0.9}
+      onPress={props.onViewDetail}
+    >
       <View style={styles.court}>
         <View style={styles.main}>
           <View style={styles.textContainer}>
@@ -41,16 +51,16 @@ const CourtItem = props => {
 const styles = StyleSheet.create({
   court: {
     shadowColor: 'black',
-    shadowOpacity: 0.26,
+    shadowOpacity: 0.3,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10,
-    elevation: 5,
+    elevation: 15,
     borderRadius: 10,
     backgroundColor: colors.bgLight,
     marginLeft: 25,
     marginRight: 25,
     marginTop: 14,
-    height: 130,
+    height: Platform.OS === 'ios' ? 130 : 140,
     justifyContent: 'center'
   },
   main: {

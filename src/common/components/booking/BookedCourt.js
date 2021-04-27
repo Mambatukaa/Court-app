@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, Platform } from 'react-native';
 import dayjs from 'dayjs';
 
 const BookedCourt = props => {
@@ -62,13 +62,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.26,
     shadowOffset: { width: 2, height: 2 },
     shadowRadius: 10,
-    elevation: 5,
+    elevation: 12,
     borderRadius: 10,
     backgroundColor: '#f6f6f6',
     marginLeft: 25,
     marginRight: 25,
-    marginTop: 14,
-    height: 200
+    marginTop: Platform.OS === 'ios' ? 14 : 4,
+    marginBottom: Platform.OS === 'android' ? 20 : 0,
+    height: Platform.OS === 'ios' ? 200 : 210
   },
 
   main: {
