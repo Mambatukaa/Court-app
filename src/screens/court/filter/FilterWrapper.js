@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-import { SafeAreaView, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  Text
+} from 'react-native';
 import Modal from 'react-native-modal';
+import { PriceFilter, DateFilter } from '../filter';
 
 const width = Dimensions.get('window').width;
 
@@ -40,6 +47,7 @@ const FilterWrapper = ({
     >
       <SafeAreaView style={styles.container}>
         <ScrollView>
+          <PriceFilter />
           {/* <BrandFilter type={type} brand={brand} setBrand={setBrand} />
           <TagFilter type={type} tag={tag} setTag={setTag} />
           <SegmentFilter
@@ -47,6 +55,7 @@ const FilterWrapper = ({
             segment={segment}
             setSegment={setSegment}
           /> */}
+          <DateFilter />
         </ScrollView>
       </SafeAreaView>
     </Modal>
@@ -58,7 +67,7 @@ export default FilterWrapper;
 const styles = StyleSheet.create({
   modal: {
     margin: 0,
-    width: width * 0.75
+    width: width * 0.65
   },
   container: {
     borderTopLeftRadius: 15,
