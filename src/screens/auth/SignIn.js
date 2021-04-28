@@ -112,7 +112,8 @@ const SignInScreen = props => {
       variables: {
         input: userName,
         password
-      }
+      },
+      refetchQueries: ['currentUser']
     })
       .then(el => {
         const { data } = el;

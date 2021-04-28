@@ -30,7 +30,7 @@ const fetchFonts = () => {
 };
 
 const httpLink = new HttpLink({
-  uri: 'http://192.168.1.8:3100/graphql',
+  uri: 'http://hurteemj.nmma.co/batukapi/graphql',
   credentials: 'include'
 });
 
