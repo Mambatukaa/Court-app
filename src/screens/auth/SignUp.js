@@ -162,9 +162,11 @@ const SignInScreen = props => {
         navigation.navigate('SignIn');
       })
       .catch(e => {
-        Alert.alert('Буруу утга!', 'Бүртгэлтэй имэйл.', [
-          { text: 'Ахин бүртгүүлэх' }
-        ]);
+        Alert.alert(
+          'Буруу утга!',
+          'Нэвтрэх нэр эсвэл имэйл бүртгэлтэй байна.',
+          [{ text: 'Ахин бүртгүүлэх' }]
+        );
         return;
       });
   };
