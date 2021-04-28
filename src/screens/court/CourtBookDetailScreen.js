@@ -34,7 +34,13 @@ const CourtBookDetail = props => {
   });
 
   if (loading) {
-    return <ActivityIndicator size='small' color='#B43CF3' />;
+    return (
+      <ActivityIndicator
+        size='small'
+        color='#B43CF3'
+        style={{ justifyContent: 'center', flex: 1 }}
+      />
+    );
   }
 
   const { courtDetail } = data;
