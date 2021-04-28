@@ -7,51 +7,71 @@ const BookedCourt = props => {
 
   return (
     <View>
-      {allSchedules.map((schedule, index) => {
-        return (
-          <View key={index} style={styles.court}>
-            <View style={styles.main}>
-              <View style={styles.textContainer}>
-                <Text style={styles.title}>{schedule.scheduledCourt.name}</Text>
-                <Text style={styles.dateContainer}>Өдөр</Text>
-                <Text style={styles.date}>
-                  {`${dayjs(schedule.day).format('YYYY-MM-DD')}нд`}
-                </Text>
-                <Text style={styles.timeContainer}>Цаг</Text>
-                <Text style={styles.time}>{`${dayjs(schedule.startTime).format(
-                  'HH:mm'
-                )} - ${dayjs(schedule.endTime).format('HH:mm')}`}</Text>
-                <Text style={styles.orderContainer}>Захиалсан хүний тоо</Text>
-                <Text style={styles.order}>{schedule.bookedPeople}</Text>
+      {allSchedules.length !== 0 ? (
+        <View>
+          {allSchedules.map((schedule, index) => {
+            return (
+              <View key={index} style={styles.court}>
+                <View style={styles.main}>
+                  <View style={styles.textContainer}>
+                    <Text style={styles.title}>
+                      {schedule.scheduledCourt.name}
+                    </Text>
+                    <Text style={styles.dateContainer}>Өдөр</Text>
+                    <Text style={styles.date}>
+                      {`${dayjs(schedule.day).format('YYYY-MM-DD')}нд`}
+                    </Text>
+                    <Text style={styles.timeContainer}>Цаг</Text>
+                    <Text style={styles.time}>{`${dayjs(
+                      schedule.startTime
+                    ).format('HH:mm')} - ${dayjs(schedule.endTime).format(
+                      'HH:mm'
+                    )}`}</Text>
+                    <Text style={styles.orderContainer}>
+                      Захиалсан хүний тоо
+                    </Text>
+                    <Text style={styles.order}>{schedule.bookedPeople}</Text>
 
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between'
-                  }}
-                ></View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                      }}
+                    ></View>
+                  </View>
+                  <View style={styles.imageContainer}>
+                    <Image
+                      style={styles.image}
+                      source={{ uri: schedule?.scheduledCourt.image }}
+                      resizeMode='cover'
+                    />
+                    <Text
+                      style={{
+                        color: '#3ace3a',
+                        fontWeight: 'bold',
+                        paddingTop: 35,
+                        paddingLeft: 30
+                      }}
+                    >
+                      Confirmed
+                    </Text>
+                  </View>
+                </View>
               </View>
-              <View style={styles.imageContainer}>
-                <Image
-                  style={styles.image}
-                  source={{ uri: schedule?.scheduledCourt.image }}
-                  resizeMode='cover'
-                />
-                <Text
-                  style={{
-                    color: '#3ace3a',
-                    fontWeight: 'bold',
-                    paddingTop: 35,
-                    paddingLeft: 30
-                  }}
-                >
-                  Confirmed
-                </Text>
-              </View>
-            </View>
-          </View>
-        );
-      })}
+            );
+          })}
+        </View>
+      ) : (
+        <View
+          style={{
+            alignItems: 'center'
+          }}
+        >
+          <Text style={{ fontSize: 13 }}>
+            {'Уучлаарай танд захиалсан заал байхгүй байна.'}
+          </Text>
+        </View>
+      )}
     </View>
   );
 };
