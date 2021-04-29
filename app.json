@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "RN Guide",
-    "slug": "rn-complete-guide",
+    "name": "Mamba court",
+    "slug": "mamba-court",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/mamba_icon_1.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/mamba_splash_2.png",
+      "resizeMode": "cover",
+      "backgroundColor": "white"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,6 +22,8 @@
       "config": {
         "googleMapsApiKey": "AIzaSyB7j4l9P7pbnaHW0ALaQNczLlhn9ph9Rok"
       }
-    }
+    },
+    "description": "Book facilities mobile app",
+    "githubUrl": "https://github.com/Mambatukaa/Court-app"
   }
 }
