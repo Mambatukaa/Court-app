@@ -3,7 +3,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 
-const GradientBtn = ({ onPress, textStyle, linearGradientStyle, text }) => {
+const GradientBtn = ({
+  onPress,
+  textStyle,
+  linearGradientStyle,
+  text,
+  styledColors
+}) => {
   const defaultGradient = ['#B43CF3', '#a23ff0', '#8741EA', '#7444E8'];
 
   /* const defaultGradient = ['#cc2b5e', '#753a88']; */
@@ -13,7 +19,7 @@ const GradientBtn = ({ onPress, textStyle, linearGradientStyle, text }) => {
         <LinearGradient
           start={[0, 1]}
           end={[1, 0]}
-          colors={defaultGradient}
+          colors={styledColors ? styledColors : defaultGradient}
           style={[styles.linearGradient, linearGradientStyle]}
         >
           <View style={{ alignSelf: 'center' }}>

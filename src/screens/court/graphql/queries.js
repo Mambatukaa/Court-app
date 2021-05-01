@@ -25,10 +25,14 @@ const courtFields = `
 
 const queryParamsDef = `
     $searchValue: String
+    $minPrice: String
+    $maxPrice: String
 `;
 
 const queryParamsVal = `
     searchValue: $searchValue
+    minPrice: $minPrice
+    maxPrice: $maxPrice
 `;
 
 const allCourts = `

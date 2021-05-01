@@ -128,7 +128,7 @@ const MyTabs = () => {
           }
         }}
       />
-      <Tab.Screen
+      {/*  <Tab.Screen
         name='Дуртай'
         component={CourtsNavigator}
         options={{
@@ -136,7 +136,7 @@ const MyTabs = () => {
             return <AntDesign name='star' size={24} color={props.color} />;
           }
         }}
-      />
+      /> */}
       <Tab.Screen
         name='Заалууд'
         component={CourtsNavigator}

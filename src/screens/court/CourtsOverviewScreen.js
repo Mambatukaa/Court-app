@@ -28,7 +28,8 @@ const CourtsOverviewScreen = () => {
 
   const { data, loading, error } = useQuery(gql(queries.allCourts), {
     variables: {
-      searchValue: searchQuery
+      searchValue: searchQuery,
+      ...filters
     }
   });
 
@@ -101,7 +102,6 @@ const CourtsOverviewScreen = () => {
         isFilterVisible={isFilterVisible}
         setSetFilterVisible={setSetFilterVisible}
         setFilters={setFilters}
-        type={'company'}
       />
       {data && data?.allCourts?.length > 0 ? (
         <FlatList

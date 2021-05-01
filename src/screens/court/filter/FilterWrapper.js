@@ -8,6 +8,7 @@ import {
   Text
 } from 'react-native';
 import Modal from 'react-native-modal';
+import { GradientBtn } from '../../../common/components';
 import { PriceFilter, DateFilter } from '../filter';
 
 const width = Dimensions.get('window').width;
@@ -15,20 +16,16 @@ const width = Dimensions.get('window').width;
 const FilterWrapper = ({
   setSetFilterVisible,
   isFilterVisible,
-  setFilters,
-  type
+  setFilters
 }) => {
-  const [brand, setBrand] = useState();
-  const [tag, setTag] = useState();
-  const [segment, setSegment] = useState();
+  const [price, setPrice] = useState();
+  const [isFiltered, setIsFiltered] = useState(false);
 
   const hide = () => {
     const obj = {
-      ...(tag && { tag: tag._id }),
-      ...(brand && { brand: brand._id }),
-      ...(segment && { segment: segment._id })
+      ...(price && { minPrice: price.minPrice, maxPrice: price.maxPrice })
     };
-    setFilters(obj);
+
     setSetFilterVisible(false);
   };
 
@@ -47,15 +44,23 @@ const FilterWrapper = ({
     >
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <PriceFilter />
-          {/* <BrandFilter type={type} brand={brand} setBrand={setBrand} />
-          <TagFilter type={type} tag={tag} setTag={setTag} />
-          <SegmentFilter
-            type={type}
-            segment={segment}
-            setSegment={setSegment}
+          <PriceFilter
+            price={price}
+            setPrice={setPrice}
+            setFilters={setFilters}
+            isFiltered={isFiltered}
+            setIsFiltered={setIsFiltered}
+          />
+          {/*  <DateFilter /> */}
+          {/*   <GradientBtn
+            text='Шүүх'
+            linearGradientStyle={{
+              marginTop: 20,
+              width: 180,
+              borderRadius: 10,
+              alignSelf: 'center'
+            }}
           /> */}
-          <DateFilter />
         </ScrollView>
       </SafeAreaView>
     </Modal>

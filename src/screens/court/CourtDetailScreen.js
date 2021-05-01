@@ -28,8 +28,8 @@ import colors from '../../common/styles/colors';
 
 const CourtDetailScreen = props => {
   const { courtId } = props.route.params;
-  const navigation = useNavigation();
-  const [like, setLike] = useState(true);
+  /*  const navigation = useNavigation();
+  const [like, setLike] = useState(true); */
 
   const { data, loading, error } = useQuery(gql(queries.courtDetail), {
     variables: {
@@ -37,7 +37,7 @@ const CourtDetailScreen = props => {
     }
   });
 
-  useLayoutEffect(() => {
+  /*   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <View style={{ flexDirection: 'row' }}>
@@ -63,7 +63,7 @@ const CourtDetailScreen = props => {
         </View>
       )
     });
-  }, [navigation, like]);
+  }, [navigation, like]); */
 
   if (loading) {
     return (
