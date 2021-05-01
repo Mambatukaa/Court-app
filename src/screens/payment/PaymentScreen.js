@@ -11,7 +11,6 @@ import {
 import { mutations, queries } from './graphql';
 
 const USE_LITE_CREDIT_CARD_INPUT = false;
-console.disableYellowBox = true;
 
 const Payment = props => {
   const navigation = useNavigation();
