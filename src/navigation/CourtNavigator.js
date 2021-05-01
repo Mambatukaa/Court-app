@@ -9,9 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Colors from '../common/styles/colors';
 
-import CourtsOverviewScreen, {
-  screenOptions as CourtsOverviewScreenOptions
-} from '../screens/court/CourtsOverviewScreen';
+import CourtsOverviewScreen from '../screens/court/CourtsOverviewScreen';
 
 import CourtDetailScreen, {
   screenOptions as CourtDetailScreenOptions
@@ -84,6 +82,18 @@ const CourtsNavigator = () => {
         name='CourtBookDetail'
         component={CourtBookDetail}
         options={CourtBookDetailOption}
+      />
+      <CourtsStackNavigator.Screen
+        name='Map'
+        component={MapScreen}
+        options={{
+          headerTitle: 'Газрын зураг',
+          headerBackTitle: ' ',
+          headerStyle: {
+            backgroundColor: Colors.primary
+          },
+          headerTintColor: 'white'
+        }}
       />
       <CourtsStackNavigator.Screen
         name='Payment'
@@ -240,19 +250,6 @@ const rootNavigator = () => {
               name='MyTabs'
               component={MyTabs}
               options={{ headerShown: false }}
-              //options={CourtsOverviewScreenOptions}
-            />
-            <Root.Screen
-              name='Map'
-              component={MapScreen}
-              options={{
-                headerTitle: 'Газрын зураг',
-                headerBackTitle: ' ',
-                headerStyle: {
-                  backgroundColor: Colors.primary
-                },
-                headerTintColor: 'white'
-              }}
             />
           </Root.Navigator>
         )}
