@@ -86,13 +86,13 @@ function PriceFilter(props) {
         <GradientBtn
           text='Шүүлт устгах'
           linearGradientStyle={{
-            marginTop: 20,
+            marginTop: 10,
             width: 180,
             borderRadius: 10,
             alignSelf: 'center'
           }}
           onPress={offFilter}
-          styledColors={['#cc2b5e', '#753a88']}
+          styledColors={['#5aff15', '#00b712']}
         />
       ) : null}
     </View>
