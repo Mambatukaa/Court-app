@@ -25,7 +25,7 @@ const MapScreen = props => {
     );
   }
 
-  const { allCourts } = data;
+  const { allCourts = [] } = data;
 
   const mapRegion = {
     latitude: 47.92123,
