@@ -4,17 +4,12 @@ import { colors } from '../../../common/styles';
 import { GradientBtn } from '../../../common/components';
 
 function PriceFilter(props) {
-  const { setPrice, setFilters } = props;
+  const { setPrice, setFilters, filters } = props;
 
-  const [variables, setVariables] = useState({
-    minPrice: '',
-    maxPrice: ''
-  });
+  const [isFiltered, setIsFiltered] = useState(filters?.minPrice);
 
-  const [isFiltered, setIsFiltered] = useState(false);
-
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
+  const [minPrice, setMinPrice] = useState(filters?.minPrice);
+  const [maxPrice, setMaxPrice] = useState(filters?.maxPrice);
 
   const onChangeMin = value => {
     setMinPrice(value);
@@ -25,7 +20,7 @@ function PriceFilter(props) {
   };
 
   const onFilter = () => {
-    /* if (!minPrice || !maxPrice) {
+    if (!minPrice || !maxPrice) {
       Alert.alert('Буруу утга!', 'Утга дутуу байна.', [{ text: 'Ахин шүүх' }]);
       return;
     }
@@ -34,18 +29,17 @@ function PriceFilter(props) {
       Alert.alert('Буруу утга!', 'Таны оруулсан утга буруу байна.', [
         { text: 'Ахин шүүх' }
       ]);
-    } */
-    /* 
-    setVariables({ minPrice: minPrice, maxPrice: maxPrice });
+    }
 
-    setPrice(variables); */
     setFilters({ minPrice: minPrice, maxPrice: maxPrice });
     setIsFiltered(true);
-    /* setPrice({ minPrice: minPrice, maxPrice: maxPrice }); */
   };
 
   const offFilter = () => {
     setFilters();
+    setMinPrice('');
+    setMaxPrice('');
+
     setIsFiltered(false);
   };
 

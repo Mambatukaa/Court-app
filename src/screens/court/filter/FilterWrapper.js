@@ -13,18 +13,13 @@ import { PriceFilter, DateFilter } from '../filter';
 
 const width = Dimensions.get('window').width;
 
-const FilterWrapper = ({
-  setSetFilterVisible,
-  isFilterVisible,
-  setFilters
-}) => {
-  const [price, setPrice] = useState();
-  const [isFiltered, setIsFiltered] = useState(false);
+const FilterWrapper = props => {
+  const { setSetFilterVisible, isFilterVisible } = props;
 
   const hide = () => {
-    const obj = {
+    /*  const obj = {
       ...(price && { minPrice: price.minPrice, maxPrice: price.maxPrice })
-    };
+    }; */
 
     setSetFilterVisible(false);
   };
@@ -44,13 +39,7 @@ const FilterWrapper = ({
     >
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <PriceFilter
-            price={price}
-            setPrice={setPrice}
-            setFilters={setFilters}
-            isFiltered={isFiltered}
-            setIsFiltered={setIsFiltered}
-          />
+          <PriceFilter {...props} />
           {/*  <DateFilter /> */}
           {/*   <GradientBtn
             text='Шүүх'

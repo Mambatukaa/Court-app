@@ -101,6 +101,7 @@ const CourtsOverviewScreen = () => {
       <FilterWrapper
         isFilterVisible={isFilterVisible}
         setSetFilterVisible={setSetFilterVisible}
+        filters={filters}
         setFilters={setFilters}
       />
       {data && data?.allCourts?.length > 0 ? (
