@@ -15,7 +15,7 @@ import { gql, useQuery } from '@apollo/client';
 
 import queries from './graphql/queries';
 
-import FilterWrapper from './filter/FilterWrapper';
+import { FilterWrapper } from './filter';
 
 const CourtsOverviewScreen = () => {
   const navigation = useNavigation();
