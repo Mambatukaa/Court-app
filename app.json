@@ -3,10 +3,14 @@
     "name": "Mamba court",
     "slug": "mamba-court",
     "privacy": "public",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/mamba_icon_1.png",
+    "icon": "./assets/mamba_icon_gradient.png",
     "splash": {
       "image": "./assets/mamba_splash_1.png",
       "resizeMode": "cover",
@@ -15,7 +19,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.courtappbatuka.mapcuny",

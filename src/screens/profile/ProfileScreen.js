@@ -69,7 +69,7 @@ const ProfileScreen = () => {
       </View>
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Имэйл:'} />
+        <TextView style={styles.itemLabel} text={'Мэйл:'} />
         <TextView style={styles.itemValue} text={currentUser.email} />
       </View>
 

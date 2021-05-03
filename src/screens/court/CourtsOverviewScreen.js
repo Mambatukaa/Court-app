@@ -4,7 +4,8 @@ import {
   View,
   FlatList,
   TouchableOpacity,
-  Text
+  Text,
+  RefreshControl
 } from 'react-native';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import { Searchbar } from 'react-native-paper';
@@ -26,7 +27,7 @@ const CourtsOverviewScreen = () => {
   const [isFilterVisible, setSetFilterVisible] = useState(false);
   const [filters, setFilters] = React.useState(null);
 
-  const { data, loading, error } = useQuery(gql(queries.allCourts), {
+  const { data, loading, error, refetch } = useQuery(gql(queries.allCourts), {
     variables: {
       searchValue: searchQuery,
       ...filters
@@ -106,6 +107,9 @@ const CourtsOverviewScreen = () => {
       />
       {data && data?.allCourts?.length > 0 ? (
         <FlatList
+          refreshControl={
+            <RefreshControl refreshing={loading} onRefresh={() => refetch()} />
+          }
           style={{ backgroundColor: 'white' }}
           data={data?.allCourts}
           keyExtractor={item => item._id}

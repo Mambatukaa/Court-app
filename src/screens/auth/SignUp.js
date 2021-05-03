@@ -162,11 +162,9 @@ const SignInScreen = props => {
         navigation.navigate('SignIn');
       })
       .catch(e => {
-        Alert.alert(
-          'Буруу утга!',
-          'Нэвтрэх нэр эсвэл имэйл бүртгэлтэй байна.',
-          [{ text: 'Ахин бүртгүүлэх' }]
-        );
+        Alert.alert('Буруу утга!', 'Нэвтрэх нэр эсвэл Мэйл бүртгэлтэй байна.', [
+          { text: 'Ахин бүртгүүлэх' }
+        ]);
         return;
       });
   };
@@ -221,13 +219,13 @@ const SignInScreen = props => {
                 }
               ]}
             >
-              Имэйл
+              Мэйл
             </Text>
             <View style={styles.action}>
               <Feather name='mail' color={colors.colorCoreDarkBlue} size={20} />
               <TextInput
                 keyboardType='email-address'
-                placeholder='Имэйл хаяг'
+                placeholder='Мэйл хаяг'
                 style={styles.textInput}
                 autoCapitalize='none'
                 onChangeText={val => handleEmailChange(val)}
@@ -242,7 +240,7 @@ const SignInScreen = props => {
 
             {data.check_emailInputChange || !data.email ? null : (
               <Animatable.View animation='fadeInLeft' duration={500}>
-                <Text style={styles.errorMsg}>Имэйл утга буруу байна.</Text>
+                <Text style={styles.errorMsg}>Мэйл утга буруу байна.</Text>
               </Animatable.View>
             )}
 

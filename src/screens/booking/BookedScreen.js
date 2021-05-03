@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { View, ScrollView } from 'react-native';
+import { ScrollView, RefreshControl } from 'react-native';
 import { gql, useQuery } from '@apollo/client';
 import { useNavigation } from '@react-navigation/native';
 import BookedCourt from '../../common/components/booking/BookedCourt';
@@ -24,7 +24,8 @@ const BookedScreen = props => {
   const {
     data: dataBCourt,
     loading: bCourtLoading,
-    error: bCourtError
+    error: bCourtError,
+    refetch: bCourtRefetch
   } = useQuery(gql(queries.bookingDetails), {
     variables: {
       userId: id
@@ -42,7 +43,8 @@ const BookedScreen = props => {
   const {
     data: scheduleData,
     loading: scheduleLoading,
-    error: scheduleError
+    error: scheduleError,
+    refetch: scheduleRefetch
   } = useQuery(gql(queries.allSchedules), {
     variables: {
       ids
@@ -53,6 +55,12 @@ const BookedScreen = props => {
 
   return (
     <ScrollView
+      refreshControl={
+        <RefreshControl
+          refreshing={bCourtLoading}
+          onRefresh={() => bCourtRefetch()}
+        />
+      }
       style={{
         paddingTop: 20,
         backgroundColor: colors.bgMain
