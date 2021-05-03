@@ -15,7 +15,6 @@ const courtFields = `
 
     courtSchedule{
         _id
-        day
         startTime
         endTime
         bookedPeople

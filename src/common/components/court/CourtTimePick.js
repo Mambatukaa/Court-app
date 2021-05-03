@@ -20,8 +20,10 @@ const CourtTimePick = props => {
 
   const days = [];
 
-  courtSchedule.map(el => {
-    days.push(el.day);
+  courtSchedule.map(day => {
+    const dayUpdate = dayjs(day.startTime).format('YYYY-MM-DD');
+
+    days.push(dayUpdate);
   });
 
   const uniqueDay = [];
@@ -129,7 +131,9 @@ const CourtTimePick = props => {
                     {courtSchedule.map((schedule, index) => {
                       return (
                         <View key={index}>
-                          {schedule.day === el ? renderRowItem(schedule) : null}
+                          {dayjs(schedule.startTime).format('YYYY-MM-DD') === el
+                            ? renderRowItem(schedule)
+                            : null}
                         </View>
                       );
                     })}

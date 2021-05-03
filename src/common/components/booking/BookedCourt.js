@@ -20,7 +20,7 @@ const BookedCourt = props => {
                     </Text>
                     <Text style={styles.dateContainer}>Өдөр</Text>
                     <Text style={styles.date}>
-                      {`${dayjs(schedule.day).format('YYYY-MM-DD')}нд`}
+                      {`${dayjs(schedule.startTime).format('YYYY-MM-DD')}нд`}
                     </Text>
                     <Text style={styles.timeContainer}>Цаг</Text>
                     <Text style={styles.time}>{`${dayjs(
