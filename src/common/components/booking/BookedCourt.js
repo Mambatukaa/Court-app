@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, Platform } from 'react-native';
 import dayjs from 'dayjs';
+import { colors } from '../../styles';
 
 const BookedCourt = props => {
   const { allSchedules = [] } = props;
@@ -47,7 +48,7 @@ const BookedCourt = props => {
                     />
                     <Text
                       style={{
-                        color: '#3ace3a',
+                        color: colors.timeBlock,
                         fontWeight: 'bold',
                         paddingTop: 50,
                         fontSize: 12.5,
@@ -85,11 +86,11 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 12,
     borderRadius: 10,
-    backgroundColor: '#f6f6f6',
+    backgroundColor: colors.bgLightPurple,
     marginLeft: 25,
     marginRight: 25,
-    marginTop: Platform.OS === 'ios' ? 14 : 4,
-    marginBottom: Platform.OS === 'android' ? 20 : 0,
+    marginTop: Platform.OS === 'ios' ? 20 : 4,
+    marginBottom: Platform.OS === 'android' ? 20 : 7,
     height: Platform.OS === 'ios' ? 200 : 210
   },
 
@@ -99,7 +100,6 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   imageContainer: {
-    //flex: 1,
     marginRight: 15,
     marginTop: 15
   },

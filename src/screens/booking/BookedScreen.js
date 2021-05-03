@@ -62,7 +62,6 @@ const BookedScreen = props => {
         />
       }
       style={{
-        paddingTop: 20,
         backgroundColor: colors.bgMain
       }}
     >

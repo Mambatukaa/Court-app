@@ -69,9 +69,10 @@ const CourtTimePick = props => {
   };
 
   const renderRowItem = item => {
-    const bg = item?.bookedPeople >= 15 ? colors.colorShadowGray : '#09e371';
+    const bg =
+      item?.bookedPeople >= 15 ? colors.colorShadowGray : colors.bgTimeBlock;
     const bc =
-      item?.bookedPeople >= 15 ? colors.colorCoreGray : colors.timeBlock;
+      item?.bookedPeople >= 15 ? colors.colorCoreGray : colors.bcTimeBlock;
 
     return (
       <TouchableOpacity
@@ -147,7 +148,7 @@ const CourtTimePick = props => {
                   <Text style={styles.date}>
                     {dayTranslator(dayjs(el).format('ddd'))}
                   </Text>
-                  <Text style={styles.date}>{dayjs(el).format('D')}</Text>
+                  <Text style={styles.date}>{dayjs(el).format('DD')}</Text>
                 </View>
                 <ScrollView
                   showsHorizontalScrollIndicator={false}
@@ -164,7 +165,9 @@ const CourtTimePick = props => {
                   </>
                 </ScrollView>
               </View>
-              <View style={{ backgroundColor: colors.primary, height: 1 }} />
+              <View
+                style={{ backgroundColor: colors.colorLightGray, height: 0.5 }}
+              />
             </View>
           );
         })}
@@ -178,9 +181,9 @@ const CourtTimePick = props => {
           flexDirection: 'row',
           alignItems: 'center',
           marginTop: 20,
-          marginBottom: 10,
-          borderWidth: 2,
-          width: '80%',
+          marginBottom: 5,
+          borderWidth: 0.5,
+          width: '93%',
           height: 35,
           alignSelf: 'center',
           borderRadius: 5
@@ -195,19 +198,29 @@ const CourtTimePick = props => {
             textAlign: 'center'
           }}
         >
-          4-р сар 26 - 5-р сар 02
+          Цагийн хуваарь
         </Text>
       </View>
 
-      <ScrollView style={{ flex: 1 }}>
-        {renderRow(uniqueDay, courtSchedule)}
+      <ScrollView
+        style={{
+          flex: 1,
+          marginHorizontal: 13
+        }}
+      >
+        {uniqueDay.length > 0 ? (
+          renderRow(uniqueDay, courtSchedule)
+        ) : (
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 12
+            }}
+          >
+            Уучлаарай цагийн хуваарь тавигдаагүй байна.
+          </Text>
+        )}
       </ScrollView>
-      {/*    <FlatList
-        style={{ flex: 1 }}
-        data={uniqueDay}
-        keyExtractor={item => item}
-        renderItem={({ item, index }) => renderRow(item, index, courtSchedule)}
-      /> */}
     </View>
   );
 };
@@ -226,7 +239,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   date: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 'bold',
     marginLeft: 12,
     textAlign: 'center',
@@ -239,7 +252,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 4,
     width: 70,
-    height: 55
+    height: 52
   },
   timeContainer: {
     flex: 1,
