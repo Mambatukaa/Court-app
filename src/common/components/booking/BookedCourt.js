@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bgLight,
     marginLeft: 25,
     marginRight: 25,
-    marginTop: Platform.OS === 'ios' ? 13 : 4,
-    marginBottom: Platform.OS === 'android' ? 20 : 8,
+    marginTop: Platform.OS === 'ios' ? 13 : 12,
+    marginBottom: Platform.OS === 'android' ? 10 : 8,
     height: Platform.OS === 'ios' ? 200 : 210
   },
 

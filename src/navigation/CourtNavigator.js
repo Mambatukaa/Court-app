@@ -7,8 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { AntDesign, FontAwesome5, Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import Colors from '../common/styles/colors';
-
 import CourtsOverviewScreen from '../screens/court/CourtsOverviewScreen';
 
 import CourtDetailScreen, {
@@ -20,7 +18,7 @@ import ProfileScreen from '../screens/profile/ProfileScreen';
 import MapScreen from '../screens/map/MapScreen';
 
 import BookedScreen from '../screens/booking/BookedScreen';
-import colors from '../common/styles/colors';
+import { colors } from '../common/styles';
 
 import CourtBookDetail, {
   screenOptions as CourtBookDetailOption
@@ -34,7 +32,7 @@ import { AuthContext } from '../common/utils/AuthContext';
 
 const defaultNavOptions = {
   headerStyle: {
-    backgroundColor: Colors.primary
+    backgroundColor: colors.primary
   },
   headerTintColor: 'white'
 };
@@ -90,7 +88,7 @@ const CourtsNavigator = () => {
           headerTitle: 'Газрын зураг',
           headerBackTitle: ' ',
           headerStyle: {
-            backgroundColor: Colors.primary
+            backgroundColor: colors.primary
           },
           headerTintColor: 'white'
         }}

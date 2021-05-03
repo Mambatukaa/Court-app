@@ -111,7 +111,7 @@ const CourtsOverviewScreen = () => {
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={() => refetch()} />
           }
-          style={{ backgroundColor: 'white' }}
+          style={{ backgroundColor: colors.bgMain }}
           data={data?.allCourts}
           keyExtractor={item => item._id}
           renderItem={itemData => (

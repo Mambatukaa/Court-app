@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, FlatList, Platform } from 'react-native';
 import dayjs from 'dayjs';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Platform
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   date: {
-    fontSize: 17,
+    fontSize: Platform.OS === 'ios' ? 17 : 16,
     fontWeight: 'bold',
     marginLeft: 12,
     textAlign: 'center',
@@ -233,14 +233,14 @@ const styles = StyleSheet.create({
   },
   time: {
     paddingBottom: 3,
-    fontSize: 12
+    fontSize: Platform.OS === 'ios' ? 12 : 10
   },
   people: {
-    fontSize: 11
+    fontSize: Platform.OS === 'ios' ? 11 : 9
   },
   price: {
     paddingBottom: 3,
-    fontSize: 12
+    fontSize: Platform.OS === 'ios' ? 12 : 10
   },
   booked: {
     fontSize: 12,

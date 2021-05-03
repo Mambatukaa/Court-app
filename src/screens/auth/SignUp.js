@@ -171,7 +171,6 @@ const SignInScreen = props => {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.primary} barStyle='light-content' />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{ flex: 1 }}
@@ -356,7 +355,7 @@ const styles = StyleSheet.create({
     paddingBottom: 50
   },
   footer: {
-    flex: Platform.OS === 'ios' ? 3 : 5,
+    flex: 3,
     backgroundColor: '#fff',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,

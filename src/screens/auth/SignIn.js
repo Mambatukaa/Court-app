@@ -200,12 +200,7 @@ const SignInScreen = props => {
             placeholder='Нууц үг'
             placeholderTextColor={colors.colorCoreMediumGray}
             secureTextEntry={data.secureTextEntry ? true : false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text
-              }
-            ]}
+            style={[styles.textInput]}
             autoCapitalize='none'
             onChangeText={val => handlePasswordChange(val)}
           />
