@@ -24,7 +24,6 @@ const allSchedules = `
     query allSchedules($ids: [String]){
         allSchedules(ids: $ids){
             _id
-            day
             courtId
             startTime
             endTime
