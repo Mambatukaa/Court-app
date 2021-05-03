@@ -88,7 +88,6 @@ const CourtDetailScreen = props => {
             onPress={() => props.jumpTo('second')}
           >
             <LinearGradient
-              // Background Linear Gradient #bdc3c7 → #2c3e50  undsen ongo '#733ff3', '#d553f8'
               colors={['#cc2b5e', '#753a88']}
               style={styles.gradient}
             >
@@ -97,7 +96,6 @@ const CourtDetailScreen = props => {
           </TouchableOpacity>
           <CourtDetail
             title={courtDetail.name}
-            // shortName={courtDetail.shortName}
             slotSize={courtDetail.slotSize}
             warning={courtDetail.warning}
             description={courtDetail.description}

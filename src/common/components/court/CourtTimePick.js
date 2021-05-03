@@ -12,35 +12,6 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../styles';
 
-// const data = [
-//   {
-//     /*
-//     date:
-//     zaalID,
-//     time 24,
-//     status,
-//     count */
-//     name: 'Monday',
-//     list: [
-//       {
-//         time: '10:00'
-//       },
-//       {
-//         time: '12:00'
-//       },
-//       {
-//         time: '14:00'
-//       },
-//       {
-//         time: '16:00'
-//       },
-//       {
-//         time: '17:00'
-//       }
-//     ]
-//   }
-// ];
-
 const CourtTimePick = props => {
   const navigation = useNavigation();
   const { params } = props;
