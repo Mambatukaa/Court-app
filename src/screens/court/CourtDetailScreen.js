@@ -25,6 +25,7 @@ import { gql, useQuery } from '@apollo/client';
 
 import queries from './graphql/queries';
 import colors from '../../common/styles/colors';
+import { GradientBtn } from '../../common/components';
 
 const CourtDetailScreen = props => {
   const { courtId } = props.route.params;
@@ -69,7 +70,7 @@ const CourtDetailScreen = props => {
     return (
       <ActivityIndicator
         size='small'
-        color='#B43CF3'
+        color={colors.grdMain}
         style={{ justifyContent: 'center', flex: 1 }}
       />
     );
@@ -82,18 +83,13 @@ const CourtDetailScreen = props => {
       <ScrollView>
         <Image style={styles.image} source={{ uri: courtDetail.image }} />
         <View style={styles.main}>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.booknowContainer}
+          <GradientBtn
+            text='Захиалах'
+            linearGradientStyle={styles.booknowButton}
+            textStyle={{ fontSize: 12 }}
             onPress={() => props.jumpTo('second')}
-          >
-            <LinearGradient
-              colors={['#cc2b5e', '#753a88']}
-              style={styles.gradient}
-            >
-              <Text style={styles.bookNow}>Захиалах</Text>
-            </LinearGradient>
-          </TouchableOpacity>
+            styledColors={[colors.primary, colors.grdMain]}
+          />
           <CourtDetail
             title={courtDetail.name}
             slotSize={courtDetail.slotSize}
@@ -163,28 +159,12 @@ const styles = StyleSheet.create({
   container: {
     marginTop: Platform.OS === 'ios' ? StatusBar.currentHeight : 0
   },
-  scene: {
-    flex: 1
-  },
   image: {
     height: 250,
     width: '100%'
   },
   main: {
     padding: 10
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    borderWidth: 1,
-    backgroundColor: 'red',
-    justifyContent: 'space-between'
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 15
-  },
-  priceContainer: {
-    flexDirection: 'row'
   },
   tabBar: {
     backgroundColor: colors.bgMain
@@ -194,21 +174,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold'
   },
-  booknowContainer: {
+  booknowButton: {
     marginTop: -30,
-    width: 90,
+    width: 105,
     alignSelf: 'flex-end',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  bookNow: {
-    padding: 10,
-    backgroundColor: 'transparent',
-    overflow: 'hidden',
-    color: 'white',
-    fontWeight: 'bold'
-  },
-  gradient: {
-    borderRadius: 10
+    borderRadius: 8,
+    height: 37
   }
 });
