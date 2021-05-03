@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bgLight,
     marginLeft: 25,
     marginRight: 25,
-    marginTop: 14,
+    marginTop: 12,
+    marginBottom: 7,
     height: Platform.OS === 'ios' ? 130 : 140,
     justifyContent: 'center'
   },

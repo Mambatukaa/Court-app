@@ -15,7 +15,7 @@ import { AuthContext } from '../../common/utils/AuthContext';
 import TextView from '../../common/components/TextView';
 import GradientBtn from '../../common/components/GradientBtn';
 
-import colors from '../../common/styles/colors';
+import { colors } from '../../common/styles';
 import { queries, mutations } from './graphql';
 
 const ProfileScreen = () => {
@@ -78,11 +78,6 @@ const ProfileScreen = () => {
         <TextView style={styles.itemValue} text={currentUser.role} />
       </View>
 
-      {/*      <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Position:'} />
-        <TextView style={styles.itemValue} text={'Software engineering'} />
-      </View> */}
-
       <View style={styles.itemContainer}>
         <TextView style={styles.itemLabel} text={'Спорт:'} />
         <TextView style={styles.itemValue} text={`Сагсан бөмбөг`} />
@@ -120,7 +115,7 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.bgMain,
     alignItems: 'center'
   },
   avatar: {

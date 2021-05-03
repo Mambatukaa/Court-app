@@ -17,6 +17,7 @@ import { gql, useQuery } from '@apollo/client';
 import queries from './graphql/queries';
 
 import { FilterWrapper } from './filter';
+import { colors } from '../../common/styles';
 
 const CourtsOverviewScreen = () => {
   const navigation = useNavigation();
@@ -147,7 +148,7 @@ const CourtsOverviewScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF'
+    backgroundColor: colors.bgMain
   }
 });
 

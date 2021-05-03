@@ -86,11 +86,11 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 12,
     borderRadius: 10,
-    backgroundColor: colors.bgLightPurple,
+    backgroundColor: colors.bgLight,
     marginLeft: 25,
     marginRight: 25,
-    marginTop: Platform.OS === 'ios' ? 20 : 4,
-    marginBottom: Platform.OS === 'android' ? 20 : 7,
+    marginTop: Platform.OS === 'ios' ? 13 : 4,
+    marginBottom: Platform.OS === 'android' ? 20 : 8,
     height: Platform.OS === 'ios' ? 200 : 210
   },
 
