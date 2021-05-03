@@ -49,11 +49,12 @@ const BookedCourt = props => {
                       style={{
                         color: '#3ace3a',
                         fontWeight: 'bold',
-                        paddingTop: 35,
-                        paddingLeft: 30
+                        paddingTop: 50,
+                        fontSize: 12.5,
+                        alignSelf: 'center'
                       }}
                     >
-                      Confirmed
+                      Баталгаажсан
                     </Text>
                   </View>
                 </View>
