@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Alert,
+  Platform
+} from 'react-native';
 import { colors } from '../../../common/styles';
 import { GradientBtn } from '../../../common/components';
 
@@ -47,7 +54,7 @@ function PriceFilter(props) {
     <View style={styles.container}>
       <Text style={{ fontWeight: 'bold', marginVertical: 10 }}>Үнийн дүн</Text>
       <View style={styles.inputContainer}>
-        <Text style={{ fontSize: 12 }}>Бага дүн</Text>
+        <Text style={styles.inputText}>Бага дүн</Text>
         <TextInput
           style={styles.priceInput}
           placeholder='0₮'
@@ -60,7 +67,7 @@ function PriceFilter(props) {
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={{ fontSize: 12 }}>Их дүн</Text>
+        <Text style={styles.inputText}>Их дүн</Text>
         <TextInput
           style={styles.priceInput}
           placeholder='0₮'
@@ -112,11 +119,14 @@ const styles = StyleSheet.create({
     paddingTop: 7,
     marginTop: 7
   },
+  inputText: {
+    fontSize: Platform.OS === 'ios' ? 12 : 11
+  },
   priceInput: {
     borderRadius: 15,
     height: 30,
     width: 100,
-    fontSize: 13
+    fontSize: Platform.OS === 'ios' ? 13 : 11
   }
 });
 
