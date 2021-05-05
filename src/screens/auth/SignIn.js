@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -29,6 +29,7 @@ const SignInScreen = props => {
     isValidUser: true,
     isValidPassword: true
   });
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
@@ -116,6 +117,7 @@ const SignInScreen = props => {
       refetchQueries: ['currentUser']
     })
       .then(el => {
+        setLoading(true);
         const { data } = el;
         signIn(data.login);
       })
@@ -127,6 +129,8 @@ const SignInScreen = props => {
         );
         return;
       });
+
+    setLoading(false);
   };
 
   return (
@@ -233,6 +237,7 @@ const SignInScreen = props => {
             onPress={() => {
               loginHandle(data.username, data.password);
             }}
+            loading={loading}
           />
           <GradientBtn
             text='Бүртгүүлэх'

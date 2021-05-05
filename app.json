@@ -10,7 +10,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/mamba_icon_gradient.png",
+    "icon": "./assets/mamba_icon_1.png",
     "splash": {
       "image": "./assets/mamba_splash_1.png",
       "resizeMode": "cover",
