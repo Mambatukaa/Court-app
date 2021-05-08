@@ -1,4 +1,38 @@
-node_modules/**/*
+
+# globals
+*.un~
+*.swp
+*.swo
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+/dist
+/src/static
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.development
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.un~
+*.swp
+*.swo
+.npm
+dump.rdb
+
 .expo/*
 npm-debug.*
 *.jks
@@ -8,3 +42,4 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+
