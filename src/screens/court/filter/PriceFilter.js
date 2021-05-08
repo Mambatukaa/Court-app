@@ -32,10 +32,11 @@ function PriceFilter(props) {
       return;
     }
 
-    if (minPrice > maxPrice) {
+    if (Number(minPrice) > Number(maxPrice)) {
       Alert.alert('Буруу утга!', 'Таны оруулсан утга буруу байна.', [
         { text: 'Ахин шүүх' }
       ]);
+      return;
     }
 
     setFilters({ minPrice: minPrice, maxPrice: maxPrice });
