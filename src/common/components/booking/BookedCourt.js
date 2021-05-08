@@ -69,8 +69,14 @@ const BookedCourt = props => {
             alignItems: 'center'
           }}
         >
-          <Text style={{ fontSize: 13, marginTop: 10 }}>
-            {'Уучлаарай танд захиалсан заал байхгүй байна.'}
+          <Text
+            style={{
+              fontSize: 13,
+              marginTop: 10,
+              color: colors.colorLightGray
+            }}
+          >
+            {'Танд захиалсан заал байхгүй байна.'}
           </Text>
         </View>
       )}

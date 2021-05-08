@@ -189,10 +189,11 @@ const CourtTimePick = props => {
           <Text
             style={{
               textAlign: 'center',
-              fontSize: 12
+              fontSize: 12,
+              color: colors.colorLightGray
             }}
           >
-            Уучлаарай цагийн хуваарь тавигдаагүй байна.
+            Цагийн хуваарь тавигдаагүй байна.
           </Text>
         )}
       </ScrollView>
