@@ -111,14 +111,15 @@ const SignInScreen = props => {
 
     login({
       variables: {
-        input: userName,
+        email: userName,
         password
       },
       refetchQueries: ['currentUser']
     })
       .then(el => {
-        setLoading(true);
+        // setLoading(true);
         const { data } = el;
+        console.log(data.login);
         signIn(data.login);
       })
       .catch(e => {
@@ -140,7 +141,7 @@ const SignInScreen = props => {
         <Text style={styles.text_header}>Нэвтрэх</Text>
       </View>
       <Animatable.View
-        animation='fadeInUpBig'
+        animation="fadeInUpBig"
         style={[
           styles.footer,
           {
@@ -159,9 +160,9 @@ const SignInScreen = props => {
           Нэвтрэх нэр
         </Text>
         <View style={styles.action}>
-          <FontAwesome name='user-o' color={colors.text} size={20} />
+          <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder='Нэвтрэх нэр'
+            placeholder="Нэвтрэх нэр"
             placeholderTextColor={colors.colorCoreMediumGray}
             style={[
               styles.textInput,
@@ -169,18 +170,18 @@ const SignInScreen = props => {
                 color: colors.colorCoreDarkGray
               }
             ]}
-            autoCapitalize='none'
+            autoCapitalize="none"
             onChangeText={val => textInputChange(val)}
             onEndEditing={e => handleValidUser(e.nativeEvent.text)}
           />
           {data.check_textInputChange ? (
-            <Animatable.View animation='bounceIn'>
-              <Feather name='check-circle' color='green' size={20} />
+            <Animatable.View animation="bounceIn">
+              <Feather name="check-circle" color="green" size={20} />
             </Animatable.View>
           ) : null}
         </View>
         {data.isValidUser ? null : (
-          <Animatable.View animation='fadeInLeft' duration={500}>
+          <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
               Нэвтрэх нэр 4-с дээш үсэг байна.
             </Text>
@@ -199,25 +200,25 @@ const SignInScreen = props => {
           Нууц үг
         </Text>
         <View style={styles.action}>
-          <Feather name='lock' color={colors.text} size={20} />
+          <Feather name="lock" color={colors.text} size={20} />
           <TextInput
-            placeholder='Нууц үг'
+            placeholder="Нууц үг"
             placeholderTextColor={colors.colorCoreMediumGray}
             secureTextEntry={data.secureTextEntry ? true : false}
             style={[styles.textInput]}
-            autoCapitalize='none'
+            autoCapitalize="none"
             onChangeText={val => handlePasswordChange(val)}
           />
           <TouchableOpacity onPress={updateSecureTextEntry}>
             {data.secureTextEntry ? (
-              <Feather name='eye-off' color='grey' size={20} />
+              <Feather name="eye-off" color="grey" size={20} />
             ) : (
-              <Feather name='eye' color='grey' size={20} />
+              <Feather name="eye" color="grey" size={20} />
             )}
           </TouchableOpacity>
         </View>
         {data.isValidPassword ? null : (
-          <Animatable.View animation='fadeInLeft' duration={500}>
+          <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
               Нууц үг 8 аас илүү тэмдэгт байна.
             </Text>
@@ -231,7 +232,7 @@ const SignInScreen = props => {
         </TouchableOpacity>
         <View style={styles.button}>
           <GradientBtn
-            text='Нэвтрэх'
+            text="Нэвтрэх"
             linearGradientStyle={styles.signIn}
             textStyle={styles.textSign}
             onPress={() => {
@@ -240,7 +241,7 @@ const SignInScreen = props => {
             loading={loading}
           />
           <GradientBtn
-            text='Бүртгүүлэх'
+            text="Бүртгүүлэх"
             linearGradientStyle={[styles.signIn, styles.signUp]}
             textStyle={styles.textSign}
             onPress={() => {

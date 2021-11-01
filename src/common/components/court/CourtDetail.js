@@ -6,12 +6,12 @@ import { colors } from '../../styles';
 const CourtDetail = props => {
   const [showMark, setShowMark] = useState(false);
 
-  const mapRegion = {
-    latitude: Number(props.location.lat),
-    longitude: Number(props.location.lng),
-    latitudeDelta: 0.0135,
-    longitudeDelta: 0.0133
-  };
+  // const mapRegion = {
+  //   latitude: Number(props.location.lat),
+  //   longitude: Number(props.location.lng),
+  //   latitudeDelta: 0.0135,
+  //   longitudeDelta: 0.0133
+  // };
 
   return (
     <View>
@@ -36,7 +36,7 @@ const CourtDetail = props => {
           height: 300
         }}
       >
-        <MapView provider='google' style={styles.map} region={mapRegion}>
+        {/* <MapView provider='google' style={styles.map} region={mapRegion}>
           <Marker
             coordinate={{
               latitude: Number(props.location.lat),
@@ -56,7 +56,7 @@ const CourtDetail = props => {
               </View>
             </Callout>
           </Marker>
-        </MapView>
+        </MapView> */}
       </View>
     </View>
   );

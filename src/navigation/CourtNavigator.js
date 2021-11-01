@@ -46,17 +46,17 @@ const LoginNavigator = () => {
   return (
     <LoginStackNavigator.Navigator>
       <LoginStackNavigator.Screen
-        name='Intro'
+        name="Intro"
         component={Intro}
         options={{ headerShown: false }}
       />
       <LoginStackNavigator.Screen
-        name='SignIn'
+        name="SignIn"
         component={SignIn}
         options={{ headerShown: false }}
       />
       <LoginStackNavigator.Screen
-        name='SignUp'
+        name="SignUp"
         component={SignUp}
         options={{ headerShown: false }}
       />
@@ -68,21 +68,21 @@ const CourtsNavigator = () => {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <CourtsStackNavigator.Screen
-        name='CourtsOverview'
+        name="CourtsOverview"
         component={CourtsOverviewScreen}
       />
       <CourtsStackNavigator.Screen
-        name='CourtDetail'
+        name="CourtDetail"
         component={CourtDetailScreen}
         options={CourtDetailScreenOptions}
       />
       <CourtsStackNavigator.Screen
-        name='CourtBookDetail'
+        name="CourtBookDetail"
         component={CourtBookDetail}
         options={CourtBookDetailOption}
       />
       <CourtsStackNavigator.Screen
-        name='Map'
+        name="Map"
         component={MapScreen}
         options={{
           headerTitle: 'Газрын зураг',
@@ -94,7 +94,7 @@ const CourtsNavigator = () => {
         }}
       />
       <CourtsStackNavigator.Screen
-        name='Payment'
+        name="Payment"
         component={PaymentScreen}
         options={{ headerBackTitle: ' ', headerTitle: 'Төлбөр төлөх' }}
       />
@@ -104,7 +104,7 @@ const CourtsNavigator = () => {
 const ProfileNavigator = () => {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <CourtsStackNavigator.Screen name='Profile' component={ProfileScreen} />
+      <CourtsStackNavigator.Screen name="Profile" component={ProfileScreen} />
     </CourtsStackNavigator.Navigator>
   );
 };
@@ -113,7 +113,7 @@ const BookingNavigator = () => {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <CourtsStackNavigator.Screen
-        name='BookedScreen'
+        name="BookedScreen"
         component={BookedScreen}
       />
     </CourtsStackNavigator.Navigator>
@@ -125,14 +125,14 @@ const MyTabs = () => {
     <Tab.Navigator
       activeColor={'white'}
       barStyle={{ backgroundColor: colors.primary }}
-      initialRouteName='Заалууд'
+      initialRouteName="Заалууд"
     >
       <Tab.Screen
-        name='Захиалгууд'
+        name="Захиалгууд"
         component={BookingNavigator}
         options={{
           tabBarIcon: props => {
-            return <AntDesign name='calendar' size={24} color={props.color} />;
+            return <AntDesign name="calendar" size={24} color={props.color} />;
           }
         }}
       />
@@ -146,13 +146,13 @@ const MyTabs = () => {
         }}
       /> */}
       <Tab.Screen
-        name='Заалууд'
+        name="Заалууд"
         component={CourtsNavigator}
         options={{
           tabBarIcon: props => {
             return (
               <FontAwesome5
-                name='basketball-ball'
+                name="basketball-ball"
                 size={24}
                 color={props.color}
               />
@@ -161,11 +161,11 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen
-        name='Профайл'
+        name="Профайл"
         component={ProfileNavigator}
         options={{
           tabBarIcon: props => {
-            return <Feather name='user' size={24} color={props.color} />;
+            return <Feather name="user" size={24} color={props.color} />;
           }
         }}
       />
@@ -245,7 +245,7 @@ const rootNavigator = () => {
         ) : (
           <Root.Navigator>
             <Root.Screen
-              name='MyTabs'
+              name="MyTabs"
               component={MyTabs}
               options={{ headerShown: false }}
             />

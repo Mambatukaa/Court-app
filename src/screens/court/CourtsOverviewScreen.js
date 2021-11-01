@@ -28,12 +28,7 @@ const CourtsOverviewScreen = () => {
   const [isFilterVisible, setSetFilterVisible] = useState(false);
   const [filters, setFilters] = React.useState(null);
 
-  const { data, loading, error, refetch } = useQuery(gql(queries.allCourts), {
-    variables: {
-      searchValue: searchQuery,
-      ...filters
-    }
-  });
+  const { data, loading, error, refetch } = useQuery(gql(queries.courtsMain));
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -45,7 +40,7 @@ const CourtsOverviewScreen = () => {
             }}
           >
             <AntDesign
-              name='search1'
+              name="search1"
               size={20}
               style={{ color: 'white', marginRight: 15 }}
             />
@@ -56,7 +51,7 @@ const CourtsOverviewScreen = () => {
             }}
           >
             <Feather
-              name='map'
+              name="map"
               size={19}
               style={{ color: 'white', marginRight: 20 }}
             />
@@ -71,7 +66,7 @@ const CourtsOverviewScreen = () => {
             }}
           >
             <AntDesign
-              name='filter'
+              name="filter"
               size={20}
               style={{ color: 'white', marginLeft: 15 }}
             />
@@ -93,7 +88,7 @@ const CourtsOverviewScreen = () => {
       {showSearch && (
         <Searchbar
           style={{ borderWidth: 0.15 }}
-          placeholder='Хайх'
+          placeholder="Хайх"
           onChangeText={onChangeSearch}
           value={searchQuery}
           onSubmitEditing={done}
@@ -106,29 +101,31 @@ const CourtsOverviewScreen = () => {
         filters={filters}
         setFilters={setFilters}
       />
-      {data && data?.allCourts?.length > 0 ? (
+      {data && data?.courtsMain?.length > 0 ? (
         <FlatList
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={() => refetch()} />
           }
           style={{ backgroundColor: colors.bgMain }}
-          data={data?.allCourts}
+          data={data?.courtsMain}
           keyExtractor={item => item._id}
-          renderItem={itemData => (
-            <CourtItem
-              image={itemData.item.image}
-              title={itemData.item.name}
-              slotSize={itemData.item.slotSize}
-              parking={itemData.item.parking}
-              description={itemData.item.description}
-              onViewDetail={() => {
-                navigation.navigate('CourtDetail', {
-                  courtId: itemData.item._id,
-                  courtTitle: itemData.item.name
-                });
-              }}
-            />
-          )}
+          renderItem={itemData => {
+            return (
+              <CourtItem
+                image={itemData.item.image}
+                title={itemData.item.name}
+                slotSize={itemData.item.slotSize}
+                parking={itemData.item.parking}
+                description={itemData.item.description}
+                onViewDetail={() => {
+                  navigation.navigate('CourtDetail', {
+                    courtId: itemData.item._id,
+                    courtTitle: itemData.item.name
+                  });
+                }}
+              />
+            );
+          }}
         />
       ) : (
         <View

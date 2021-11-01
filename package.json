@@ -23,6 +23,7 @@
     "apollo-client": "^2.6.10",
     "dayjs": "^1.10.4",
     "expo": "^40.0.1",
+    "expo-cli": "^4.12.10",
     "expo-linear-gradient": "~8.4.0",
     "expo-location": "~10.0.0",
     "expo-permissions": "~10.0.0",

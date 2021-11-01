@@ -37,14 +37,14 @@ const ProfileScreen = () => {
   if (loading) {
     return (
       <ActivityIndicator
-        size='small'
-        color='#B43CF3'
+        size="small"
+        color="#B43CF3"
         style={{ justifyContent: 'center', flex: 1 }}
       />
     );
   }
 
-  const currentUser = data.currentUser || {};
+  const currentUser = data?.currentUser || { username: 'Batuka' };
 
   const nameCapitalized =
     currentUser.username.charAt(0).toUpperCase() +
@@ -54,18 +54,20 @@ const ProfileScreen = () => {
     <SafeAreaView style={styles.container}>
       <Avatar
         style={styles.avatar}
-        size='large'
+        size="large"
         rounded
         source={{
-          uri:
-            'https://cdn.vox-cdn.com/thumbor/t_7cx8iWPnb_U6Tt22c1ZnChh3Q=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/21788189/1010493794.jpg.jpg'
+          uri: 'https://cdn.vox-cdn.com/thumbor/t_7cx8iWPnb_U6Tt22c1ZnChh3Q=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/21788189/1010493794.jpg.jpg'
         }}
       />
 
       <TextView text={nameCapitalized} xlarge style={styles.title} />
       <View style={styles.itemContainer}>
         <TextView style={styles.itemLabel} text={'Нэвтрэх нэр:'} />
-        <TextView style={styles.itemValue} text={currentUser.username} />
+        <TextView
+          style={styles.itemValue}
+          text={currentUser.username || 'mambatukaa'}
+        />
       </View>
 
       <View style={styles.itemContainer}>
@@ -75,7 +77,7 @@ const ProfileScreen = () => {
 
       <View style={styles.itemContainer}>
         <TextView style={styles.itemLabel} text={'Үүрэг:'} />
-        <TextView style={styles.itemValue} text={currentUser.role} />
+        <TextView style={styles.itemValue} text={currentUser.role || 'admin'} />
       </View>
 
       <View style={styles.itemContainer}>
@@ -95,7 +97,7 @@ const ProfileScreen = () => {
         <GradientBtn
           linearGradientStyle={styles.gradientBtn}
           textStyle={{ fontSize: 15 }}
-          text='Гарах'
+          text="Гарах"
           onPress={() => {
             logout()
               .then()
@@ -104,7 +106,7 @@ const ProfileScreen = () => {
               });
             signOut();
           }}
-          text='Гарах'
+          text="Гарах"
         />
         <TextView text={' '} style={styles.version} />
       </View>

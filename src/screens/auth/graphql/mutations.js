@@ -1,50 +1,18 @@
-const paramsDef = `
-    $username: String
-    $firstName: String
-    $lastName: String
-
-    $email: String
-    $phone: String
-
-    $password: String
-`;
-
-const paramsVal = `
-    username: $username
-    firstName: $firstName
-    lastName: $lastName
-    
-    email: $email
-    phone: $phone
-
-    password: $password
-`;
-
-const userFields = `
-    username
-    firstName
-    lastName
-
-    email
-    phone
-    
-`;
-
-const createUser = `
-    mutation userCreate(${paramsDef}){
-        userCreate(${paramsVal}){
-            ${userFields}
+const signUp = `
+    mutation usersCreate($email: String! $password: String!){
+        usersCreate(email: $email password: $password){
+            _id
         }
     }
 `;
 
 const login = `
-    mutation login($input: String! $password: String!){
-        login(input: $input password: $password){
+    mutation login($email: String! $password: String!){
+        login(email: $email password: $password){
             token
             refreshToken
         }
     }
 `;
 
-export default { login, createUser };
+export default { login, signUp };

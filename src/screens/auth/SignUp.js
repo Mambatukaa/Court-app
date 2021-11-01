@@ -35,7 +35,7 @@ const SignInScreen = props => {
     isValidPassword: true
   });
 
-  const [signUp] = useMutation(gql(mutations.createUser));
+  const [signUp] = useMutation(gql(mutations.signUp));
 
   const navigation = useNavigation();
 
@@ -151,17 +151,18 @@ const SignInScreen = props => {
 
     signUp({
       variables: {
-        username: data.username,
+        // username: data.username,
         email: data.email,
         password: data.password
       }
     })
-      .then(() => {
-        // Alert.alert('Амжилттай', 'Бүртгэл үүслээ.', [{ text: 'Нэвтрэх' }]);
+      .then(data => {
+        Alert.alert('Амжилттай', 'Бүртгэл үүслээ.', [{ text: 'Нэвтрэх' }]);
 
         navigation.navigate('SignIn');
       })
       .catch(e => {
+        console.log(e, 'hehe', e.message);
         Alert.alert('Буруу утга!', 'Нэвтрэх нэр эсвэл Мэйл бүртгэлтэй байна.', [
           { text: 'Ахин бүртгүүлэх' }
         ]);
@@ -181,29 +182,29 @@ const SignInScreen = props => {
           <Text style={styles.text_header}>Бүртгүүлэх</Text>
         </View>
 
-        <Animatable.View animation='fadeInUpBig' style={styles.footer}>
+        <Animatable.View animation="fadeInUpBig" style={styles.footer}>
           <ScrollView>
             <Text style={styles.text_footer}>Нэвтрэх нэр</Text>
             <View style={styles.action}>
               <FontAwesome
-                name='user-o'
+                name="user-o"
                 color={colors.colorCoreDarkBlue}
                 size={20}
               />
               <TextInput
-                placeholder='Нэвтрэх нэр'
+                placeholder="Нэвтрэх нэр"
                 style={styles.textInput}
-                autoCapitalize='none'
+                autoCapitalize="none"
                 onChangeText={val => textInputChange(val)}
               />
               {data.check_textInputChange ? (
-                <Animatable.View animation='bounceIn'>
-                  <Feather name='check-circle' color='green' size={20} />
+                <Animatable.View animation="bounceIn">
+                  <Feather name="check-circle" color="green" size={20} />
                 </Animatable.View>
               ) : null}
             </View>
             {data.isValidUser || !data.username ? null : (
-              <Animatable.View animation='fadeInLeft' duration={500}>
+              <Animatable.View animation="fadeInLeft" duration={500}>
                 <Text style={styles.errorMsg}>
                   Нэвтрэх нэр 4-с дээш үсэг байна.
                 </Text>
@@ -221,24 +222,24 @@ const SignInScreen = props => {
               Мэйл
             </Text>
             <View style={styles.action}>
-              <Feather name='mail' color={colors.colorCoreDarkBlue} size={20} />
+              <Feather name="mail" color={colors.colorCoreDarkBlue} size={20} />
               <TextInput
-                keyboardType='email-address'
-                placeholder='Мэйл хаяг'
+                keyboardType="email-address"
+                placeholder="Мэйл хаяг"
                 style={styles.textInput}
-                autoCapitalize='none'
+                autoCapitalize="none"
                 onChangeText={val => handleEmailChange(val)}
                 spellCheck={false}
               />
               {data.check_emailInputChange ? (
-                <Animatable.View animation='bounceIn'>
-                  <Feather name='check-circle' color='green' size={20} />
+                <Animatable.View animation="bounceIn">
+                  <Feather name="check-circle" color="green" size={20} />
                 </Animatable.View>
               ) : null}
             </View>
 
             {data.check_emailInputChange || !data.email ? null : (
-              <Animatable.View animation='fadeInLeft' duration={500}>
+              <Animatable.View animation="fadeInLeft" duration={500}>
                 <Text style={styles.errorMsg}>Мэйл утга буруу байна.</Text>
               </Animatable.View>
             )}
@@ -254,24 +255,24 @@ const SignInScreen = props => {
               Нууц үг
             </Text>
             <View style={styles.action}>
-              <Feather name='lock' color={colors.colorCoreDarkBlue} size={20} />
+              <Feather name="lock" color={colors.colorCoreDarkBlue} size={20} />
               <TextInput
-                placeholder='Нууц үг'
+                placeholder="Нууц үг"
                 secureTextEntry={data.secureTextEntry ? true : false}
                 style={styles.textInput}
-                autoCapitalize='none'
+                autoCapitalize="none"
                 onChangeText={val => handlePasswordChange(val)}
               />
               <TouchableOpacity onPress={updateSecureTextEntry}>
                 {data.secureTextEntry ? (
-                  <Feather name='eye-off' color='grey' size={20} />
+                  <Feather name="eye-off" color="grey" size={20} />
                 ) : (
-                  <Feather name='eye' color='grey' size={20} />
+                  <Feather name="eye" color="grey" size={20} />
                 )}
               </TouchableOpacity>
             </View>
             {data.isValidPassword ? null : (
-              <Animatable.View animation='fadeInLeft' duration={500}>
+              <Animatable.View animation="fadeInLeft" duration={500}>
                 <Text style={styles.errorMsg}>
                   Нууц үг 8-с дээш тэмдэгт байна.
                 </Text>
@@ -326,7 +327,7 @@ const SignInScreen = props => {
             </View>
             <View style={styles.button}>
               <GradientBtn
-                text='Бүртгүүлэх'
+                text="Бүртгүүлэх"
                 linearGradientStyle={[styles.signIn]}
                 textStyle={styles.textSign}
                 onPress={() => {

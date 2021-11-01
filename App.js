@@ -10,7 +10,7 @@ import {
 import Root from './src/navigation/CourtNavigator';
 
 const httpLink = new HttpLink({
-  uri: 'http://mambacourt.codes/batukapi/graphql',
+  uri: 'http://192.168.1.76:3300/graphql',
   credentials: 'include'
 });
 
