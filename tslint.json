@@ -7,11 +7,7 @@
     "jsx-no-lambda": false,
     "object-literal-sort-keys": false,
     "no-console": false,
-    "variable-name": [
-      "ban-keywords",
-      "check-format",
-      "allow-leading-underscore"
-    ],
+    "variable-name": true,
     "member-access": false,
     "no-angle-bracket-type-assertion": false,
     "max-classes-per-file": [true, 5],
