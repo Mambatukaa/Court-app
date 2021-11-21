@@ -4,7 +4,8 @@ import { ISchedule } from '../booking/types';
 export interface ICourt {
   createdAt: Date;
   name: string;
-  image: string;
+  featuredImage: string;
+  secondaryImages: string[];
   description: string;
   warning: string;
   parking: string;

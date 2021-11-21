@@ -3,7 +3,8 @@ const courtFields = `
     name
     description
     warning
-    image
+    featuredImage
+    secondaryImages
     surface
     format
 

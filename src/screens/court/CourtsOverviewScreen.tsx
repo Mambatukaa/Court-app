@@ -120,7 +120,7 @@ const CourtsOverviewScreen = () => {
           renderItem={itemData => {
             return (
               <CourtItem
-                image={itemData.item.image}
+                featuredImage={itemData.item.featuredImage}
                 name={itemData.item.name}
                 parking={itemData.item.parking}
                 description={itemData.item.description}

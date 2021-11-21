@@ -14,7 +14,7 @@ interface IProps {
   name: string;
   description: string;
   parking: string;
-  image: string;
+  featuredImage: string;
   onViewDetail: () => void;
 }
 
@@ -46,7 +46,7 @@ const CourtItem = (props: IProps) => {
           <View style={styles.imageContainer}>
             <Image
               style={styles.image}
-              source={{ uri: props.image }}
+              source={{ uri: props.featuredImage }}
               resizeMode="cover"
             />
           </View>

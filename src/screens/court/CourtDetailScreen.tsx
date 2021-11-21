@@ -82,7 +82,10 @@ const CourtDetailScreen = (props: any) => {
   return (
     <View>
       <ScrollView>
-        <Image style={styles.image} source={{ uri: courtDetail.image }} />
+        <Image
+          style={styles.image}
+          source={{ uri: courtDetail.featuredImage }}
+        />
         <View style={styles.main}>
           <GradientBtn
             text="Захиалах"
