@@ -121,8 +121,7 @@ const CourtsOverviewScreen = () => {
             return (
               <CourtItem
                 image={itemData.item.image}
-                title={itemData.item.name}
-                slotSize={itemData.item.slotSize}
+                name={itemData.item.name}
                 parking={itemData.item.parking}
                 description={itemData.item.description}
                 onViewDetail={() => {

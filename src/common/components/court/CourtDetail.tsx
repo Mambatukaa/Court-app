@@ -5,15 +5,14 @@ import { colors } from '../../styles';
 
 interface IProps {
   title: string;
-  courtDetail: string;
-  slotSize: string;
+  surface: string;
   description: string;
   warning: string;
   location: {};
 }
 
 const CourtDetail = (props: IProps) => {
-  const [showMark, setShowMark] = useState(false);
+  // const [showMark, setShowMark] = useState(false);
 
   // const mapRegion = {
   //   latitude: Number(props.location.lat),
@@ -26,12 +25,12 @@ const CourtDetail = (props: IProps) => {
     <View>
       <View style={styles.itemContainer}>
         <Text style={styles.itemLabel}>Шал</Text>
-        <Text style={styles.itemValue}>{props.courtDetail}</Text>
+        <Text style={styles.itemValue}>{props.surface || 'Mod'}</Text>
       </View>
-      <View style={styles.itemContainer}>
+      {/* <View style={styles.itemContainer}>
         <Text style={styles.itemLabel}>Багтаамж</Text>
         <Text style={styles.itemValue}>{props.slotSize}</Text>
-      </View>
+      </View> */}
       <View style={styles.itemContainer}>
         <Text style={styles.itemLabel}>Тайлбар</Text>
         <Text style={styles.itemValue}>{props.description}</Text>

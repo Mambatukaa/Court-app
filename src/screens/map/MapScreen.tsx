@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { AntDesign } from '@expo/vector-icons';
 import { gql, useQuery } from '@apollo/client';
-import Colors from '../../common/styles/colors';
+import { colors } from '../../common/styles';
 import queries from '../court/graphql/queries';
 import { CourtsMainQueryResponse, ICourt, ICourtDoc } from '../court/types';
 
@@ -22,7 +22,7 @@ const MapScreen = (props: any) => {
     return (
       <ActivityIndicator
         size="small"
-        color="#B43CF3"
+        color={colors.grdMain}
         style={{ justifyContent: 'center', flex: 1 }}
       />
     );
@@ -72,7 +72,7 @@ const MapScreen = (props: any) => {
                 <AntDesign
                   name="right"
                   size={20}
-                  color={Colors.primary}
+                  color={colors.primary}
                   fontWeight="bold"
                 />
               </View>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   detail: {
     fontSize: 25,
     fontWeight: 'bold',
-    color: Colors.primary
+    color: colors.primary
   },
   bubble: {
     justifyContent: 'space-between',

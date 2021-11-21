@@ -11,10 +11,9 @@ import { colors } from '../../styles';
 import { TextView } from '..';
 
 interface IProps {
-  title: string;
+  name: string;
   description: string;
   parking: string;
-  slotSize: string;
   image: string;
   onViewDetail: () => void;
 }
@@ -28,7 +27,7 @@ const CourtItem = (props: IProps) => {
       <View style={styles.court}>
         <View style={styles.main}>
           <View style={styles.textContainer}>
-            <Text style={styles.title}>{props.title}</Text>
+            <Text style={styles.title}>{props.name}</Text>
             <Text style={styles.description}>{props.description}</Text>
 
             <View style={styles.itemContainer}>
@@ -38,10 +37,10 @@ const CourtItem = (props: IProps) => {
 
             <View style={styles.itemContainer}>
               <TextView style={styles.itemLabel} text={'Нийт'} />
-              <TextView
+              {/* <TextView
                 style={styles.itemValue}
                 text={`${props.slotSize} хүн`}
-              />
+              /> */}
             </View>
           </View>
           <View style={styles.imageContainer}>

@@ -1,4 +1,5 @@
 import { QueryResponse } from '../../common/types';
+import { ISchedule } from '../booking/types';
 
 export interface ICourt {
   createdAt: Date;
@@ -7,10 +8,10 @@ export interface ICourt {
   description: string;
   warning: string;
   parking: string;
-  courtDetail: string;
-  slotSize: string;
+  surface: string;
+  format: string;
 
-  courtSchedule: any[];
+  courtSchedule: ISchedule[];
 }
 
 export interface ICourtDoc extends ICourt {

@@ -37,7 +37,7 @@ const CourtBookDetail = (props: any) => {
     return (
       <ActivityIndicator
         size="small"
-        color="#B43CF3"
+        color={colors.grdMain}
         style={{ justifyContent: 'center', flex: 1 }}
       />
     );

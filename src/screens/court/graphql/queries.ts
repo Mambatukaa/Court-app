@@ -2,7 +2,10 @@ const courtFields = `
     _id
     name
     description
+    warning
     image
+    surface
+    format
 
     courtSchedule {
         _id

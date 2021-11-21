@@ -5,6 +5,7 @@ import { View, Text } from 'react-native';
 import { queries } from './graphql';
 
 import CourtTimePick from '../../common/components/court/CourtTimePick';
+import { colors } from '../../common/styles';
 
 const CourtBookingScreen = (props: any) => {
   const { params } = props.route;
@@ -19,7 +20,7 @@ const CourtBookingScreen = (props: any) => {
     return (
       <ActivityIndicator
         size="small"
-        color="#B43CF3"
+        color={colors.grdMain}
         style={{ justifyContent: 'center', flex: 1 }}
       />
     );
