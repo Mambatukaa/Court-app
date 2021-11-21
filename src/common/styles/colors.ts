@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-//Main colors
+// Main colors
 
 import { lighten, rgba } from './color';
 

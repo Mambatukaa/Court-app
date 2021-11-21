@@ -27,7 +27,7 @@ const BackButton = (props: IProps) => {
             backgroundColor: colors.grdMain,
             overflow: 'hidden'
           }}
-        ></Ionicons>
+        />
       </View>
     </TouchableOpacity>
   );

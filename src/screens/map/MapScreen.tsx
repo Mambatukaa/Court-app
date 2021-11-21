@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import MapView, { Callout, Marker } from 'react-native-maps';
+import MapView, { Callout } from 'react-native-maps';
 import { AntDesign } from '@expo/vector-icons';
 import { gql, useQuery } from '@apollo/client';
 import { colors } from '../../common/styles';
 import queries from '../court/graphql/queries';
-import { CourtsMainQueryResponse, ICourt, ICourtDoc } from '../court/types';
+import { CourtsMainQueryResponse, ICourtDoc } from '../court/types';
 
 const MapScreen = (props: any) => {
-  const [showMark, setShowMark] = useState(false);
-
   const navigation = useNavigation();
 
-  const { data, loading, error } = useQuery<CourtsMainQueryResponse>(
+  const { data, loading } = useQuery<CourtsMainQueryResponse>(
     gql(queries.courtsMain)
   );
 
@@ -41,10 +39,10 @@ const MapScreen = (props: any) => {
       provider="google"
       style={styles.map}
       initialRegion={mapRegion}
-      showsMyLocationButton
-      showsUserLocation
-      showsCompass
-      showsTraffic
+      showsMyLocationButton={true}
+      showsUserLocation={true}
+      showsCompass={true}
+      showsTraffic={true}
     >
       {allCourts.map((court: ICourtDoc, index: any) => {
         return (
@@ -58,28 +56,30 @@ const MapScreen = (props: any) => {
           //     setShowMark(v => !v);
           //   }}
           // >
-          <Callout
-            tooltip
-            onPress={() => {
-              navigation.navigate('CourtDetail', {
-                courtId: court._id
-              });
-            }}
-          >
-            <View>
-              <View style={styles.bubble}>
-                <Text style={styles.name}>{court.name}</Text>
-                <AntDesign
-                  name="right"
-                  size={20}
-                  color={colors.primary}
-                  fontWeight="bold"
-                />
+          <>
+            <Callout
+              tooltip={true}
+              onPress={() => {
+                navigation.navigate('CourtDetail', {
+                  courtId: court._id
+                });
+              }}
+            >
+              <View>
+                <View style={styles.bubble}>
+                  <Text style={styles.name}>{court.name}</Text>
+                  <AntDesign
+                    name="right"
+                    size={20}
+                    color={colors.primary}
+                    fontWeight="bold"
+                  />
+                </View>
+                <View style={styles.arrowBorder} />
+                <View style={styles.arrow} />
               </View>
-              <View style={styles.arrowBorder} />
-              <View style={styles.arrow} />
-            </View>
-          </Callout>
+            </Callout>
+          </>
           // </Marker>
         );
       })}

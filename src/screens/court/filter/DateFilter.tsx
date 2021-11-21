@@ -4,25 +4,25 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { colors } from '../../../common/styles';
 
 function DateFilter() {
-  const [dateStartDate, setDateStartDate] = useState(new Date());
-  const [modeStartDate, setModeStartDate] = useState();
+  const [dateStartDate] = useState(new Date());
+  const [modeStartDate] = useState();
 
-  const [dateEndDate, setDateEndDate] = useState(new Date());
+  const [dateEndDate] = useState(new Date());
 
-  const onChangeStartDate = (event, selectedDate) => {
-    /*     setShowStart(false);
-    if (selectedDate === undefined) {
-      return;
-    }
-    setDateStartDate(selectedDate);
-    if (modeStartDate === 'date') {
-      setSelectedStartDate(moment(selectedDate).format('YYYY-MM-DD'));
-      setSelectedStartTime(moment(selectedDate).format('HH:mm'));
-    }
-    if (modeStartDate === 'time') {
-      setSelectedStartTime(moment(selectedDate).format('HH:mm'));
-    } */
-  };
+  // const onChangeStartDate = (event, selectedDate) => {
+  //   /*     setShowStart(false);
+  //   if (selectedDate === undefined) {
+  //     return;
+  //   }
+  //   setDateStartDate(selectedDate);
+  //   if (modeStartDate === 'date') {
+  //     setSelectedStartDate(moment(selectedDate).format('YYYY-MM-DD'));
+  //     setSelectedStartTime(moment(selectedDate).format('HH:mm'));
+  //   }
+  //   if (modeStartDate === 'time') {
+  //     setSelectedStartTime(moment(selectedDate).format('HH:mm'));
+  //   } */
+  // };
 
   return (
     <View style={styles.container}>

@@ -7,7 +7,6 @@ import {
   Platform,
   StyleSheet,
   ScrollView,
-  StatusBar,
   Alert,
   KeyboardAvoidingView
 } from 'react-native';
@@ -116,7 +115,7 @@ const SignInScreen = () => {
     });
   };
 
-  const handleSignUp = (data: IData) => {
+  const handleSignUp = () => {
     if (!data.check_textInputChange) {
       Alert.alert('Буруу утга!', 'Нэвтрэх нэрийн утга дутуу байна.', [
         { text: 'Ахин бүртгүүлэх' }
@@ -156,7 +155,7 @@ const SignInScreen = () => {
         password: data.password
       }
     })
-      .then(data => {
+      .then(() => {
         Alert.alert('Амжилттай', 'Бүртгэл үүслээ.', [{ text: 'Нэвтрэх' }]);
 
         navigation.navigate('SignIn');
@@ -303,7 +302,7 @@ const SignInScreen = () => {
                 linearGradientStyle={[styles.signIn]}
                 textStyle={styles.textSign}
                 onPress={() => {
-                  handleSignUp(data);
+                  handleSignUp();
                 }}
               />
             </View>

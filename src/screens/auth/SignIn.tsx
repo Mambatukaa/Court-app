@@ -6,7 +6,6 @@ import {
   TextInput,
   Platform,
   StyleSheet,
-  StatusBar,
   Alert
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -95,7 +94,7 @@ const SignInScreen = () => {
   };
 
   const loginHandle = (userName: string, password: string) => {
-    if (userName.length == 0 || password.length == 0) {
+    if (userName.length === 0 || password.length === 0) {
       Alert.alert('Буруу утга!', 'Нэвтрэх нэр болон нууц үг хоосон байна.', [
         { text: 'Ахин нэвтрэх' }
       ]);
@@ -120,9 +119,9 @@ const SignInScreen = () => {
     })
       .then((el: any) => {
         // setLoading(true);
-        const { data } = el;
+        const response = el.data;
 
-        signIn(data.login);
+        signIn(response.login);
       })
       .catch(e => {
         Alert.alert(

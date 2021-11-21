@@ -13,7 +13,7 @@ import CourtItem from '../../common/components/court/CourtItem';
 import { useNavigation } from '@react-navigation/native';
 import { gql, useQuery } from '@apollo/client';
 import queries from './graphql/queries';
-import { FilterWrapper } from './filter';
+import FilterWrapper from './filter/FilterWrapper';
 
 import { colors } from '../../common/styles';
 import { CourtsMainQueryResponse } from './types';
@@ -27,7 +27,7 @@ const CourtsOverviewScreen = () => {
   const [isFilterVisible, setSetFilterVisible] = useState(false);
   const [filters, setFilters] = React.useState(null);
 
-  const { data, loading, error, refetch } = useQuery<CourtsMainQueryResponse>(
+  const { data, loading, refetch } = useQuery<CourtsMainQueryResponse>(
     gql(queries.courtsMain),
     {
       variables: {

@@ -38,7 +38,7 @@ const BookedCourt = props => {
                         flexDirection: 'row',
                         justifyContent: 'space-between'
                       }}
-                    ></View>
+                    />
                   </View>
                   <View style={styles.imageContainer}>
                     <Image

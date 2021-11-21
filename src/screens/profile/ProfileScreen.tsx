@@ -28,7 +28,7 @@ const ProfileScreen = () => {
 
   const [logout] = useMutation(gql(mutations.logout));
 
-  const { data, loading, error } = useQuery<CurrentUserQueryResponse>(
+  const { data, loading } = useQuery<CurrentUserQueryResponse>(
     gql(queries.currentUser),
     {
       fetchPolicy: 'network-only'
@@ -56,13 +56,13 @@ const ProfileScreen = () => {
       <Avatar
         containerStyle={styles.avatar}
         size="large"
-        rounded
+        rounded={true}
         source={{
           uri: 'https://cdn.vox-cdn.com/thumbor/t_7cx8iWPnb_U6Tt22c1ZnChh3Q=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/21788189/1010493794.jpg.jpg'
         }}
       />
 
-      <TextView text={nameCapitalized} xlarge style={styles.title} />
+      <TextView text={nameCapitalized} xlarge={true} style={styles.title} />
       <View style={styles.itemContainer}>
         <TextView style={styles.itemLabel} text={'Нэвтрэх нэр:'} />
         <TextView

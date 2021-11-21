@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { queries } from './graphql';
 
 import CourtTimePick from '../../common/components/court/CourtTimePick';
@@ -10,7 +10,7 @@ import { colors } from '../../common/styles';
 const CourtBookingScreen = (props: any) => {
   const { params } = props.route;
 
-  const { data, loading, error } = useQuery(gql(queries.courtDetail), {
+  const { data, loading } = useQuery(gql(queries.courtDetail), {
     variables: {
       _id: params.courtId
     }

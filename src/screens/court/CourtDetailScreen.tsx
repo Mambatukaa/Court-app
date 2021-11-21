@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,18 +7,14 @@ import {
   View,
   Dimensions,
   StatusBar,
-  TouchableOpacity,
   ActivityIndicator,
   Platform
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import { TabView, TabBar } from 'react-native-tab-view';
-import { Entypo, FontAwesome } from '@expo/vector-icons';
 
 import Colors from '../../common/styles/colors';
 import CourtBookingScreen from './CourtBookingScreen';
-import { LinearGradient } from 'expo-linear-gradient';
 import CourtDetail from '../../common/components/court/CourtDetail';
 
 import { gql, useQuery } from '@apollo/client';
@@ -33,7 +29,7 @@ const CourtDetailScreen = (props: any) => {
   /*  const navigation = useNavigation();
   const [like, setLike] = useState(true); */
 
-  const { data, loading, error } = useQuery(gql(queries.courtDetail), {
+  const { data, loading } = useQuery(gql(queries.courtDetail), {
     variables: {
       _id: courtId
     }
@@ -109,18 +105,18 @@ const CourtDetailScreen = (props: any) => {
 
 const initialLayout = { width: Dimensions.get('window').width };
 
-export default function TabViewExample({ route }: { route: any }) {
-  const params = route;
+export default function TabViewExample(tabProps: any) {
+  const params = tabProps.route;
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Мэдээлэл' },
     { key: 'second', title: 'Захиалах' }
   ]);
 
-  const renderScene = ({ route, jumpTo }: { route: any; jumpTo: any }) => {
-    switch (route.key) {
+  const renderScene = (sceneParams: any) => {
+    switch (sceneParams.route.key) {
       case 'first':
-        return <CourtDetailScreen route={params} jumpTo={jumpTo} />;
+        return <CourtDetailScreen route={params} jumpTo={sceneParams.jumpTo} />;
       case 'second':
         return <CourtBookingScreen route={params} />;
       default:

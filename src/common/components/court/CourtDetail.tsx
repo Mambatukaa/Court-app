@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import MapView, { Marker, Callout } from 'react-native-maps';
 import { colors } from '../../styles';
 
 interface IProps {

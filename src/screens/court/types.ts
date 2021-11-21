@@ -1,5 +1,5 @@
 import { QueryResponse } from '../../common/types';
-import { ISchedule } from '../booking/types';
+import { IScheduleDoc } from '../booking/types';
 
 export interface ICourt {
   createdAt: Date;
@@ -12,7 +12,7 @@ export interface ICourt {
   surface: string;
   format: string;
 
-  courtSchedule: ISchedule[];
+  courtSchedule: IScheduleDoc[];
 }
 
 export interface ICourtDoc extends ICourt {
@@ -21,4 +21,8 @@ export interface ICourtDoc extends ICourt {
 
 export type CourtsMainQueryResponse = {
   courtsMain: ICourtDoc[];
+} & QueryResponse;
+
+export type CourtDetailQueryResponse = {
+  courtDetail: ICourtDoc;
 } & QueryResponse;

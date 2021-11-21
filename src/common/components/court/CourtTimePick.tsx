@@ -12,7 +12,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../styles';
 import { ICourt } from '../../../screens/court/types';
-import { ISchedule } from '../../../screens/booking/types';
+import { ISchedule, IScheduleDoc } from '../../../screens/booking/types';
 
 interface IProps {
   params: any;
@@ -44,7 +44,7 @@ const CourtTimePick = (props: IProps) => {
   const onViewBookDetail = (item: ISchedule) => {
     navigation.navigate('CourtBookDetail', {
       courtId: params.courtId,
-      item: item
+      item
     });
   };
 
@@ -111,7 +111,7 @@ const CourtTimePick = (props: IProps) => {
     }
   };
 
-  const renderRow = (item: ISchedule[], courtSchedule: ISchedule[]) => {
+  const renderRow = (item: ISchedule[], schedules: IScheduleDoc[]) => {
     return (
       <View>
         {item.map((el: any, index: any) => {
@@ -135,9 +135,9 @@ const CourtTimePick = (props: IProps) => {
                   horizontal={true}
                 >
                   <>
-                    {courtSchedule.map((schedule: ISchedule, index: any) => {
+                    {schedules.map((schedule: IScheduleDoc) => {
                       return (
-                        <View key={index}>
+                        <View key={schedule._id}>
                           {dayjs(schedule.startDate).format('YYYY-MM-DD') === el
                             ? renderRowItem(schedule)
                             : null}

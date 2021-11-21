@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  ActivityIndicator,
-  TextInput
-} from 'react-native';
+import { StyleSheet, View, Text, Image, ActivityIndicator } from 'react-native';
 
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
@@ -19,21 +12,25 @@ import queries from './graphql/queries';
 import { colors } from '../../common/styles';
 import { GradientBtn } from '../../common/components';
 import { ScrollView } from 'react-native-gesture-handler';
+import { CourtDetailQueryResponse } from './types';
 
 const CourtBookDetail = (props: any) => {
   const { courtId, item } = props.route.params;
 
   const [discount, setDiscount] = useState(item?.price);
-  const [change, onChange] = useState(null);
+  const [change] = useState(null);
   const navigation = useNavigation();
 
-  const { data, loading, error } = useQuery(gql(queries.courtDetail), {
-    variables: {
-      _id: courtId
+  const { data, loading } = useQuery<CourtDetailQueryResponse, { _id: string }>(
+    gql(queries.courtDetail),
+    {
+      variables: {
+        _id: courtId
+      }
     }
-  });
+  );
 
-  if (loading) {
+  if (loading || !data) {
     return (
       <ActivityIndicator
         size="small"
@@ -58,7 +55,7 @@ const CourtBookDetail = (props: any) => {
       <View style={{ flexDirection: 'row' }}>
         <Image
           style={styles.image}
-          source={{ uri: courtDetail.image }}
+          source={{ uri: courtDetail.featuredImage }}
           resizeMode="cover"
         />
         <Text
@@ -197,7 +194,7 @@ const CourtBookDetail = (props: any) => {
 
   const renderBottomButton = () => (
     <View>
-      <Text></Text>
+      <Text />
       <View style={{ alignItems: 'center', marginVertical: 20 }}>
         <GradientBtn
           onPress={() =>

@@ -1,8 +1,7 @@
 import React from 'react';
-
 import { SafeAreaView, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import Modal from 'react-native-modal';
-import { PriceFilter } from '.';
+import PriceFilter from './PriceFilter';
 
 const width = Dimensions.get('window').width;
 
@@ -25,9 +24,9 @@ const FilterWrapper = props => {
       animationIn="slideInLeft"
       animationOut="slideOutLeft"
       swipeDirection="left"
-      useNativeDriver
-      hideModalContentWhileAnimating
-      propagateSwipe
+      useNativeDriver={true}
+      hideModalContentWhileAnimating={true}
+      propagateSwipe={true}
       style={styles.modal}
     >
       <SafeAreaView style={styles.container}>

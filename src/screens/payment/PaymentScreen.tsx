@@ -1,17 +1,17 @@
-import React, { Component, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { gql, useQuery, useMutation } from '@apollo/client';
-import {
-  CreditCardInput,
-  LiteCreditCardInput
-} from 'react-native-credit-card-input';
+import { gql, useMutation } from '@apollo/client';
+// import {
+//   CreditCardInput,
+//   LiteCreditCardInput
+// } from 'react-native-credit-card-input';
 
-import { mutations, queries } from './graphql';
+import { mutations } from './graphql';
 import { BookingsAddMutationResponse } from './types';
 
-const USE_LITE_CREDIT_CARD_INPUT = false;
+// const USE_LITE_CREDIT_CARD_INPUT = false;
 
 interface IProps {
   route: any;
@@ -62,13 +62,13 @@ const Payment = (props: IProps) => {
     });
   }, [navigation]);
 
-  const onChange = formData => {
-    console.log(JSON.stringify(formData, null, ' '));
-  };
+  // const onChange = formData => {
+  //   console.log(JSON.stringify(formData, null, ' '));
+  // };
 
-  const onFocus = field => {
-    console.log(field);
-  };
+  // const onFocus = field => {
+  //   console.log(field);
+  // };
 
   return (
     // <View style={s.container}>
@@ -98,13 +98,13 @@ const Payment = (props: IProps) => {
     //     />
     //   )}
     // </View>
-    <View>
+    <View style={styles.container}>
       <Text>hello</Text>
     </View>
   );
 };
 
-const s = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F5F5F5',
     marginTop: 60

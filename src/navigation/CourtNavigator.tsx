@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 import { NavigationContainer } from '@react-navigation/native';
 
 import { AntDesign, FontAwesome5, Feather } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import CourtsOverviewScreen from '../screens/court/CourtsOverviewScreen';
 
@@ -203,11 +202,13 @@ const rootNavigator = () => {
 
   React.useEffect(() => {
     const bootstrapAsync = async () => {
-      let userToken = '';
+      const userToken = '';
 
       try {
         // userToken = await AsyncStorage.getItemAsync('userToken');
-      } catch (e) {}
+      } catch (e) {
+        console.log(e);
+      }
 
       dispatch({ type: 'RESTORE_TOKEN', token: userToken });
     };

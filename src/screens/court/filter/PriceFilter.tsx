@@ -11,7 +11,7 @@ import { colors } from '../../../common/styles';
 import { GradientBtn } from '../../../common/components';
 
 function PriceFilter(props) {
-  const { setPrice, setFilters, filters } = props;
+  const { setFilters, filters } = props;
 
   const [isFiltered, setIsFiltered] = useState(filters?.minPrice);
 
@@ -39,7 +39,7 @@ function PriceFilter(props) {
       return;
     }
 
-    setFilters({ minPrice: minPrice, maxPrice: maxPrice });
+    setFilters({ minPrice, maxPrice });
     setIsFiltered(true);
   };
 

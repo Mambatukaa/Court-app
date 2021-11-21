@@ -10,7 +10,7 @@ import { UserBookingsQueryResponse } from './types';
 const BookedScreen = (props: any) => {
   const navigation = useNavigation();
 
-  const { data, loading, error } = useQuery(gql(queries.currentUser), {
+  const { data } = useQuery(gql(queries.currentUser), {
     fetchPolicy: 'network-only'
   });
 
@@ -25,7 +25,6 @@ const BookedScreen = (props: any) => {
   const {
     loading: bCourtLoading,
     data: bData,
-    error: bCourtError,
     refetch: bCourtRefetch
   } = useQuery<UserBookingsQueryResponse>(gql(queries.userBookings), {
     variables: {
@@ -39,12 +38,7 @@ const BookedScreen = (props: any) => {
 
   userBookings?.map((book: any) => ids.push(book.scheduleId));
 
-  const {
-    data: scheduleData,
-    loading: scheduleLoading,
-    error: scheduleError,
-    refetch: scheduleRefetch
-  } = useQuery(gql(queries.schedulesMain), {
+  const { data: scheduleData } = useQuery(gql(queries.schedulesMain), {
     variables: {
       ids
     }
