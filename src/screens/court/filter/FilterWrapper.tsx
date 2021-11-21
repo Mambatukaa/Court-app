@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-  Text
-} from 'react-native';
+import { SafeAreaView, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import Modal from 'react-native-modal';
-import { GradientBtn } from '../../../common/components';
-import { PriceFilter, DateFilter } from '../filter';
+import { PriceFilter } from '.';
 
 const width = Dimensions.get('window').width;
 
@@ -29,9 +22,9 @@ const FilterWrapper = props => {
       onBackdropPress={hide}
       onSwipeComplete={hide}
       isVisible={isFilterVisible}
-      animationIn='slideInLeft'
-      animationOut='slideOutLeft'
-      swipeDirection='left'
+      animationIn="slideInLeft"
+      animationOut="slideOutLeft"
+      swipeDirection="left"
       useNativeDriver
       hideModalContentWhileAnimating
       propagateSwipe
@@ -40,16 +33,6 @@ const FilterWrapper = props => {
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <PriceFilter {...props} />
-          {/*  <DateFilter /> */}
-          {/*   <GradientBtn
-            text='Шүүх'
-            linearGradientStyle={{
-              marginTop: 20,
-              width: 180,
-              borderRadius: 10,
-              alignSelf: 'center'
-            }}
-          /> */}
         </ScrollView>
       </SafeAreaView>
     </Modal>

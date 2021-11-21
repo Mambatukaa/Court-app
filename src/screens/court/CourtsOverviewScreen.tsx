@@ -9,14 +9,12 @@ import {
 } from 'react-native';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import { Searchbar } from 'react-native-paper';
-
 import CourtItem from '../../common/components/court/CourtItem';
 import { useNavigation } from '@react-navigation/native';
 import { gql, useQuery } from '@apollo/client';
-
 import queries from './graphql/queries';
-
 import { FilterWrapper } from './filter';
+
 import { colors } from '../../common/styles';
 import { CourtsMainQueryResponse } from './types';
 

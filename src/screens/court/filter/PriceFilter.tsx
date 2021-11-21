@@ -58,8 +58,8 @@ function PriceFilter(props) {
         <Text style={styles.inputText}>Бага дүн</Text>
         <TextInput
           style={styles.priceInput}
-          placeholder='0₮'
-          keyboardType='numeric'
+          placeholder="0₮"
+          keyboardType="numeric"
           value={minPrice}
           onChangeText={value => {
             onChangeMin(value);
@@ -71,8 +71,8 @@ function PriceFilter(props) {
         <Text style={styles.inputText}>Их дүн</Text>
         <TextInput
           style={styles.priceInput}
-          placeholder='0₮'
-          keyboardType='numeric'
+          placeholder="0₮"
+          keyboardType="numeric"
           value={maxPrice}
           onChangeText={value => {
             onChangeMax(value);
@@ -81,7 +81,7 @@ function PriceFilter(props) {
       </View>
 
       <GradientBtn
-        text='Шүүх'
+        text="Шүүх"
         linearGradientStyle={{
           marginTop: 20,
           width: 180,
@@ -92,7 +92,7 @@ function PriceFilter(props) {
       />
       {isFiltered ? (
         <GradientBtn
-          text='Шүүлт устгах'
+          text="Шүүлт устгах"
           linearGradientStyle={{
             marginTop: 10,
             width: 180,

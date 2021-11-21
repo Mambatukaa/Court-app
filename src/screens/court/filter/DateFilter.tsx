@@ -5,7 +5,7 @@ import { colors } from '../../../common/styles';
 
 function DateFilter() {
   const [dateStartDate, setDateStartDate] = useState(new Date());
-  const [modeStartDate, setModeStartDate] = useState('date');
+  const [modeStartDate, setModeStartDate] = useState();
 
   const [dateEndDate, setDateEndDate] = useState(new Date());
 
@@ -38,7 +38,6 @@ function DateFilter() {
         <Text style={{ fontSize: 12 }}>Эхлэх огноо</Text>
         <DateTimePicker
           style={{
-            color: 'white',
             width: 120,
             marginVertical: 4,
             borderColor: colors.bgActive
