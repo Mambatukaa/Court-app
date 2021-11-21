@@ -7,16 +7,13 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Avatar } from 'react-native-elements';
-
 import { gql, useQuery, useMutation } from '@apollo/client';
-
 import { AuthContext } from '../../common/utils/AuthContext';
-
 import TextView from '../../common/components/TextView';
 import GradientBtn from '../../common/components/GradientBtn';
-
 import { colors } from '../../common/styles';
 import { queries, mutations } from './graphql';
+import { CurrentUserQueryResponse } from './types';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -31,13 +28,14 @@ const ProfileScreen = () => {
 
   const [logout] = useMutation(gql(mutations.logout));
 
-  const { data, loading, error } = useQuery(gql(queries.currentUser), {
-    fetchPolicy: 'network-only'
-  });
+  const { data, loading, error } = useQuery<CurrentUserQueryResponse>(
+    gql(queries.currentUser),
+    {
+      fetchPolicy: 'network-only'
+    }
+  );
 
-  console.log(data, '----------------');
-
-  if (loading) {
+  if (!data || loading) {
     return (
       <ActivityIndicator
         size="small"
@@ -47,7 +45,7 @@ const ProfileScreen = () => {
     );
   }
 
-  const currentUser = data?.currentUser || { username: 'Batuka' };
+  const currentUser = data.currentUser;
 
   const nameCapitalized =
     currentUser.username.charAt(0).toUpperCase() +
@@ -56,7 +54,7 @@ const ProfileScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Avatar
-        // style={styles.avatar}
+        containerStyle={styles.avatar}
         size="large"
         rounded
         source={{

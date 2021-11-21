@@ -4,10 +4,6 @@ export type QueryResponse = {
   error?: string;
 };
 
-export type IUser = {
-  _id: string;
-};
-
 export interface IAuth {
   role?: string;
   signUp?: (data: any) => void;

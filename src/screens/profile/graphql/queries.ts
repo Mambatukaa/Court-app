@@ -3,6 +3,8 @@ const currentUser = `
         currentUser {
             _id
             username
+            email
+            role
         }
     }
 `;
