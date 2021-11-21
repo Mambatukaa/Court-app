@@ -43,12 +43,12 @@ function DateFilter() {
             marginVertical: 4,
             borderColor: colors.bgActive
           }}
-          testID='startDateTimePicker'
+          testID="startDateTimePicker"
           value={dateStartDate}
           mode={modeStartDate}
           is24Hour={true}
           maximumDate={dateEndDate}
-          display='default'
+          display="default"
           locale={'en_GB'}
           /* onChange={onChangeStartDate} */
         />
