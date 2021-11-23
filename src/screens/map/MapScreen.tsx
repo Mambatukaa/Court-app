@@ -9,7 +9,7 @@ import { colors } from '../../common/styles';
 import queries from '../court/graphql/queries';
 import { CourtsMainQueryResponse, ICourtDoc } from '../court/types';
 
-function MapScreen(props: any) {
+function MapScreen() {
   const navigation = useNavigation();
 
   const { data, loading } = useQuery<CourtsMainQueryResponse>(

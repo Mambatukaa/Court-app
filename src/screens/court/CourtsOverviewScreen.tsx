@@ -27,14 +27,14 @@ function CourtsOverviewScreen() {
   const [isFilterVisible, setSetFilterVisible] = useState(false);
   const [filters, setFilters] = React.useState(null);
 
-  const { data, loading, refetch } = useQuery<CourtsMainQueryResponse>(
-    gql(queries.courtsMain),
-    {
-      variables: {
-        searchValue: searchQuery
-      }
+  const { data, loading, refetch } = useQuery<
+    CourtsMainQueryResponse,
+    { searchValue: string }
+  >(gql(queries.courtsMain), {
+    variables: {
+      searchValue: searchQuery
     }
-  );
+  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -107,13 +107,13 @@ function CourtsOverviewScreen() {
         filters={filters}
         setFilters={setFilters}
       />
-      {data && data?.courtsMain?.length > 0 ? (
+      {data && data.courtsMain?.length > 0 ? (
         <FlatList
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={() => refetch()} />
           }
           style={{ backgroundColor: colors.bgMain }}
-          data={data?.courtsMain}
+          data={data.courtsMain}
           keyExtractor={item => item._id}
           renderItem={itemData => {
             return (

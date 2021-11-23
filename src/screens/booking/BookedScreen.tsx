@@ -7,7 +7,7 @@ import { colors } from '../../common/styles';
 import { queries } from './graphql';
 import { UserBookingsQueryResponse } from './types';
 
-function BookedScreen(props: any) {
+function BookedScreen() {
   const navigation = useNavigation();
 
   const { data: userData } = useQuery(gql(queries.currentUser), {

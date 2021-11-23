@@ -9,6 +9,7 @@ const primary = '#5629B6';
 const accent = '#FFC107';
 const grdMain = '#B43CF3';
 const grdPrimary = '#8741EA';
+const lalYellow = '#fdba21';
 
 const timeBlock = '#24e100';
 const bcTimeBlock = '#00b712';
@@ -138,5 +139,6 @@ export default {
   grdPrimary,
   timeBlock,
   bcTimeBlock,
-  bgTimeBlock
+  bgTimeBlock,
+  lalYellow
 };

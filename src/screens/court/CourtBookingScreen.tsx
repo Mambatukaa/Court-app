@@ -7,7 +7,11 @@ import { queries } from './graphql';
 import CourtTimePick from '../../common/components/court/CourtTimePick';
 import { colors } from '../../common/styles';
 
-function CourtBookingScreen(props: any) {
+interface IProps {
+  route: any;
+}
+
+function CourtBookingScreen(props: IProps) {
   const { params } = props.route;
 
   const { data, loading } = useQuery(gql(queries.courtDetail), {

@@ -14,7 +14,11 @@ import { GradientBtn } from '../../common/components';
 import { ScrollView } from 'react-native-gesture-handler';
 import { CourtDetailQueryResponse } from './types';
 
-function CourtBookDetail(props: any) {
+interface IProps {
+  route: any;
+}
+
+function CourtBookDetail(props: IProps) {
   const { courtId, item } = props.route.params;
 
   const [discount, setDiscount] = useState(item?.price);

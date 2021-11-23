@@ -24,7 +24,13 @@ import colors from '../../common/styles/colors';
 import { GradientBtn } from '../../common/components';
 import { ICourt } from './types';
 
-function CourtDetailScreen(props: any) {
+interface IProps {
+  route: any;
+
+  jumpTo: (value: string) => void;
+}
+
+function CourtDetailScreen(props: IProps) {
   const { courtId } = props.route.params;
   /*  const navigation = useNavigation();
   const [like, setLike] = useState(true); */

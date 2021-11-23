@@ -39,7 +39,7 @@ function Payment(props: IProps) {
                     // userId,
                     scheduleId
                   },
-                  refetchQueries: ['bookingDetail', 'schedulesMain']
+                  refetchQueries: ['bookingDetail', 'userBookings']
                 })
                   .then(() => {
                     console.log('amjilttai');
