@@ -3,7 +3,20 @@ const userBookings = `
         userBookings(userId: $userId){
             _id
             courtId
-            scheduleId
+            scheduleId,
+
+            court {
+                name
+                description
+                
+                featuredImage
+            }
+
+            schedule {
+                startDate
+                endDate
+                price
+            }
         }
     }
 `;
@@ -17,27 +30,4 @@ const currentUser = `
         }
     }
 `;
-
-const schedulesMain = `
-    query schedulesMain($ids: [String]){
-        schedulesMain(ids: $ids){
-            _id
-            courtId
-            startDate
-            endDate
-            price
-            bookedPeople
-            
-            scheduledCourt{
-                _id
-                name
-                image
-                description
-                warning
-                parking
-            }
-        }
-    }    
-`;
-
-export default { userBookings, currentUser, schedulesMain };
+export default { userBookings, currentUser };

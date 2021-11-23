@@ -17,7 +17,7 @@ interface IProps {
   route: any;
 }
 
-const Payment = (props: IProps) => {
+function Payment(props: IProps) {
   const navigation = useNavigation();
 
   const [booking] = useMutation<BookingsAddMutationResponse>(
@@ -102,7 +102,7 @@ const Payment = (props: IProps) => {
       <Text>hello</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -21,7 +21,7 @@ import { mutations } from './graphql';
 import { LoginMutationResponse } from './types';
 import { IAuth } from '../../common/types';
 
-const SignInScreen = () => {
+function SignInScreen() {
   const [data, setData] = React.useState({
     username: '',
     password: '',
@@ -253,7 +253,7 @@ const SignInScreen = () => {
       </Animatable.View>
     </View>
   );
-};
+}
 
 export default SignInScreen;
 

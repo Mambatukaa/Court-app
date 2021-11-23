@@ -1,5 +1,5 @@
 import { QueryResponse } from '../../common/types';
-import { ICourt } from '../court/types';
+import { ICourt, ICourtDoc } from '../court/types';
 
 export interface ISchedule {
   courtId: string;
@@ -23,6 +23,9 @@ export interface IBooking {
   userId: string;
   status: string;
   scheduleId: string;
+
+  court: ICourtDoc;
+  schedule: IScheduleDoc;
 }
 
 export interface IBookingDoc extends IBooking {
@@ -34,5 +37,5 @@ export type BookingDetailQueryResponse = {
 } & QueryResponse;
 
 export type UserBookingsQueryResponse = {
-  userBookings: IBooking[];
+  userBookings: IBookingDoc[];
 } & QueryResponse;

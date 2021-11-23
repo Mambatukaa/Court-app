@@ -9,7 +9,7 @@ import { colors } from '../../common/styles';
 import queries from '../court/graphql/queries';
 import { CourtsMainQueryResponse, ICourtDoc } from '../court/types';
 
-const MapScreen = (props: any) => {
+function MapScreen(props: any) {
   const navigation = useNavigation();
 
   const { data, loading } = useQuery<CourtsMainQueryResponse>(
@@ -85,7 +85,7 @@ const MapScreen = (props: any) => {
       })}
     </MapView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   map: {

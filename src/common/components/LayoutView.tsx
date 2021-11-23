@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { colors, commonStyles } from '../styles';
 
-const LayoutView = ({
+function LayoutView({
   top,
   bottom,
   topContainer,
@@ -12,7 +12,7 @@ const LayoutView = ({
   hasShadow = true,
   isFillTop = false,
   backgroundColorContainer
-}) => {
+}) {
   return (
     <View
       style={[
@@ -58,7 +58,7 @@ const LayoutView = ({
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

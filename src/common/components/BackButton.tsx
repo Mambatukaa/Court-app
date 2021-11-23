@@ -8,7 +8,7 @@ interface IProps {
   onPress: () => void;
 }
 
-const BackButton = (props: IProps) => {
+function BackButton(props: IProps) {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={props.onPress}>
       <View
@@ -31,6 +31,6 @@ const BackButton = (props: IProps) => {
       </View>
     </TouchableOpacity>
   );
-};
+}
 
 export default BackButton;

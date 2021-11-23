@@ -10,7 +10,7 @@ interface IProps {
   location: {};
 }
 
-const CourtDetail = (props: IProps) => {
+function CourtDetail(props: IProps) {
   // const [showMark, setShowMark] = useState(false);
 
   // const mapRegion = {
@@ -67,7 +67,7 @@ const CourtDetail = (props: IProps) => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   map: {

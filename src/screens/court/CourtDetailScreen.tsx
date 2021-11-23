@@ -24,7 +24,7 @@ import colors from '../../common/styles/colors';
 import { GradientBtn } from '../../common/components';
 import { ICourt } from './types';
 
-const CourtDetailScreen = (props: any) => {
+function CourtDetailScreen(props: any) {
   const { courtId } = props.route.params;
   /*  const navigation = useNavigation();
   const [like, setLike] = useState(true); */
@@ -101,7 +101,7 @@ const CourtDetailScreen = (props: any) => {
       </ScrollView>
     </View>
   );
-};
+}
 
 const initialLayout = { width: Dimensions.get('window').width };
 

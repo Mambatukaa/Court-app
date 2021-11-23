@@ -2,30 +2,35 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, Platform } from 'react-native';
 import dayjs from 'dayjs';
 import { colors } from '../../styles';
+import { IBookingDoc } from '../../../screens/booking/types';
 
-const BookedCourt = props => {
-  const { allSchedules = [] } = props;
+interface IProps {
+  bookings: IBookingDoc[];
+}
+
+function BookedCourt(props: IProps) {
+  const { bookings } = props;
 
   return (
     <View>
-      {allSchedules.length !== 0 ? (
+      {bookings.length !== 0 ? (
         <View>
-          {allSchedules.map((schedule, index) => {
+          {bookings.map((booking, index) => {
+            const { schedule, court } = booking;
+
             return (
               <View key={index} style={styles.court}>
                 <View style={styles.main}>
                   <View style={styles.textContainer}>
-                    <Text style={styles.title}>
-                      {schedule.scheduledCourt.name}
-                    </Text>
+                    <Text style={styles.title}>{court.name}</Text>
                     <Text style={styles.dateContainer}>Өдөр</Text>
                     <Text style={styles.date}>
-                      {`${dayjs(schedule.startTime).format('YYYY-MM-DD')}нд`}
+                      {`${dayjs(schedule.startDate).format('YYYY-MM-DD')}нд`}
                     </Text>
                     <Text style={styles.timeContainer}>Цаг</Text>
                     <Text style={styles.time}>{`${dayjs(
-                      schedule.startTime
-                    ).format('HH:mm')} - ${dayjs(schedule.endTime).format(
+                      schedule.startDate
+                    ).format('HH:mm')} - ${dayjs(schedule.endDate).format(
                       'HH:mm'
                     )}`}</Text>
                     <Text style={styles.orderContainer}>
@@ -43,7 +48,7 @@ const BookedCourt = props => {
                   <View style={styles.imageContainer}>
                     <Image
                       style={styles.image}
-                      source={{ uri: schedule?.scheduledCourt.image }}
+                      source={{ uri: court.featuredImage }}
                       resizeMode="cover"
                     />
                     <Text
@@ -82,7 +87,7 @@ const BookedCourt = props => {
       )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   court: {

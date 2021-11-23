@@ -11,13 +11,13 @@ interface IProps {
   security: any;
 }
 
-const Editbox = ({
+function Editbox({
   onChangeText,
   value = '',
   style,
   placeholder,
   security
-}: IProps) => {
+}: IProps) {
   return (
     <TextInput
       autoCapitalize="none"
@@ -31,6 +31,6 @@ const Editbox = ({
       secureTextEntry={security}
     />
   );
-};
+}
 
 export default Editbox;

@@ -18,14 +18,14 @@ interface IProps {
   loading?: boolean;
 }
 
-const GradientBtn = ({
+function GradientBtn({
   onPress,
   textStyle,
   linearGradientStyle,
   text,
   styledColors,
   loading
-}: IProps) => {
+}: IProps) {
   const defaultGradient = ['#B43CF3', '#a23ff0', '#8741EA', '#7444E8'];
 
   /* const defaultGradient = ['#cc2b5e', '#753a88']; */
@@ -56,7 +56,7 @@ const GradientBtn = ({
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   inView: {

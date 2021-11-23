@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
-const TextView = props => {
+function TextView(props) {
   const {
     xxsmall,
     xsmall,
@@ -22,11 +22,11 @@ const TextView = props => {
   if (xxlarge) return <Text style={[styles.xxlarge, style]}>{text}</Text>;
   if (xxxlarge) return <Text style={[styles.xxxlarge, style]}>{text}</Text>;
   return (
-    <Text {...props} style={[styles.default, style]} ellipsizeMode='tail'>
+    <Text {...props} style={[styles.default, style]} ellipsizeMode="tail">
       {text}
     </Text>
   );
-};
+}
 
 const styles = StyleSheet.create({
   xxsmall: {

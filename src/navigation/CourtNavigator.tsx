@@ -33,12 +33,16 @@ const defaultNavOptions = {
   headerTintColor: 'white'
 };
 
+// tslint:disable-next-line: variable-name
 const LoginStackNavigator = createStackNavigator();
+// tslint:disable-next-line: variable-name
 const CourtsStackNavigator = createStackNavigator();
+// tslint:disable-next-line: variable-name
 const Tab = createMaterialBottomTabNavigator();
+// tslint:disable-next-line: variable-name
 const Root = createStackNavigator();
 
-const LoginNavigator = () => {
+function LoginNavigator() {
   return (
     <LoginStackNavigator.Navigator>
       <LoginStackNavigator.Screen
@@ -58,9 +62,9 @@ const LoginNavigator = () => {
       />
     </LoginStackNavigator.Navigator>
   );
-};
+}
 
-const CourtsNavigator = () => {
+function CourtsNavigator() {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <CourtsStackNavigator.Screen
@@ -96,16 +100,17 @@ const CourtsNavigator = () => {
       />
     </CourtsStackNavigator.Navigator>
   );
-};
-const ProfileNavigator = () => {
+}
+
+function ProfileNavigator() {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <CourtsStackNavigator.Screen name="Profile" component={ProfileScreen} />
     </CourtsStackNavigator.Navigator>
   );
-};
+}
 
-const BookingNavigator = () => {
+function BookingNavigator() {
   return (
     <CourtsStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <CourtsStackNavigator.Screen
@@ -114,9 +119,9 @@ const BookingNavigator = () => {
       />
     </CourtsStackNavigator.Navigator>
   );
-};
+}
 
-const MyTabs = () => {
+function MyTabs() {
   return (
     <Tab.Navigator
       activeColor={'white'}
@@ -167,7 +172,7 @@ const MyTabs = () => {
       />
     </Tab.Navigator>
   );
-};
+}
 
 const rootNavigator = () => {
   const [state, dispatch] = React.useReducer(

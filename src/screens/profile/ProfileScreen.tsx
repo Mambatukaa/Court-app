@@ -15,7 +15,7 @@ import { colors } from '../../common/styles';
 import { queries, mutations } from './graphql';
 import { CurrentUserQueryResponse } from './types';
 
-const ProfileScreen = () => {
+function ProfileScreen() {
   const navigation = useNavigation();
 
   const { signOut } = React.useContext(AuthContext);
@@ -112,7 +112,7 @@ const ProfileScreen = () => {
       </View>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

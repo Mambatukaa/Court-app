@@ -14,7 +14,7 @@ import { GradientBtn } from '../../common/components';
 import { ScrollView } from 'react-native-gesture-handler';
 import { CourtDetailQueryResponse } from './types';
 
-const CourtBookDetail = (props: any) => {
+function CourtBookDetail(props: any) {
   const { courtId, item } = props.route.params;
 
   const [discount, setDiscount] = useState(item?.price);
@@ -221,7 +221,7 @@ const CourtBookDetail = (props: any) => {
       {/* </KeyboardAwareScrollView> */}
     </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   image: {

@@ -19,7 +19,7 @@ interface IProps {
   courtDetail: ICourt;
 }
 
-const CourtTimePick = (props: IProps) => {
+function CourtTimePick(props: IProps) {
   const navigation = useNavigation();
   const { params } = props;
 
@@ -206,7 +206,7 @@ const CourtTimePick = (props: IProps) => {
       </ScrollView>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   weekChange: {

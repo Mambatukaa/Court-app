@@ -5,7 +5,7 @@ import PriceFilter from './PriceFilter';
 
 const width = Dimensions.get('window').width;
 
-const FilterWrapper = props => {
+function FilterWrapper(props) {
   const { setSetFilterVisible, isFilterVisible } = props;
 
   const hide = () => {
@@ -36,7 +36,7 @@ const FilterWrapper = props => {
       </SafeAreaView>
     </Modal>
   );
-};
+}
 
 export default FilterWrapper;
 

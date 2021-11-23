@@ -18,7 +18,7 @@ import FilterWrapper from './filter/FilterWrapper';
 import { colors } from '../../common/styles';
 import { CourtsMainQueryResponse } from './types';
 
-const CourtsOverviewScreen = () => {
+function CourtsOverviewScreen() {
   const navigation = useNavigation();
 
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -145,7 +145,7 @@ const CourtsOverviewScreen = () => {
       )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

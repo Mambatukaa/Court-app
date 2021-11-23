@@ -7,7 +7,7 @@ import { queries } from './graphql';
 import CourtTimePick from '../../common/components/court/CourtTimePick';
 import { colors } from '../../common/styles';
 
-const CourtBookingScreen = (props: any) => {
+function CourtBookingScreen(props: any) {
   const { params } = props.route;
 
   const { data, loading } = useQuery(gql(queries.courtDetail), {
@@ -33,6 +33,6 @@ const CourtBookingScreen = (props: any) => {
       <CourtTimePick params={params} courtDetail={courtDetail} />
     </View>
   );
-};
+}
 
 export default CourtBookingScreen;

@@ -34,7 +34,7 @@ interface IData {
   isValidPassword: boolean;
 }
 
-const SignInScreen = () => {
+function SignInScreen() {
   const [data, setData] = React.useState<IData>({
     username: '',
     email: '',
@@ -311,7 +311,7 @@ const SignInScreen = () => {
       </KeyboardAvoidingView>
     </View>
   );
-};
+}
 
 export default SignInScreen;
 

@@ -18,7 +18,7 @@ interface IProps {
   onViewDetail: () => void;
 }
 
-const CourtItem = (props: IProps) => {
+function CourtItem(props: IProps) {
   return (
     <TouchableOpacity
       activeOpacity={Platform.OS === 'ios' ? 0.4 : 0.9}
@@ -54,7 +54,7 @@ const CourtItem = (props: IProps) => {
       </View>
     </TouchableOpacity>
   );
-};
+}
 
 const styles = StyleSheet.create({
   court: {

@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import images from '../../../assets/images';
 import { colors } from '../../common/styles';
 
-const Intro = () => {
+function Intro() {
   const navigation = useNavigation();
 
   return (
@@ -72,7 +72,7 @@ const Intro = () => {
       </View>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

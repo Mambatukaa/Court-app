@@ -7,10 +7,10 @@ import { colors } from '../../common/styles';
 import { queries } from './graphql';
 import { UserBookingsQueryResponse } from './types';
 
-const BookedScreen = (props: any) => {
+function BookedScreen(props: any) {
   const navigation = useNavigation();
 
-  const { data } = useQuery(gql(queries.currentUser), {
+  const { data: userData } = useQuery(gql(queries.currentUser), {
     fetchPolicy: 'network-only'
   });
 
@@ -20,11 +20,11 @@ const BookedScreen = (props: any) => {
     });
   }, [navigation]);
 
-  const currentUserId = data?.currentUser._id || '';
+  const currentUserId = userData?.currentUser._id || '';
 
   const {
     loading: bCourtLoading,
-    data: bData,
+    data,
     refetch: bCourtRefetch
   } = useQuery<UserBookingsQueryResponse>(gql(queries.userBookings), {
     variables: {
@@ -32,19 +32,9 @@ const BookedScreen = (props: any) => {
     }
   });
 
-  const ids: any = [];
-
-  const userBookings = bData?.userBookings || [];
-
-  userBookings?.map((book: any) => ids.push(book.scheduleId));
-
-  const { data: scheduleData } = useQuery(gql(queries.schedulesMain), {
-    variables: {
-      ids
-    }
-  });
-
-  const allSchedules = scheduleData?.schedulesMain || [];
+  if (!data) {
+    return null;
+  }
 
   return (
     <ScrollView
@@ -58,9 +48,9 @@ const BookedScreen = (props: any) => {
         backgroundColor: colors.bgMain
       }}
     >
-      <BookedCourt allSchedules={allSchedules} />
+      <BookedCourt bookings={data?.userBookings} />
     </ScrollView>
   );
-};
+}
 
 export default BookedScreen;
