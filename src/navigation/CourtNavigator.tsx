@@ -1,21 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-
 import { NavigationContainer } from '@react-navigation/native';
-
 import { AntDesign, FontAwesome5, Feather } from '@expo/vector-icons';
-
 import CourtsOverviewScreen from '../screens/court/CourtsOverviewScreen';
-
 import CourtDetailScreen, {
   screenOptions as CourtDetailScreenOptions
 } from '../screens/court/CourtDetailScreen';
-
 import ProfileScreen from '../screens/profile/ProfileScreen';
-
 import MapScreen from '../screens/map/MapScreen';
-
 import BookedScreen from '../screens/booking/BookedScreen';
 import { colors } from '../common/styles';
 import CourtBookDetail, {
@@ -227,7 +220,7 @@ const rootNavigator = () => {
         dispatch({ type: 'SIGN_IN', token: data.token });
       },
       signOut: () => dispatch({ type: 'SIGN_OUT' }),
-      signUp: async (data: any) => {
+      signUp: async () => {
         dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
       }
     }),

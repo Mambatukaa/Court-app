@@ -32,15 +32,12 @@ function CourtItem(props: IProps) {
 
             <View style={styles.itemContainer}>
               <TextView style={styles.itemLabel} text={'Зогсоол'} />
-              <TextView style={styles.itemValue} text={props.parking} />
+              <TextView style={styles.itemValue} text={'Байхгүй'} />
             </View>
 
             <View style={styles.itemContainer}>
               <TextView style={styles.itemLabel} text={'Нийт'} />
-              {/* <TextView
-                style={styles.itemValue}
-                text={`${props.slotSize} хүн`}
-              /> */}
+              <TextView style={styles.itemValue} text={`${10} хүн`} />
             </View>
           </View>
           <View style={styles.imageContainer}>

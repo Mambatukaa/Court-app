@@ -4,7 +4,7 @@ import { IAuth } from '../types';
 // tslint:disable-next-line: variable-name
 export const AuthContext = createContext<IAuth>({
   signOut: () => console.log(''),
-  signIn: (data: any) => console.log('')
+  signIn: (data: any) => console.log(data)
 });
 
 function useAuth() {
