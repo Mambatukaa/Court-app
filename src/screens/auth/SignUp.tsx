@@ -116,23 +116,12 @@ function SignInScreen() {
   };
 
   const handleSignUp = () => {
-    if (!data.check_textInputChange) {
-      Alert.alert('Буруу утга!', 'Нэвтрэх нэрийн утга дутуу байна.', [
-        { text: 'Ахин бүртгүүлэх' }
-      ]);
-      return;
-    }
+    const { check_textInputChange, check_emailInputChange, isValidPassword } =
+      data;
 
-    if (!data.check_emailInputChange) {
-      Alert.alert('Буруу утга!', 'Нууц үгийн утга дутуу байна.', [
-        { text: 'Ахин бүртгүүлэх' }
-      ]);
-      return;
-    }
-
-    if (!data.isValidPassword) {
-      Alert.alert('Буруу утга!', 'Нууц үгийн утга дутуу байна.', [
-        { text: 'Ахин бүртгүүлэх' }
+    if (!check_emailInputChange || !check_textInputChange || !isValidPassword) {
+      Alert.alert('Wrong value', 'Please check input value.', [
+        { text: 'Okay' }
       ]);
       return;
     }
@@ -142,8 +131,8 @@ function SignInScreen() {
       data.email.length === 0 ||
       data.password.length === 0
     ) {
-      Alert.alert('Буруу утга!', 'Утга дутуу байна.', [
-        { text: 'Ахин бүртгүүлэх' }
+      Alert.alert('Wrong value!', 'Please check input value.', [
+        { text: 'Okay' }
       ]);
       return;
     }
@@ -156,14 +145,13 @@ function SignInScreen() {
       }
     })
       .then(() => {
-        Alert.alert('Амжилттай', 'Бүртгэл үүслээ.', [{ text: 'Нэвтрэх' }]);
+        Alert.alert('Success', 'User created.', [{ text: 'Нэвтрэх' }]);
 
         navigation.navigate('SignIn');
       })
       .catch(e => {
-        console.log(e, 'hehe', e.message);
-        Alert.alert('Буруу утга!', 'Нэвтрэх нэр эсвэл Мэйл бүртгэлтэй байна.', [
-          { text: 'Ахин бүртгүүлэх' }
+        Alert.alert('Wrong value!', 'Username or email already registered.', [
+          { text: 'Okay' }
         ]);
         return;
       });
@@ -273,13 +261,13 @@ function SignInScreen() {
             {data.isValidPassword ? null : (
               <Animatable.View animation="fadeInLeft" duration={500}>
                 <Text style={styles.errorMsg}>
-                  Нууц үг 8-с дээш тэмдэгт байна.
+                  Password must be more than 8 characters.
                 </Text>
               </Animatable.View>
             )}
             <View style={styles.textPrivate}>
               <Text style={styles.color_textPrivate}>
-                {'Өмнө нь бүртгүүлсэн бол'}
+                {'Already registered?'}
               </Text>
               <Text
                 style={[
@@ -290,11 +278,9 @@ function SignInScreen() {
                   navigation.navigate('SignIn');
                 }}
               >
-                {' энд '}
+                {' click here '}
               </Text>
-              <Text style={[styles.color_textPrivate]}>
-                {'дарж нэвтэрнэ үү.'}
-              </Text>
+              <Text style={[styles.color_textPrivate]}>{'to login.'}</Text>
             </View>
             <View style={styles.button}>
               <GradientBtn

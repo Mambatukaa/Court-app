@@ -94,19 +94,10 @@ function SignInScreen() {
   };
 
   const loginHandle = (userName: string, password: string) => {
-    if (userName.length === 0 || password.length === 0) {
-      Alert.alert('Буруу утга!', 'Нэвтрэх нэр болон нууц үг хоосон байна.', [
-        { text: 'Ахин нэвтрэх' }
-      ]);
-      return;
-    }
-
     if (userName.length < 5 || password.length < 8) {
-      Alert.alert(
-        'Буруу утга!',
-        'Нэвтрэх нэр эсвэл нууц үгийн утга дутуу байна.',
-        [{ text: 'Ахин нэвтрэх' }]
-      );
+      Alert.alert('Wrong value!', 'Username or passwords .', [
+        { text: 'Okay' }
+      ]);
       return;
     }
 
@@ -124,11 +115,9 @@ function SignInScreen() {
         signIn(response.login);
       })
       .catch(e => {
-        Alert.alert(
-          'Хэрэглэгч олдсонгүй!',
-          'Нэвтрэх нэр эсвэл нууц үг буруу байна.',
-          [{ text: 'Okay' }]
-        );
+        Alert.alert('User not found!', 'Username or password is wrong.', [
+          { text: 'Okay' }
+        ]);
         return;
       });
 
@@ -139,7 +128,7 @@ function SignInScreen() {
     <View style={styles.container}>
       <View style={styles.header}>
         <BackButton onPress={() => navigation.goBack()} />
-        <Text style={styles.text_header}>Нэвтрэх</Text>
+        <Text style={styles.text_header}>Sign in</Text>
       </View>
       <Animatable.View
         animation="fadeInUpBig"
@@ -158,7 +147,7 @@ function SignInScreen() {
             }
           ]}
         >
-          Нэвтрэх нэр
+          Username
         </Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.textPrimary} size={20} />
@@ -184,7 +173,7 @@ function SignInScreen() {
         {data.isValidUser ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              Нэвтрэх нэр 4-с дээш үсэг байна.
+              Username must more than 4 character.
             </Text>
           </Animatable.View>
         )}
@@ -198,7 +187,7 @@ function SignInScreen() {
             }
           ]}
         >
-          Нууц үг
+          Password
         </Text>
         <View style={styles.action}>
           <Feather name="lock" color={colors.textPrimary} size={20} />
@@ -221,14 +210,14 @@ function SignInScreen() {
         {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              Нууц үг 8 аас илүү тэмдэгт байна.
+              Password must more than 8 character.
             </Text>
           </Animatable.View>
         )}
 
         <TouchableOpacity>
           <Text style={{ color: colors.primary, marginTop: 15 }}>
-            Нууц үг мартсан?
+            Forgot password?
           </Text>
         </TouchableOpacity>
         <View style={styles.button}>
