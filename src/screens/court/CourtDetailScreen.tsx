@@ -90,7 +90,7 @@ function CourtDetailScreen(props: IProps) {
         />
         <View style={styles.main}>
           <GradientBtn
-            text="Book court"
+            text="Book"
             linearGradientStyle={styles.booknowButton}
             textStyle={{ fontSize: 12 }}
             onPress={() => props.jumpTo('second')}

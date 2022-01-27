@@ -1,21 +1,21 @@
 import React, { useLayoutEffect } from 'react';
-import {
-  View,
-  StyleSheet,
-  SafeAreaView,
-  ActivityIndicator
-} from 'react-native';
+import { View, StyleSheet, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Avatar } from 'react-native-elements';
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import { AuthContext } from '../../common/utils/AuthContext';
 import TextView from '../../common/components/TextView';
 import GradientBtn from '../../common/components/GradientBtn';
 import { colors } from '../../common/styles';
-import { queries, mutations } from './graphql';
-import { CurrentUserQueryResponse } from './types';
+import { mutations } from './graphql';
+import { IUser } from '../auth/types';
+import withCurrentUser from '../auth/containers/withCurrentUser';
 
-function ProfileScreen() {
+interface IProps {
+  currentUser: IUser;
+}
+
+function ProfileScreen(props: IProps) {
   const navigation = useNavigation();
 
   const { signOut } = React.useContext(AuthContext);
@@ -28,24 +28,7 @@ function ProfileScreen() {
 
   const [logout] = useMutation(gql(mutations.logout));
 
-  const { data, loading } = useQuery<CurrentUserQueryResponse>(
-    gql(queries.currentUser),
-    {
-      fetchPolicy: 'network-only'
-    }
-  );
-
-  if (!data || loading) {
-    return (
-      <ActivityIndicator
-        size="small"
-        color={colors.grdMain}
-        style={{ justifyContent: 'center', flex: 1 }}
-      />
-    );
-  }
-
-  const currentUser = data.currentUser;
+  const currentUser = props.currentUser || {};
 
   const nameCapitalized =
     currentUser.username.charAt(0).toUpperCase() +
@@ -165,4 +148,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ProfileScreen;
+export default withCurrentUser(ProfileScreen);
