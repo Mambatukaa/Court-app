@@ -1,3 +1,4 @@
+import { QueryResponse } from '../../common/types';
 export interface IAuth {
   name: string;
 }
@@ -20,3 +21,14 @@ export type SignUpMutationVariables = {
 export type SignUpMutationResponse = {
   usersCreate: (params: SignUpMutationVariables) => Promise<any>;
 };
+
+export interface IUser {
+  _id: string;
+  username: string;
+  email: string;
+  role: string;
+}
+
+export type CurrentUserQueryResponse = {
+  currentUser: IUser;
+} & QueryResponse;

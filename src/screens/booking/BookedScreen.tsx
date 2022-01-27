@@ -6,13 +6,15 @@ import BookedCourt from '../../common/components/booking/BookedCourt';
 import { colors } from '../../common/styles';
 import { queries } from './graphql';
 import { UserBookingsQueryResponse } from './types';
+import withCurrentUser from '../auth/containers/withCurrentUser';
+import { IUser } from '../auth/types';
 
-function BookedScreen() {
+interface IProps {
+  currentUser: IUser;
+}
+
+function BookedScreen({ currentUser }: IProps) {
   const navigation = useNavigation();
-
-  const { data: userData } = useQuery(gql(queries.currentUser), {
-    fetchPolicy: 'network-only'
-  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -20,15 +22,13 @@ function BookedScreen() {
     });
   }, [navigation]);
 
-  const currentUserId = userData?.currentUser._id || '';
-
   const {
     loading: bCourtLoading,
     data,
     refetch: bCourtRefetch
   } = useQuery<UserBookingsQueryResponse>(gql(queries.userBookings), {
     variables: {
-      userId: currentUserId
+      userId: currentUser._id
     }
   });
 
@@ -53,4 +53,4 @@ function BookedScreen() {
   );
 }
 
-export default BookedScreen;
+export default withCurrentUser(BookedScreen);
