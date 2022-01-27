@@ -23,7 +23,7 @@ function CourtDetail(props: IProps) {
   return (
     <View>
       <View style={styles.itemContainer}>
-        <Text style={styles.itemLabel}>Шал</Text>
+        <Text style={styles.itemLabel}>Surface</Text>
         <Text style={styles.itemValue}>{props.surface || 'Mod'}</Text>
       </View>
       {/* <View style={styles.itemContainer}>
@@ -31,11 +31,11 @@ function CourtDetail(props: IProps) {
         <Text style={styles.itemValue}>{props.slotSize}</Text>
       </View> */}
       <View style={styles.itemContainer}>
-        <Text style={styles.itemLabel}>Тайлбар</Text>
+        <Text style={styles.itemLabel}>Description</Text>
         <Text style={styles.itemValue}>{props.description}</Text>
       </View>
       <View style={styles.itemContainer}>
-        <Text style={styles.itemLabel}>Анхааруулга</Text>
+        <Text style={styles.itemLabel}>Warning</Text>
         <Text style={styles.itemValue}>{props.warning}</Text>
       </View>
       <View

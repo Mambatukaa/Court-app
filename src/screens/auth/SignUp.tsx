@@ -178,12 +178,12 @@ function SignInScreen() {
       >
         <View style={styles.header}>
           <BackButton onPress={() => navigation.goBack()} />
-          <Text style={styles.text_header}>Бүртгүүлэх</Text>
+          <Text style={styles.text_header}>Sign up</Text>
         </View>
 
         <Animatable.View animation="fadeInUpBig" style={styles.footer}>
           <ScrollView>
-            <Text style={styles.text_footer}>Нэвтрэх нэр</Text>
+            <Text style={styles.text_footer}>Username</Text>
             <View style={styles.action}>
               <FontAwesome
                 name="user-o"
@@ -191,7 +191,7 @@ function SignInScreen() {
                 size={20}
               />
               <TextInput
-                placeholder="Нэвтрэх нэр"
+                placeholder="Username"
                 style={styles.textInput}
                 autoCapitalize="none"
                 onChangeText={val => textInputChange(val)}
@@ -218,13 +218,13 @@ function SignInScreen() {
                 }
               ]}
             >
-              Мэйл
+              Email
             </Text>
             <View style={styles.action}>
               <Feather name="mail" color={colors.colorCoreDarkBlue} size={20} />
               <TextInput
                 keyboardType="email-address"
-                placeholder="Мэйл хаяг"
+                placeholder="Email"
                 style={styles.textInput}
                 autoCapitalize="none"
                 onChangeText={val => handleEmailChange(val)}
@@ -298,7 +298,7 @@ function SignInScreen() {
             </View>
             <View style={styles.button}>
               <GradientBtn
-                text="Бүртгүүлэх"
+                text="Sign up"
                 linearGradientStyle={[styles.signIn]}
                 textStyle={styles.textSign}
                 onPress={() => {

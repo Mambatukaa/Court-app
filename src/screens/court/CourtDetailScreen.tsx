@@ -90,7 +90,7 @@ function CourtDetailScreen(props: IProps) {
         />
         <View style={styles.main}>
           <GradientBtn
-            text="Захиалах"
+            text="Book court"
             linearGradientStyle={styles.booknowButton}
             textStyle={{ fontSize: 12 }}
             onPress={() => props.jumpTo('second')}
@@ -115,8 +115,8 @@ export default function TabViewExample(tabProps: any) {
   const params = tabProps.route;
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Мэдээлэл' },
-    { key: 'second', title: 'Захиалах' }
+    { key: 'first', title: 'Information' },
+    { key: 'second', title: 'Book' }
   ]);
 
   const renderScene = (sceneParams: any) => {

@@ -78,7 +78,7 @@ function CourtsNavigator() {
         name="Map"
         component={MapScreen}
         options={{
-          headerTitle: 'Газрын зураг',
+          headerTitle: 'Map',
           headerBackTitle: ' ',
           headerStyle: {
             backgroundColor: colors.primary
@@ -119,10 +119,10 @@ function MyTabs() {
     <Tab.Navigator
       activeColor={'white'}
       barStyle={{ backgroundColor: colors.primary }}
-      initialRouteName="Заалууд"
+      initialRouteName="Courts"
     >
       <Tab.Screen
-        name="Захиалгууд"
+        name="Bookings"
         component={BookingNavigator}
         options={{
           tabBarIcon: props => {
@@ -140,7 +140,7 @@ function MyTabs() {
         }}
       /> */}
       <Tab.Screen
-        name="Заалууд"
+        name="Courts"
         component={CourtsNavigator}
         options={{
           tabBarIcon: props => {
@@ -155,7 +155,7 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Профайл"
+        name="Profile"
         component={ProfileNavigator}
         options={{
           tabBarIcon: props => {

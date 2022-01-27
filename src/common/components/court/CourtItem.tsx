@@ -31,13 +31,13 @@ function CourtItem(props: IProps) {
             <Text style={styles.description}>{props.description}</Text>
 
             <View style={styles.itemContainer}>
-              <TextView style={styles.itemLabel} text={'Зогсоол'} />
-              <TextView style={styles.itemValue} text={'Байхгүй'} />
+              <TextView style={styles.itemLabel} text={'Parking'} />
+              <TextView style={styles.itemValue} text={'no'} />
             </View>
 
             <View style={styles.itemContainer}>
-              <TextView style={styles.itemLabel} text={'Нийт'} />
-              <TextView style={styles.itemValue} text={`${10} хүн`} />
+              <TextView style={styles.itemLabel} text={'Total'} />
+              <TextView style={styles.itemValue} text={`${10} people`} />
             </View>
           </View>
           <View style={styles.imageContainer}>

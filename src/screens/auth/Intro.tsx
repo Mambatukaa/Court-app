@@ -52,7 +52,7 @@ function Intro() {
           }}
         >
           <GradientBtn
-            text="Нэвтрэх"
+            text="Sign in"
             onPress={() => {
               navigation.navigate('SignIn');
             }}
@@ -60,7 +60,7 @@ function Intro() {
             textStyle={styles.textBtn}
           />
           <GradientBtn
-            text="Бүртгүүлэх"
+            text="Sign up"
             onPress={() => {
               navigation.navigate('SignUp');
             }}

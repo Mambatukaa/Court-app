@@ -8,8 +8,8 @@ import { ActivityIndicator } from 'react-native';
 
 import MapPreview from './MapPreview';
 
-const LocationPicker = () => {
-  const [pickedLocation, setPickedLocation] = useState();
+function LocationPicker() {
+  const [pickedLocation, setPickedLocation] = useState({});
   const [isFetching, setIsFetching] = useState(false);
 
   const verifyPermissions = async () => {
@@ -35,7 +35,7 @@ const LocationPicker = () => {
     try {
       setIsFetching(true);
       const location = await Location.getCurrentPositionAsync({
-        timeout: 5000
+        timeInterval: 5000
       });
 
       setPickedLocation({
@@ -49,20 +49,20 @@ const LocationPicker = () => {
   };
 
   return (
-    <View style={styles.locationPicker}>
+    <View>
       <MapPreview style={styles.mapPreview} location={pickedLocation}>
         {isFetching ? (
-          <ActivityIndicator size='large' color='black' />
+          <ActivityIndicator size="large" color="black" />
         ) : (
           <Text>No Location yet</Text>
         )}
       </MapPreview>
       <View style={styles.actions}>
-        <Button title='Get location' onPress={getLocation} />
+        <Button title="Get location" onPress={getLocation} />
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   locationPicer: {

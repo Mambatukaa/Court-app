@@ -7,8 +7,8 @@ const signUp = `
 `;
 
 const login = `
-    mutation login($email: String! $password: String!){
-        login(email: $email password: $password){
+    mutation login($input: String! $password: String!){
+        login(input: $input password: $password){
             token
             refreshToken
         }

@@ -156,7 +156,7 @@ function CourtBookDetail(props: IProps) {
           /> */}
 
           <GradientBtn
-            text="Оруулах"
+            text="Admit"
             onPress={() => handleDiscount()}
             linearGradientStyle={[
               {
@@ -207,7 +207,7 @@ function CourtBookDetail(props: IProps) {
               courtId
             })
           }
-          text="Төлбөр төлөх"
+          text="Pay"
           linearGradientStyle={{ borderRadius: 5, width: 250 }}
           textStyle={{ fontSize: 15 }}
         />
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
 
 export const screenOptions = () => {
   return {
-    headerTitle: 'Захиалга',
+    headerTitle: 'Booking',
     headerBackTitle: ' '
   };
 };

@@ -79,7 +79,7 @@ function CourtsOverviewScreen() {
           </TouchableOpacity>
         </View>
       ),
-      title: 'Заалууд'
+      title: 'Courts'
     });
   }, [navigation]);
 
@@ -94,7 +94,7 @@ function CourtsOverviewScreen() {
       {showSearch && (
         <Searchbar
           style={{ borderWidth: 0.15 }}
-          placeholder="Хайх"
+          placeholder="Search"
           onChangeText={onChangeSearch}
           value={searchQuery}
           onSubmitEditing={done}
@@ -140,7 +140,7 @@ function CourtsOverviewScreen() {
             justifyContent: 'center'
           }}
         >
-          <Text>Уучлаарай заал олдсонгүй.</Text>
+          <Text>Sorry no courts in here</Text>
         </View>
       )}
     </View>

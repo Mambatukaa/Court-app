@@ -3,7 +3,7 @@ export interface IAuth {
 }
 
 export type LoginMutationVariables = {
-  email: string;
+  input: string;
   password: string;
 };
 
@@ -12,6 +12,7 @@ export type LoginMutationResponse = {
 };
 
 export type SignUpMutationVariables = {
+  username: string;
   email: string;
   password: string;
 };

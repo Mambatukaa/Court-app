@@ -16,7 +16,7 @@ function BookedScreen() {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Захиалгууд'
+      title: 'Bookings'
     });
   }, [navigation]);
 

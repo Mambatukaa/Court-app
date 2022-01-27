@@ -112,7 +112,7 @@ function SignInScreen() {
 
     login({
       variables: {
-        email: userName,
+        input: userName,
         password
       },
       refetchQueries: ['currentUser']
@@ -163,7 +163,7 @@ function SignInScreen() {
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.textPrimary} size={20} />
           <TextInput
-            placeholder="Нэвтрэх нэр"
+            placeholder="Username"
             placeholderTextColor={colors.colorCoreMediumGray}
             style={[
               styles.textInput,
@@ -203,7 +203,7 @@ function SignInScreen() {
         <View style={styles.action}>
           <Feather name="lock" color={colors.textPrimary} size={20} />
           <TextInput
-            placeholder="Нууц үг"
+            placeholder="Password"
             placeholderTextColor={colors.colorCoreMediumGray}
             secureTextEntry={data.secureTextEntry ? true : false}
             style={[styles.textInput]}
@@ -233,7 +233,7 @@ function SignInScreen() {
         </TouchableOpacity>
         <View style={styles.button}>
           <GradientBtn
-            text="Нэвтрэх"
+            text="Sign in"
             linearGradientStyle={styles.signIn}
             textStyle={styles.textSign}
             onPress={() => {
@@ -242,7 +242,7 @@ function SignInScreen() {
             loading={loading}
           />
           <GradientBtn
-            text="Бүртгүүлэх"
+            text="Sign up"
             linearGradientStyle={[styles.signIn, styles.signUp]}
             textStyle={styles.textSign}
             onPress={() => {

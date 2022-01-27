@@ -26,7 +26,7 @@ function DateFilter() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontWeight: 'bold', marginBottom: 20 }}>Хугацаа</Text>
+      <Text style={{ fontWeight: 'bold', marginBottom: 20 }}>Duration</Text>
       <View
         style={{
           padding: 5,
@@ -35,7 +35,7 @@ function DateFilter() {
           height: 60
         }}
       >
-        <Text style={{ fontSize: 12 }}>Эхлэх огноо</Text>
+        <Text style={{ fontSize: 12 }}>Start Date</Text>
         <DateTimePicker
           style={{
             width: 120,

@@ -43,7 +43,7 @@ function Payment(props: IProps) {
                 })
                   .then(() => {
                     console.log('amjilttai');
-                    navigation.navigate('Захиалгууд');
+                    navigation.navigate('Bookings');
                   })
                   .catch(e => {
                     console.log(e, 'error error');

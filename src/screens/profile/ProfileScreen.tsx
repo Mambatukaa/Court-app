@@ -22,7 +22,7 @@ function ProfileScreen() {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Профайл'
+      title: 'Profile'
     });
   }, [navigation]);
 
@@ -72,33 +72,30 @@ function ProfileScreen() {
       </View>
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Мэйл:'} />
+        <TextView style={styles.itemLabel} text={'Email:'} />
         <TextView style={styles.itemValue} text={currentUser.email} />
       </View>
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Үүрэг:'} />
+        <TextView style={styles.itemLabel} text={'Position:'} />
         <TextView style={styles.itemValue} text={currentUser.role || 'admin'} />
       </View>
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Спорт:'} />
-        <TextView style={styles.itemValue} text={`Сагсан бөмбөг`} />
+        <TextView style={styles.itemLabel} text={'Sport:'} />
+        <TextView style={styles.itemValue} text={`Basketball`} />
       </View>
 
       <View style={styles.itemContainer}>
-        <TextView style={styles.itemLabel} text={'Байршил:'} />
-        <TextView
-          style={styles.itemValue}
-          text={'Улаанбаатар хот, Монгол улс'}
-        />
+        <TextView style={styles.itemLabel} text={'Location:'} />
+        <TextView style={styles.itemValue} text={'Ulaanbaatar, Mongolia'} />
       </View>
 
       <View style={styles.bottomContainer}>
         <GradientBtn
           linearGradientStyle={styles.gradientBtn}
           textStyle={{ fontSize: 15 }}
-          text="Гарах"
+          text="Log out"
           onPress={() => {
             logout()
               .then()
