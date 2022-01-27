@@ -23,19 +23,17 @@ function BookedCourt(props: IProps) {
                 <View style={styles.main}>
                   <View style={styles.textContainer}>
                     <Text style={styles.title}>{court.name}</Text>
-                    <Text style={styles.dateContainer}>Өдөр</Text>
+                    <Text style={styles.dateContainer}>Day</Text>
                     <Text style={styles.date}>
                       {`${dayjs(schedule.startDate).format('YYYY-MM-DD')}нд`}
                     </Text>
-                    <Text style={styles.timeContainer}>Цаг</Text>
+                    <Text style={styles.timeContainer}>Time</Text>
                     <Text style={styles.time}>{`${dayjs(
                       schedule.startDate
                     ).format('HH:mm')} - ${dayjs(schedule.endDate).format(
                       'HH:mm'
                     )}`}</Text>
-                    <Text style={styles.orderContainer}>
-                      Захиалсан хүний тоо
-                    </Text>
+                    <Text style={styles.orderContainer}>Booked people</Text>
                     <Text style={styles.order}>{schedule.bookedPeople}</Text>
 
                     <View
@@ -60,7 +58,7 @@ function BookedCourt(props: IProps) {
                         alignSelf: 'center'
                       }}
                     >
-                      Баталгаажсан
+                      Confirmed
                     </Text>
                   </View>
                 </View>
@@ -81,7 +79,7 @@ function BookedCourt(props: IProps) {
               color: colors.colorLightGray
             }}
           >
-            {'Танд захиалсан заал байхгүй байна.'}
+            {'Empty'}
           </Text>
         </View>
       )}

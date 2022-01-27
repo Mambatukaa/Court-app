@@ -180,7 +180,7 @@ function CourtTimePick(props: IProps) {
             textAlign: 'center'
           }}
         >
-          Цагийн хуваарь
+          Time schedule
         </Text>
       </View>
 

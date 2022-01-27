@@ -230,7 +230,7 @@ const rootNavigator = () => {
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
-        {state.userToken == null ? (
+        {!state.userToken ? (
           <Root.Navigator>
             <Root.Screen
               name={'Login'}
